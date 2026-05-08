@@ -92,7 +92,7 @@ dist
 # vuepress build output
 .vuepress/dist
 
-# vuepress v2.x temp directory
+# vuepress v2x temp directory
 .temp
 
 # Sveltekit cache directory
@@ -141,3 +141,13 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+
+# Turbo
+.turbo
+
+# Vercel
+.vercel
+
+# Misc
+.DS_Store
+*.pem
