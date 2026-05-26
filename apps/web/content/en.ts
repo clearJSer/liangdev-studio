@@ -20,8 +20,40 @@ export const enContent: SiteContent = {
     eyebrow: "",
     title: "",
     description: "",
-    primaryAction: { href: "/projects", label: "" },
-    secondaryAction: { href: "/contact", label: "" },
+    actions: [
+      { href: "/projects", label: "", variant: "primary" },
+      { href: "/blog", label: "", variant: "secondary" },
+      { href: "/contact", label: "", variant: "ghost" },
+    ],
+    intro: {
+      eyebrow: "",
+      title: "",
+      description: "",
+    },
+    build: {
+      eyebrow: "",
+      title: "",
+      description: "",
+      items: [],
+    },
+    projects: {
+      eyebrow: "",
+      title: "",
+      description: "",
+      items: [],
+    },
+    writing: {
+      eyebrow: "",
+      title: "",
+      description: "",
+      items: [],
+    },
+    contact: {
+      eyebrow: "",
+      title: "",
+      description: "",
+      actions: [],
+    },
   },
   pages: {
     projects: {
