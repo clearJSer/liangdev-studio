@@ -37,10 +37,22 @@ export default function Home() {
         </div>
         <div className="hero-visual" aria-hidden="true">
           <div className="signal-panel">
-            <span className="signal-line signal-line-one" />
-            <span className="signal-line signal-line-two" />
-            <span className="signal-line signal-line-three" />
-            <span className="signal-core">YF</span>
+            <div className="signal-ring signal-ring-outer" />
+            <div className="signal-ring signal-ring-inner" />
+            <span className="signal-flow signal-flow-one" />
+            <span className="signal-flow signal-flow-two" />
+            <span className="signal-flow signal-flow-three" />
+            <span className="signal-node signal-node-input" />
+            <span className="signal-node signal-node-agent" />
+            <span className="signal-node signal-node-tool" />
+            <span className="signal-node signal-node-output" />
+            <span className="signal-label signal-label-one">AI Workflow</span>
+            <span className="signal-label signal-label-two">Agent</span>
+            <span className="signal-label signal-label-three">Automation</span>
+            <span className="signal-core">
+              <span>YF</span>
+              <small>Studio Core</small>
+            </span>
           </div>
         </div>
       </section>

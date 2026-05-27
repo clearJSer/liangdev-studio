@@ -13,6 +13,8 @@
   --accent: #1f8f7a;
   --accent-strong: #0f5f55;
   --accent-soft: rgba(31, 143, 122, 0.1);
+  --signal-line: rgba(31, 143, 122, 0.28);
+  --signal-glow: rgba(31, 143, 122, 0.2);
   --shadow: 0 24px 80px rgba(23, 34, 35, 0.12);
 }
 
@@ -28,6 +30,8 @@
     --accent: #6bd4bd;
     --accent-strong: #a7f3df;
     --accent-soft: rgba(107, 212, 189, 0.12);
+    --signal-line: rgba(107, 212, 189, 0.32);
+    --signal-glow: rgba(107, 212, 189, 0.22);
     --shadow: 0 24px 80px rgba(0, 0, 0, 0.32);
   }
 }
@@ -227,61 +231,190 @@ select {
   border: 1px solid var(--line);
   border-radius: 8px;
   background:
+    linear-gradient(115deg, transparent 0 42%, var(--signal-glow) 50%, transparent 58%),
     linear-gradient(90deg, var(--line) 1px, transparent 1px),
     linear-gradient(0deg, var(--line) 1px, transparent 1px),
     linear-gradient(145deg, var(--panel-strong), var(--accent-soft));
-  background-size: 40px 40px, 40px 40px, auto;
+  background-position: -120% 0, 0 0, 0 0, 0 0;
+  background-size: 220% 100%, 40px 40px, 40px 40px, auto;
   box-shadow: var(--shadow);
+  animation: signal-scan 9s ease-in-out infinite;
 }
 
 .signal-panel::before,
 .signal-panel::after {
   position: absolute;
-  inset: 52px;
+  inset: 24px;
   border: 1px solid var(--line);
   border-radius: 8px;
   content: "";
 }
 
 .signal-panel::after {
-  inset: 104px;
-  border-color: rgba(31, 143, 122, 0.32);
-}
-
-.signal-line {
-  position: absolute;
-  width: 62%;
+  inset: auto;
+  top: 50%;
+  left: 50%;
+  width: 72%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  border: 0;
+  border-radius: 0;
+  background: linear-gradient(90deg, transparent, var(--signal-line), transparent);
+  transform: translate(-50%, -50%) rotate(-24deg);
 }
 
-.signal-line-one {
-  top: 32%;
+.signal-ring {
+  position: absolute;
+  border: 1px solid var(--signal-line);
+  border-radius: 8px;
 }
 
-.signal-line-two {
+.signal-ring-outer {
+  inset: 66px;
+  animation: signal-breathe 5s ease-in-out infinite;
+}
+
+.signal-ring-inner {
+  inset: 126px;
+  border-color: rgba(31, 143, 122, 0.42);
+  animation: signal-breathe 5s ease-in-out 1.2s infinite;
+}
+
+.signal-flow {
+  position: absolute;
+  left: 14%;
+  width: 72%;
+  height: 1px;
+  overflow: hidden;
+  background: linear-gradient(90deg, transparent, var(--signal-line), transparent);
+}
+
+.signal-flow::after {
+  position: absolute;
+  top: 0;
+  left: -40%;
+  width: 38%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--accent-strong), transparent);
+  content: "";
+  animation: signal-flow 3.8s ease-in-out infinite;
+}
+
+.signal-flow-one {
+  top: 30%;
+}
+
+.signal-flow-two {
   top: 50%;
   transform: rotate(90deg);
 }
 
-.signal-line-three {
-  top: 68%;
+.signal-flow-two::after {
+  animation-delay: 1.1s;
+}
+
+.signal-flow-three {
+  top: 70%;
   transform: rotate(-28deg);
 }
 
-.signal-core {
-  position: relative;
-  display: grid;
-  width: 86px;
-  height: 86px;
-  place-items: center;
-  border: 1px solid rgba(31, 143, 122, 0.42);
+.signal-flow-three::after {
+  animation-delay: 2s;
+}
+
+.signal-node {
+  position: absolute;
+  display: block;
+  width: 12px;
+  height: 12px;
+  border: 1px solid var(--accent-strong);
+  border-radius: 50%;
+  background: var(--panel-strong);
+  box-shadow: 0 0 0 7px var(--accent-soft);
+  animation: signal-pulse 4.8s ease-in-out infinite;
+}
+
+.signal-node-input {
+  top: 28%;
+  left: 18%;
+}
+
+.signal-node-agent {
+  top: 18%;
+  right: 28%;
+  animation-delay: 0.8s;
+}
+
+.signal-node-tool {
+  right: 16%;
+  bottom: 30%;
+  animation-delay: 1.6s;
+}
+
+.signal-node-output {
+  bottom: 18%;
+  left: 28%;
+  animation-delay: 2.4s;
+}
+
+.signal-label {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 0 10px;
+  border: 1px solid var(--line);
   border-radius: 8px;
   color: var(--accent-strong);
   background: var(--panel-strong);
   font-family: var(--font-geist-mono), monospace;
-  font-size: 22px;
+  font-size: 12px;
+  box-shadow: 0 16px 42px rgba(23, 34, 35, 0.08);
+}
+
+.signal-label-one {
+  top: 22px;
+  left: 22px;
+}
+
+.signal-label-two {
+  top: 74px;
+  right: 28px;
+}
+
+.signal-label-three {
+  right: 24px;
+  bottom: 24px;
+}
+
+.signal-core {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: 112px;
+  height: 112px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  place-items: center;
+  border: 1px solid var(--signal-line);
+  border-radius: 8px;
+  color: var(--accent-strong);
+  background: var(--panel-strong);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 24px;
   font-weight: 750;
+  box-shadow:
+    0 0 0 12px var(--accent-soft),
+    0 24px 60px var(--signal-glow);
+  animation: signal-core 4.8s ease-in-out infinite;
+}
+
+.signal-core small {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
 }
 
 .home-section {
@@ -505,6 +638,19 @@ select {
     width: 100%;
   }
 
+  .signal-label {
+    font-size: 11px;
+  }
+
+  .signal-label-two {
+    top: 62px;
+  }
+
+  .signal-core {
+    width: 98px;
+    height: 98px;
+  }
+
   .home-section {
     padding: 68px 0;
   }
@@ -530,5 +676,82 @@ select {
   .feature-card,
   .project-card {
     min-height: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .signal-panel,
+  .signal-ring,
+  .signal-flow::after,
+  .signal-node,
+  .signal-core {
+    animation: none;
+  }
+}
+
+@keyframes signal-scan {
+  0%,
+  38%,
+  100% {
+    background-position: -120% 0, 0 0, 0 0, 0 0;
+  }
+
+  62% {
+    background-position: 120% 0, 0 0, 0 0, 0 0;
+  }
+}
+
+@keyframes signal-flow {
+  0%,
+  18% {
+    left: -42%;
+    opacity: 0;
+  }
+
+  42%,
+  74% {
+    opacity: 1;
+  }
+
+  100% {
+    left: 104%;
+    opacity: 0;
+  }
+}
+
+@keyframes signal-pulse {
+  0%,
+  100% {
+    opacity: 0.62;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.18);
+  }
+}
+
+@keyframes signal-breathe {
+  0%,
+  100% {
+    opacity: 0.54;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.035);
+  }
+}
+
+@keyframes signal-core {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-4px);
   }
 }
