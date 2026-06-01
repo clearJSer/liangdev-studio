@@ -1,16 +1,11 @@
 "use client";
 
 /**
- * 职责：提供 YiForge Studio 首页 Hero 的 Flow → Forge → Yi 抽象品牌主视觉。
+ * 职责：提供 YiForge Studio 首页 Hero 的 Flow → Forge → Product Core 抽象品牌主视觉。
  */
 
 import { useState, type CSSProperties, type PointerEvent } from "react";
-import Image from "next/image";
 import styles from "./ForgeCore.module.css";
-
-type ForgeCoreProps = {
-  logoSrc?: string;
-};
 
 type ForgeCoreStyle = CSSProperties & {
   "--forge-x": string;
@@ -132,9 +127,30 @@ function renderPath(path: FlowPath, index: number) {
 }
 
 /**
- * 渲染 Flow → Forge → Yi 首页主视觉。
+ * 渲染 AI 创造力被锻造成产品胚体的抽象核心。
  */
-export function ForgeCore({ logoSrc = "/brand/yiforge-yi-mark-v2.svg" }: ForgeCoreProps) {
+function ProductCore() {
+  return (
+    <div className={styles.productCore} aria-hidden="true">
+      <span className={`${styles.productPane} ${styles.productPaneBack}`} />
+      <span className={`${styles.productPane} ${styles.productPaneMiddle}`} />
+      <span className={`${styles.productPane} ${styles.productPaneFront}`} />
+      <span className={styles.corePrism} />
+      <span className={styles.coreSeed} />
+      <span className={`${styles.coreRidge} ${styles.coreRidgeOne}`} />
+      <span className={`${styles.coreRidge} ${styles.coreRidgeTwo}`} />
+      <span className={`${styles.coreRidge} ${styles.coreRidgeThree}`} />
+      <span className={`${styles.futureArc} ${styles.futureArcOne}`} />
+      <span className={`${styles.futureArc} ${styles.futureArcTwo}`} />
+      <span className={`${styles.futureArc} ${styles.futureArcThree}`} />
+    </div>
+  );
+}
+
+/**
+ * 渲染 Flow → Forge → Product Core 首页主视觉。
+ */
+export function ForgeCore() {
   const [style, setStyle] = useState<ForgeCoreStyle>({
     "--forge-x": "0px",
     "--forge-y": "0px",
@@ -172,7 +188,7 @@ export function ForgeCore({ logoSrc = "/brand/yiforge-yi-mark-v2.svg" }: ForgeCo
 
   return (
     <div
-      aria-label="Flow to Forge to Yi brand visual"
+      aria-label="AI creativity forged into product core visual"
       className={styles.forgeCore}
       onPointerLeave={handlePointerLeave}
       onPointerMove={handlePointerMove}
@@ -221,16 +237,48 @@ export function ForgeCore({ logoSrc = "/brand/yiforge-yi-mark-v2.svg" }: ForgeCo
           <span className={`${styles.orbit} ${styles.orbitThree}`} />
         </div>
 
+        <div className={styles.orbitCopy} aria-hidden="true">
+          <span className={`${styles.orbitTrack} ${styles.orbitCopyForge}`}>
+            <span className={styles.orbitCopyItem}>
+              FORGE
+              <small>产品锻造</small>
+            </span>
+          </span>
+          <span className={`${styles.orbitTrack} ${styles.orbitCopyLaunch}`}>
+            <span className={styles.orbitCopyItem}>
+              LAUNCH
+              <small>持续迭代</small>
+            </span>
+          </span>
+          <span className={`${styles.orbitTrack} ${styles.orbitCopyChatGPT}`}>
+            <span className={`${styles.orbitCopyItem} ${styles.orbitCopyTool}`}>
+              ChatGPT
+              <small>智能协作</small>
+            </span>
+          </span>
+          <span className={`${styles.orbitTrack} ${styles.orbitCopyClaude}`}>
+            <span className={`${styles.orbitCopyItem} ${styles.orbitCopyTool}`}>
+              Claude Code
+              <small>代码共创</small>
+            </span>
+          </span>
+          <span className={`${styles.orbitTrack} ${styles.orbitCopyCodex}`}>
+            <span className={`${styles.orbitCopyItem} ${styles.orbitCopyTool}`}>
+              Codex
+              <small>工程执行</small>
+            </span>
+          </span>
+          <span className={`${styles.orbitTrack} ${styles.orbitCopyNative}`}>
+            <span className={`${styles.orbitCopyItem} ${styles.orbitCopyTool}`}>
+              AI-native
+              <small>未来范式</small>
+            </span>
+          </span>
+        </div>
+
         <div className={styles.logoCore}>
           <span className={styles.logoAura} />
-          <Image
-            alt=""
-            className={styles.logo}
-            draggable="false"
-            height={108}
-            src={logoSrc}
-            width={108}
-          />
+          <ProductCore />
         </div>
       </div>
     </div>

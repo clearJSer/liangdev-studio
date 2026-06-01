@@ -4,7 +4,7 @@
 
 .forgeCore {
   position: relative;
-  width: min(100%, 720px);
+  width: min(100%, 920px);
   aspect-ratio: 31 / 21;
   color: #8b5cf6;
   isolation: isolate;
@@ -26,12 +26,12 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 64%;
+  width: 76%;
   aspect-ratio: 1.35;
   border-radius: 50%;
   background:
-    radial-gradient(circle, rgba(255, 255, 255, 0.92) 0 16%, transparent 42%),
-    radial-gradient(circle, rgba(139, 92, 246, 0.22) 0 28%, rgba(96, 165, 250, 0.13) 38%, transparent 72%);
+    radial-gradient(circle, rgba(255, 255, 255, 0.94) 0 12%, transparent 34%),
+    radial-gradient(circle, rgba(139, 92, 246, 0.24) 0 30%, rgba(96, 165, 250, 0.17) 42%, transparent 74%);
   filter: blur(0.2px);
   opacity: 0.94;
   transform: translate(-50%, -50%);
@@ -50,24 +50,24 @@
 .path {
   fill: none;
   stroke: url("#forge-flow-gradient");
-  stroke-dasharray: 0.1 0.9;
+  stroke-dasharray: 0.13 0.87;
   stroke-dashoffset: 0;
   stroke-linecap: round;
-  stroke-width: 1;
+  stroke-width: 1.15;
   vector-effect: non-scaling-stroke;
   animation: flowToCore 12s ease-in-out infinite;
   will-change: stroke-dashoffset, opacity;
 }
 
 .flowGroup .path {
-  opacity: 0.7;
+  opacity: 0.82;
 }
 
 .outputGroup .path {
   stroke: url("#forge-output-gradient");
   stroke-dasharray: 0.12 0.88;
-  stroke-width: 0.85;
-  opacity: 0.35;
+  stroke-width: 1;
+  opacity: 0.44;
   animation-name: outputPulse;
 }
 
@@ -134,26 +134,26 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 286px;
-  height: 172px;
+  width: 420px;
+  height: 252px;
   transform: translate(-50%, -50%);
   transform-style: preserve-3d;
 }
 
 .forgeField::before {
   position: absolute;
-  inset: 32px 54px;
+  inset: 42px 90px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.18), transparent 66%);
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.2), rgba(96, 165, 250, 0.11) 44%, transparent 68%);
   content: "";
   opacity: 0.74;
 }
 
 .orbit {
   position: absolute;
-  inset: 28px 34px;
-  border: 1px solid rgba(139, 92, 246, 0.18);
-  border-top-color: rgba(96, 165, 250, 0.28);
+  inset: 42px 58px;
+  border: 1px solid rgba(139, 92, 246, 0.24);
+  border-top-color: rgba(96, 165, 250, 0.34);
   border-right-color: transparent;
   border-radius: 50%;
   transform: rotate(var(--orbit-angle, 0deg)) skewX(-8deg);
@@ -167,8 +167,8 @@
 
 .orbitTwo {
   --orbit-angle: 18deg;
-  inset: 40px 52px;
-  border-color: rgba(34, 211, 238, 0.18);
+  inset: 62px 86px;
+  border-color: rgba(34, 211, 238, 0.24);
   border-left-color: transparent;
   animation-duration: 28s;
   animation-direction: reverse;
@@ -176,10 +176,138 @@
 
 .orbitThree {
   --orbit-angle: -25deg;
-  inset: 18px 20px;
-  border-color: rgba(139, 92, 246, 0.11);
+  inset: 24px 30px;
+  border-color: rgba(139, 92, 246, 0.16);
   border-bottom-color: transparent;
   animation-duration: 36s;
+}
+
+.orbitCopy {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(82%, 680px);
+  height: min(56%, 360px);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+
+.orbitCopy::before {
+  position: absolute;
+  inset: 13% 8%;
+  border: 1px solid rgba(139, 92, 246, 0.08);
+  border-radius: 50%;
+  content: "";
+}
+
+.orbitTrack {
+  --orbit-duration: 52s;
+  --orbit-start: 0deg;
+  --label-start: 0deg;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--orbit-width);
+  height: var(--orbit-height);
+  border: 1px solid var(--orbit-color);
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) rotate(var(--orbit-start));
+  animation: orbitTrackDrift var(--orbit-duration) linear infinite;
+  will-change: transform;
+}
+
+.orbitCopyItem {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  display: inline-grid;
+  min-width: 84px;
+  gap: 2px;
+  padding: 8px 10px;
+  border: 1px solid rgba(139, 92, 246, 0.12);
+  border-radius: 999px;
+  color: rgba(86, 70, 232, 0.68);
+  background: rgba(255, 255, 255, 0.42);
+  box-shadow: 0 12px 30px rgba(96, 165, 250, 0.07);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 11px;
+  font-weight: 780;
+  line-height: 1;
+  text-align: center;
+  transform: translate(-50%, -50%) rotate(var(--label-start));
+  animation: orbitLabelFace var(--orbit-duration) linear infinite;
+  backdrop-filter: blur(12px);
+  will-change: transform;
+}
+
+.orbitCopyItem small {
+  color: rgba(101, 112, 138, 0.72);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  font-weight: 650;
+}
+
+.orbitCopyTool {
+  min-width: 104px;
+  border-color: rgba(96, 165, 250, 0.14);
+  color: rgba(54, 99, 210, 0.72);
+  background: rgba(255, 255, 255, 0.48);
+}
+
+.orbitCopyForge {
+  --orbit-width: 88%;
+  --orbit-height: 76%;
+  --orbit-color: rgba(139, 92, 246, 0.1);
+  --orbit-duration: 68s;
+  --orbit-start: 82deg;
+  --label-start: -82deg;
+}
+
+.orbitCopyLaunch {
+  --orbit-width: 60%;
+  --orbit-height: 96%;
+  --orbit-color: rgba(96, 165, 250, 0.1);
+  --orbit-duration: 80s;
+  --orbit-start: 292deg;
+  --label-start: -292deg;
+}
+
+.orbitCopyChatGPT {
+  --orbit-width: 98%;
+  --orbit-height: 82%;
+  --orbit-color: rgba(34, 211, 238, 0.09);
+  --orbit-duration: 88s;
+  --orbit-start: 18deg;
+  --label-start: -18deg;
+}
+
+.orbitCopyClaude {
+  --orbit-width: 84%;
+  --orbit-height: 104%;
+  --orbit-color: rgba(139, 92, 246, 0.08);
+  --orbit-duration: 96s;
+  --orbit-start: 118deg;
+  --label-start: -118deg;
+}
+
+.orbitCopyCodex {
+  --orbit-width: 104%;
+  --orbit-height: 66%;
+  --orbit-color: rgba(96, 165, 250, 0.08);
+  --orbit-duration: 92s;
+  --orbit-start: 196deg;
+  --label-start: -196deg;
+}
+
+.orbitCopyNative {
+  --orbit-width: 74%;
+  --orbit-height: 112%;
+  --orbit-color: rgba(139, 92, 246, 0.09);
+  --orbit-duration: 104s;
+  --orbit-start: 318deg;
+  --label-start: -318deg;
 }
 
 .logoCore {
@@ -187,8 +315,8 @@
   top: 50%;
   left: 50%;
   display: grid;
-  width: 148px;
-  height: 148px;
+  width: 192px;
+  height: 192px;
   place-items: center;
   transform: translate(-50%, -50%);
   animation: logoFloat 5s ease-in-out infinite;
@@ -197,37 +325,174 @@
 
 .logoAura {
   position: absolute;
-  inset: 16px;
-  border-radius: 40px;
+  inset: 2px;
+  border-radius: 50%;
   background:
-    radial-gradient(circle at 45% 44%, rgba(255, 255, 255, 0.78), transparent 46%),
-    linear-gradient(135deg, rgba(139, 92, 246, 0.16), rgba(96, 165, 250, 0.12));
+    radial-gradient(circle at 50% 48%, rgba(255, 255, 255, 0.42), transparent 20%),
+    radial-gradient(circle at 50% 52%, rgba(139, 92, 246, 0.22), transparent 48%),
+    radial-gradient(circle at 58% 42%, rgba(34, 211, 238, 0.16), transparent 54%);
   box-shadow:
-    0 0 34px rgba(139, 92, 246, 0.18),
-    0 20px 44px rgba(96, 165, 250, 0.12);
-  opacity: 0.9;
+    0 0 48px rgba(139, 92, 246, 0.22),
+    0 0 76px rgba(96, 165, 250, 0.12);
+  opacity: 0.82;
 }
 
-.logo {
+.logoAura::before,
+.logoAura::after {
+  position: absolute;
+  border-radius: 999px;
+  content: "";
+}
+
+.logoAura::before {
+  inset: 46px 28px;
+  border: 1px solid rgba(139, 92, 246, 0.11);
+  transform: rotate(-18deg);
+}
+
+.logoAura::after {
+  inset: 58px 42px;
+  background: radial-gradient(circle, rgba(34, 211, 238, 0.13), transparent 68%);
+}
+
+.productCore {
   position: relative;
-  width: 108px;
-  height: 108px;
+  width: 172px;
+  height: 150px;
+  transform: rotateX(58deg) rotateZ(-12deg);
+  transform-style: preserve-3d;
   user-select: none;
-  filter:
-    drop-shadow(0 14px 18px rgba(139, 92, 246, 0.18))
-    drop-shadow(0 4px 10px rgba(96, 165, 250, 0.14));
+}
+
+.productPane,
+.corePrism,
+.coreSeed,
+.coreRidge,
+.futureArc {
+  position: absolute;
+  display: block;
+}
+
+.productPane {
+  left: 50%;
+  top: 50%;
+  width: 116px;
+  height: 82px;
+  border: 1px solid rgba(139, 92, 246, 0.16);
+  border-radius: 18px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.32), rgba(96, 165, 250, 0.08)),
+    radial-gradient(circle at 36% 30%, rgba(255, 255, 255, 0.38), transparent 36%);
+  box-shadow:
+    inset 0 1px 12px rgba(255, 255, 255, 0.36),
+    0 14px 30px rgba(96, 165, 250, 0.08);
+  transform: translate(-50%, -50%);
+}
+
+.productPaneBack {
+  opacity: 0.2;
+  transform: translate(-50%, -50%) translate3d(-26px, 18px, -28px);
+}
+
+.productPaneMiddle {
+  opacity: 0.34;
+  transform: translate(-50%, -50%) translate3d(18px, -12px, -10px);
+}
+
+.productPaneFront {
+  opacity: 0.56;
+  transform: translate(-50%, -50%) translate3d(0, 0, 18px);
+}
+
+.corePrism {
+  left: 50%;
+  top: 50%;
+  width: 74px;
+  height: 74px;
+  border: 1px solid rgba(255, 255, 255, 0.42);
+  border-radius: 18px;
+  background:
+    conic-gradient(from 140deg, rgba(139, 92, 246, 0.42), rgba(96, 165, 250, 0.28), rgba(34, 211, 238, 0.22), rgba(255, 255, 255, 0.18), rgba(139, 92, 246, 0.38)),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.26), rgba(255, 255, 255, 0.04));
+  box-shadow:
+    inset 0 0 18px rgba(255, 255, 255, 0.58),
+    0 0 28px rgba(139, 92, 246, 0.22);
+  transform: translate(-50%, -50%) translateZ(38px) rotateZ(45deg);
+}
+
+.coreSeed {
+  left: 50%;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffffff 0 16%, #a78bfa 42%, #22d3ee 100%);
+  box-shadow:
+    0 0 16px rgba(139, 92, 246, 0.44),
+    0 0 28px rgba(34, 211, 238, 0.2);
+  transform: translate(-50%, -50%) translateZ(62px);
+}
+
+.coreRidge {
+  left: 50%;
+  top: 50%;
+  width: 92px;
+  height: 1px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.34), transparent);
+  transform: translate(-50%, -50%) translateZ(48px);
+}
+
+.coreRidgeOne {
+  transform: translate(-50%, -50%) translateZ(48px) rotateZ(0deg);
+}
+
+.coreRidgeTwo {
+  transform: translate(-50%, -50%) translateZ(48px) rotateZ(60deg);
+}
+
+.coreRidgeThree {
+  transform: translate(-50%, -50%) translateZ(48px) rotateZ(120deg);
+}
+
+.futureArc {
+  left: 50%;
+  top: 50%;
+  width: 132px;
+  height: 82px;
+  border: 1px solid rgba(139, 92, 246, 0.18);
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) translateZ(24px) rotateZ(var(--future-arc-angle));
+}
+
+.futureArcOne {
+  --future-arc-angle: 8deg;
+}
+
+.futureArcTwo {
+  --future-arc-angle: 58deg;
+  border-color: rgba(96, 165, 250, 0.17);
+  border-right-color: transparent;
+}
+
+.futureArcThree {
+  --future-arc-angle: -38deg;
+  border-color: rgba(34, 211, 238, 0.14);
+  border-top-color: transparent;
 }
 
 .particle {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 3px;
-  height: 3px;
+  width: 4px;
+  height: 4px;
   border-radius: 999px;
   background: radial-gradient(circle, rgba(255, 255, 255, 0.95), rgba(139, 92, 246, 0.72) 58%, transparent 72%);
   box-shadow: 0 0 12px rgba(139, 92, 246, 0.28);
-  opacity: 0.72;
+  opacity: 0.78;
   transform: translate3d(0, 0, 0);
   animation: particleOne 13s ease-in-out infinite;
   will-change: transform, opacity;
@@ -347,6 +612,18 @@
 @keyframes orbitDrift {
   to {
     transform: rotate(calc(var(--orbit-angle, 0deg) + 360deg)) skewX(-8deg);
+  }
+}
+
+@keyframes orbitTrackDrift {
+  to {
+    transform: translate(-50%, -50%) rotate(calc(var(--orbit-start) + 360deg));
+  }
+}
+
+@keyframes orbitLabelFace {
+  to {
+    transform: translate(-50%, -50%) rotate(calc(var(--label-start) - 360deg));
   }
 }
 
@@ -549,6 +826,7 @@
   .flowPathN,
   .flowPathO,
   .flowPathP,
+  .orbitCopy,
   .particleFive,
   .particleSix,
   .particleSeven,
@@ -574,6 +852,9 @@
   .backgroundGlow,
   .path,
   .orbit,
+  .orbitCopy,
+  .orbitTrack,
+  .orbitCopyItem,
   .logoCore,
   .particle {
     animation: none;

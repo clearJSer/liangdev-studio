@@ -126,12 +126,12 @@ select {
 
 .hero {
   display: grid;
-  grid-template-columns: minmax(390px, 0.78fr) minmax(620px, 1.22fr);
-  gap: 20px;
-  width: min(1240px, calc(100% - 40px));
-  min-height: calc(100svh - 92px);
+  grid-template-columns: minmax(390px, 0.56fr) minmax(820px, 1.44fr);
+  gap: 12px;
+  width: min(1440px, calc(100% - 40px));
+  min-height: clamp(600px, 68svh, 760px);
   align-items: center;
-  padding: 70px 0 86px;
+  padding: 42px 0 58px;
 }
 
 .hero-content {
@@ -257,6 +257,7 @@ select {
   display: flex;
   justify-content: center;
   min-width: 0;
+  transform: translateX(18px);
 }
 
 .forge-orbit {
@@ -784,6 +785,10 @@ select {
     grid-template-columns: 1fr;
     width: var(--container);
     min-height: auto;
+  }
+
+  .hero-visual {
+    transform: none;
   }
 
   .hero-content {
