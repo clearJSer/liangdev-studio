@@ -1,0 +1,586 @@
+/**
+ * 职责：定义 ForgeCore 主视觉的 Flow、Forge、Yi 纯 CSS3 动画和响应式表现。
+ */
+
+.forgeCore {
+  position: relative;
+  width: min(100%, 720px);
+  aspect-ratio: 31 / 21;
+  color: #8b5cf6;
+  isolation: isolate;
+  perspective: 1200px;
+}
+
+.stage {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  transform: translate3d(var(--forge-x), var(--forge-y), 0)
+    rotateX(var(--forge-rx)) rotateY(var(--forge-ry));
+  transform-style: preserve-3d;
+  transition: transform 600ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform;
+}
+
+.backgroundGlow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 64%;
+  aspect-ratio: 1.35;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle, rgba(255, 255, 255, 0.92) 0 16%, transparent 42%),
+    radial-gradient(circle, rgba(139, 92, 246, 0.22) 0 28%, rgba(96, 165, 250, 0.13) 38%, transparent 72%);
+  filter: blur(0.2px);
+  opacity: 0.94;
+  transform: translate(-50%, -50%);
+  animation: forgeGlow 8s ease-in-out infinite;
+  will-change: opacity, transform;
+}
+
+.flowSvg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.path {
+  fill: none;
+  stroke: url("#forge-flow-gradient");
+  stroke-dasharray: 0.1 0.9;
+  stroke-dashoffset: 0;
+  stroke-linecap: round;
+  stroke-width: 1;
+  vector-effect: non-scaling-stroke;
+  animation: flowToCore 12s ease-in-out infinite;
+  will-change: stroke-dashoffset, opacity;
+}
+
+.flowGroup .path {
+  opacity: 0.7;
+}
+
+.outputGroup .path {
+  stroke: url("#forge-output-gradient");
+  stroke-dasharray: 0.12 0.88;
+  stroke-width: 0.85;
+  opacity: 0.35;
+  animation-name: outputPulse;
+}
+
+.flowPathA,
+.flowPathH,
+.flowPathO {
+  animation-duration: 9s;
+}
+
+.flowPathB,
+.flowPathJ,
+.flowPathM {
+  animation-duration: 11s;
+  animation-delay: -2s;
+}
+
+.flowPathC,
+.flowPathG,
+.flowPathP {
+  animation-duration: 13s;
+  animation-delay: -4s;
+}
+
+.flowPathD,
+.flowPathI,
+.flowPathN {
+  animation-duration: 15s;
+  animation-delay: -7s;
+}
+
+.flowPathE,
+.flowPathK {
+  animation-duration: 17s;
+  animation-delay: -6s;
+}
+
+.flowPathF,
+.flowPathL {
+  animation-duration: 18s;
+  animation-delay: -9s;
+}
+
+.outputPathA {
+  animation-duration: 14s;
+  animation-delay: -2s;
+}
+
+.outputPathB {
+  animation-duration: 16s;
+  animation-delay: -6s;
+}
+
+.outputPathC {
+  animation-duration: 15s;
+  animation-delay: -8s;
+}
+
+.outputPathD {
+  animation-duration: 18s;
+  animation-delay: -4s;
+}
+
+.forgeField {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 286px;
+  height: 172px;
+  transform: translate(-50%, -50%);
+  transform-style: preserve-3d;
+}
+
+.forgeField::before {
+  position: absolute;
+  inset: 32px 54px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.18), transparent 66%);
+  content: "";
+  opacity: 0.74;
+}
+
+.orbit {
+  position: absolute;
+  inset: 28px 34px;
+  border: 1px solid rgba(139, 92, 246, 0.18);
+  border-top-color: rgba(96, 165, 250, 0.28);
+  border-right-color: transparent;
+  border-radius: 50%;
+  transform: rotate(var(--orbit-angle, 0deg)) skewX(-8deg);
+  animation: orbitDrift 22s linear infinite;
+  will-change: transform;
+}
+
+.orbitOne {
+  --orbit-angle: -8deg;
+}
+
+.orbitTwo {
+  --orbit-angle: 18deg;
+  inset: 40px 52px;
+  border-color: rgba(34, 211, 238, 0.18);
+  border-left-color: transparent;
+  animation-duration: 28s;
+  animation-direction: reverse;
+}
+
+.orbitThree {
+  --orbit-angle: -25deg;
+  inset: 18px 20px;
+  border-color: rgba(139, 92, 246, 0.11);
+  border-bottom-color: transparent;
+  animation-duration: 36s;
+}
+
+.logoCore {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  width: 148px;
+  height: 148px;
+  place-items: center;
+  transform: translate(-50%, -50%);
+  animation: logoFloat 5s ease-in-out infinite;
+  will-change: transform;
+}
+
+.logoAura {
+  position: absolute;
+  inset: 16px;
+  border-radius: 40px;
+  background:
+    radial-gradient(circle at 45% 44%, rgba(255, 255, 255, 0.78), transparent 46%),
+    linear-gradient(135deg, rgba(139, 92, 246, 0.16), rgba(96, 165, 250, 0.12));
+  box-shadow:
+    0 0 34px rgba(139, 92, 246, 0.18),
+    0 20px 44px rgba(96, 165, 250, 0.12);
+  opacity: 0.9;
+}
+
+.logo {
+  position: relative;
+  width: 108px;
+  height: 108px;
+  user-select: none;
+  filter:
+    drop-shadow(0 14px 18px rgba(139, 92, 246, 0.18))
+    drop-shadow(0 4px 10px rgba(96, 165, 250, 0.14));
+}
+
+.particle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 3px;
+  height: 3px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.95), rgba(139, 92, 246, 0.72) 58%, transparent 72%);
+  box-shadow: 0 0 12px rgba(139, 92, 246, 0.28);
+  opacity: 0.72;
+  transform: translate3d(0, 0, 0);
+  animation: particleOne 13s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.particleTwo {
+  width: 2px;
+  height: 2px;
+  animation-name: particleTwo;
+  animation-duration: 16s;
+  animation-delay: -4s;
+}
+
+.particleThree {
+  width: 4px;
+  height: 4px;
+  animation-name: particleThree;
+  animation-duration: 18s;
+  animation-delay: -8s;
+}
+
+.particleFour {
+  animation-name: particleFour;
+  animation-duration: 14s;
+  animation-delay: -2s;
+}
+
+.particleFive {
+  width: 2px;
+  height: 2px;
+  animation-name: particleFive;
+  animation-duration: 17s;
+  animation-delay: -10s;
+}
+
+.particleSix {
+  animation-name: particleSix;
+  animation-duration: 19s;
+  animation-delay: -6s;
+}
+
+.particleSeven {
+  width: 4px;
+  height: 4px;
+  animation-name: particleSeven;
+  animation-duration: 15s;
+  animation-delay: -5s;
+}
+
+.particleEight {
+  animation-name: particleEight;
+  animation-duration: 20s;
+  animation-delay: -12s;
+}
+
+.particleNine {
+  width: 2px;
+  height: 2px;
+  animation-name: particleNine;
+  animation-duration: 18s;
+  animation-delay: -3s;
+}
+
+.particleTen {
+  animation-name: particleTen;
+  animation-duration: 21s;
+  animation-delay: -14s;
+}
+
+@keyframes forgeGlow {
+  0%,
+  100% {
+    opacity: 0.76;
+    transform: translate(-50%, -50%) scale(0.98);
+  }
+
+  50% {
+    opacity: 0.96;
+    transform: translate(-50%, -50%) scale(1.04);
+  }
+}
+
+@keyframes flowToCore {
+  0% {
+    opacity: 0.18;
+    stroke-dashoffset: 1;
+  }
+
+  42%,
+  70% {
+    opacity: 0.74;
+  }
+
+  100% {
+    opacity: 0.26;
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes outputPulse {
+  0% {
+    opacity: 0.06;
+    stroke-dashoffset: 0.18;
+  }
+
+  45%,
+  72% {
+    opacity: 0.34;
+  }
+
+  100% {
+    opacity: 0.08;
+    stroke-dashoffset: -0.92;
+  }
+}
+
+@keyframes orbitDrift {
+  to {
+    transform: rotate(calc(var(--orbit-angle, 0deg) + 360deg)) skewX(-8deg);
+  }
+}
+
+@keyframes logoFloat {
+  0%,
+  100% {
+    transform: translate(-50%, calc(-50% - 2px));
+  }
+
+  50% {
+    transform: translate(-50%, calc(-50% + 4px));
+  }
+}
+
+@keyframes particleOne {
+  0% {
+    opacity: 0;
+    transform: translate3d(-282px, -146px, 0);
+  }
+
+  72% {
+    opacity: 0.72;
+    transform: translate3d(-16px, -7px, 0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(54px, -24px, 0);
+  }
+}
+
+@keyframes particleTwo {
+  0% {
+    opacity: 0;
+    transform: translate3d(282px, -130px, 0);
+  }
+
+  74% {
+    opacity: 0.68;
+    transform: translate3d(18px, -8px, 0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(-52px, -28px, 0);
+  }
+}
+
+@keyframes particleThree {
+  0% {
+    opacity: 0;
+    transform: translate3d(-256px, 130px, 0);
+  }
+
+  68% {
+    opacity: 0.66;
+    transform: translate3d(-12px, 9px, 0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(62px, 30px, 0);
+  }
+}
+
+@keyframes particleFour {
+  0% {
+    opacity: 0;
+    transform: translate3d(260px, 138px, 0);
+  }
+
+  70% {
+    opacity: 0.7;
+    transform: translate3d(14px, 8px, 0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(-58px, 26px, 0);
+  }
+}
+
+@keyframes particleFive {
+  0% {
+    opacity: 0;
+    transform: translate3d(-210px, -92px, 0);
+  }
+
+  76% {
+    opacity: 0.62;
+    transform: translate3d(-20px, -5px, 0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(72px, 8px, 0);
+  }
+}
+
+@keyframes particleSix {
+  0% {
+    opacity: 0;
+    transform: translate3d(214px, -76px, 0);
+  }
+
+  70% {
+    opacity: 0.64;
+    transform: translate3d(20px, -3px, 0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(-74px, 10px, 0);
+  }
+}
+
+@keyframes particleSeven {
+  0% {
+    opacity: 0;
+    transform: translate3d(-190px, 88px, 0);
+  }
+
+  72% {
+    opacity: 0.6;
+    transform: translate3d(-18px, 6px, 0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(82px, 20px, 0);
+  }
+}
+
+@keyframes particleEight {
+  0% {
+    opacity: 0;
+    transform: translate3d(192px, 94px, 0);
+  }
+
+  70% {
+    opacity: 0.62;
+    transform: translate3d(18px, 6px, 0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(-82px, 20px, 0);
+  }
+}
+
+@keyframes particleNine {
+  0% {
+    opacity: 0;
+    transform: translate3d(-118px, -180px, 0);
+  }
+
+  74% {
+    opacity: 0.55;
+    transform: translate3d(-10px, -22px, 0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(24px, 66px, 0);
+  }
+}
+
+@keyframes particleTen {
+  0% {
+    opacity: 0;
+    transform: translate3d(122px, 176px, 0);
+  }
+
+  72% {
+    opacity: 0.58;
+    transform: translate3d(10px, 20px, 0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(-28px, -64px, 0);
+  }
+}
+
+@media (max-width: 720px) {
+  .forgeCore {
+    aspect-ratio: 1.35;
+    pointer-events: none;
+  }
+
+  .stage {
+    transform: none;
+  }
+
+  .flowPathC,
+  .flowPathF,
+  .flowPathI,
+  .flowPathL,
+  .flowPathM,
+  .flowPathN,
+  .flowPathO,
+  .flowPathP,
+  .particleFive,
+  .particleSix,
+  .particleSeven,
+  .particleEight,
+  .particleNine,
+  .particleTen,
+  .orbitThree {
+    display: none;
+  }
+
+  .backgroundGlow {
+    width: 70%;
+  }
+
+  .forgeField {
+    width: 220px;
+    height: 130px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stage,
+  .backgroundGlow,
+  .path,
+  .orbit,
+  .logoCore,
+  .particle {
+    animation: none;
+    transition: none;
+  }
+
+  .stage {
+    transform: none;
+  }
+}

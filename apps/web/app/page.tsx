@@ -1,5 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
+import { ForgeCore } from "../components/ForgeCore";
 import { SiteShell } from "../components/site-shell";
 import { siteContent } from "../content";
 import type { HomeAction, HomeFeature, HomeProject } from "../content/site";
@@ -56,26 +56,8 @@ export default function Home() {
           <p className="hero-caption">Built with AI · For the Future</p>
         </div>
 
-        <div className="hero-visual" aria-hidden="true">
-          <div className="forge-orbit">
-            <span className="orbit-card orbit-card-idea">IDEA 美感搭建</span>
-            <span className="orbit-card orbit-card-build">BUILD 构建中</span>
-            <span className="orbit-card orbit-card-refine">REFINE 打磨优化</span>
-            <span className="orbit-card orbit-card-launch">LAUNCH 持续迭代</span>
-            <span className="orbit-line orbit-line-one" />
-            <span className="orbit-line orbit-line-two" />
-            <span className="orbit-ring orbit-ring-one" />
-            <span className="orbit-ring orbit-ring-two" />
-            <span className="orbit-ring orbit-ring-three" />
-            <span className="orbit-mark">
-              <Image
-                alt=""
-                height={118}
-                src="/brand/yiforge-yi-mark-v2.svg"
-                width={118}
-              />
-            </span>
-          </div>
+        <div className="hero-visual">
+          <ForgeCore />
         </div>
       </section>
 
