@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="150" viewBox="0 0 760 150" role="img" aria-label="YiForgeStudio wordmark">
+  <defs>
+    <radialGradient id="yiDot" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#7C83FF"/>
+      <stop offset="58%" stop-color="#4F46E5"/>
+      <stop offset="100%" stop-color="#3730A3"/>
+    </radialGradient>
+  </defs>
+
+  <g transform="translate(0 -40)">
+    <text x="0" y="128"
+      font-family="Avenir Next, Inter, SF Pro Display, Helvetica Neue, Arial, sans-serif"
+      font-size="122"
+      font-weight="500"
+      letter-spacing="-5.5"
+      fill="#050505">YiForgeStudio</text>
+
+    <!-- custom blue / purple dot over the first i -->
+    <circle cx="132" cy="20" r="10.8" fill="url(#yiDot)"/>
+  </g>
+</svg>

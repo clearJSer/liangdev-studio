@@ -27,10 +27,10 @@ export function SiteShell({ children }: SiteShellProps) {
           <Image
             alt="YiForge Studio"
             className="brand-logo"
-            height={36}
+            height={150}
             priority
-            src="/brand/yiforge-studio-logo-v2.svg"
-            width={180}
+            src="/brand/YiForgeStudio-wordmark-vector.svg"
+            width={760}
           />
         </Link>
         <nav className="site-nav" aria-label="主导航">
@@ -40,6 +40,7 @@ export function SiteShell({ children }: SiteShellProps) {
             </Link>
           ))}
         </nav>
+        <div className="header-spacer" aria-hidden="true" />
       </header>
       <main className="site-main">{children}</main>
       <footer className="site-footer">
@@ -47,9 +48,9 @@ export function SiteShell({ children }: SiteShellProps) {
           <Image
             alt="YiForge Studio"
             className="brand-logo"
-            height={36}
-            src="/brand/yiforge-studio-logo-v2.svg"
-            width={180}
+            height={150}
+            src="/brand/YiForgeStudio-wordmark-vector.svg"
+            width={760}
           />
           <p>一个持续创造 AI-native 产品、工作流和开发者工具的独立工作室。</p>
           <span>Always building.</span>
