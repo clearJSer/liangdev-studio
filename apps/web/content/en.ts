@@ -36,6 +36,12 @@ export const enContent: SiteContent = {
       description: "",
       items: [],
     },
+    philosophy: {
+      eyebrow: "",
+      title: "",
+      description: "",
+      items: [],
+    },
     projects: {
       eyebrow: "",
       title: "",

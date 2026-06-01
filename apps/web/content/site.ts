@@ -22,6 +22,13 @@ export type PageContent = {
 export type HomeFeature = {
   title: string;
   description: string;
+  status: string;
+  tone: "violet" | "blue" | "mint" | "orange" | "neutral";
+};
+
+export type HomePrinciple = {
+  title: string;
+  description: string;
 };
 
 export type HomeProject = {
@@ -29,11 +36,13 @@ export type HomeProject = {
   status: string;
   description: string;
   tags: string[];
+  tone: "landscape" | "portrait" | "family" | "flow";
 };
 
 export type HomeWriting = {
   title: string;
   description: string;
+  date: string;
 };
 
 export type SiteContent = {
@@ -47,6 +56,9 @@ export type SiteContent = {
     intro: PageContent;
     build: PageContent & {
       items: HomeFeature[];
+    };
+    philosophy: PageContent & {
+      items: HomePrinciple[];
     };
     projects: PageContent & {
       items: HomeProject[];

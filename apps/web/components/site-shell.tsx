@@ -3,6 +3,7 @@
  */
 
 import Link from "next/link";
+import Image from "next/image";
 import type { ReactNode } from "react";
 import { siteContent } from "../content";
 import type { PageContent } from "../content/site";
@@ -23,10 +24,14 @@ export function SiteShell({ children }: SiteShellProps) {
     <div className="site-shell">
       <header className="site-header">
         <Link className="brand" href="/" aria-label="YiForge Studio 首页">
-          <span className="brand-mark" aria-hidden="true">
-            YF
-          </span>
-          <span>{siteContent.name}</span>
+          <Image
+            alt="YiForge Studio"
+            className="brand-logo"
+            height={36}
+            priority
+            src="/brand/yiforge-studio-logo-v2.svg"
+            width={180}
+          />
         </Link>
         <nav className="site-nav" aria-label="主导航">
           {siteContent.navigation.map((item) => (
@@ -38,8 +43,42 @@ export function SiteShell({ children }: SiteShellProps) {
       </header>
       <main className="site-main">{children}</main>
       <footer className="site-footer">
-        <span>{siteContent.name}</span>
-        <span>{siteContent.domain}</span>
+        <div className="footer-brand">
+          <Image
+            alt="YiForge Studio"
+            className="brand-logo"
+            height={36}
+            src="/brand/yiforge-studio-logo-v2.svg"
+            width={180}
+          />
+          <p>一个持续创造 AI-native 产品、工作流和开发者工具的独立工作室。</p>
+          <span>Always building.</span>
+        </div>
+        <div className="footer-links" aria-label="页脚导航">
+          <div>
+            <strong>Navigation</strong>
+            <Link href="/projects">Projects</Link>
+            <Link href="/blog">Thoughts</Link>
+            <Link href="/about">About</Link>
+          </div>
+          <div>
+            <strong>Connect</strong>
+            <Link href="/contact">GitHub</Link>
+            <Link href="/contact">X / Twitter</Link>
+            <Link href="/contact">Email</Link>
+          </div>
+          <div>
+            <strong>Contact</strong>
+            <span>hello@yiforgestudio.com</span>
+            <span>Remote / Worldwide</span>
+          </div>
+        </div>
+        <div className="footer-cta">
+          <strong>有兴趣的想法或合作机会？</strong>
+          <Link className="button button-secondary" href="/contact">
+            联系我
+          </Link>
+        </div>
       </footer>
     </div>
   );
