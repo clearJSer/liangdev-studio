@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ForgeCore } from "../components/ForgeCore";
+import { HomeFlightsGlobeBackground } from "../components/ProjectsFlightsGlobe";
 import { SiteShell } from "../components/site-shell";
 import { siteContent } from "../content";
 import type { HomeAction, HomeFeature, HomeProject } from "../content/site";
@@ -34,6 +35,8 @@ export default function Home() {
   return (
     <SiteShell>
       <section className="hero" aria-labelledby="home-title">
+        <HomeFlightsGlobeBackground />
+
         <div className="hero-content">
           <p className="eyebrow eyebrow-pill">{home.eyebrow}</p>
           <h1 id="home-title">

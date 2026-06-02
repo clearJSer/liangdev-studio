@@ -3,6 +3,7 @@
  */
 
 import { PageIntro, SiteShell } from "../../components/site-shell";
+import { ProjectsFlightsGlobe } from "../../components/ProjectsFlightsGlobe";
 import { siteContent } from "../../content";
 
 /**
@@ -12,6 +13,7 @@ export default function ProjectsPage() {
   return (
     <SiteShell>
       <PageIntro content={siteContent.pages.projects} />
+      <ProjectsFlightsGlobe />
     </SiteShell>
   );
 }

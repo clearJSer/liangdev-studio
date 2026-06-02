@@ -4,15 +4,7 @@
  * 职责：提供 YiForge Studio 首页 Hero 的 Flow → Forge → Product Core 抽象品牌主视觉。
  */
 
-import { useState, type CSSProperties, type PointerEvent } from "react";
 import styles from "./ForgeCore.module.css";
-
-type ForgeCoreStyle = CSSProperties & {
-  "--forge-x": string;
-  "--forge-y": string;
-  "--forge-rx": string;
-  "--forge-ry": string;
-};
 
 type FlowPath = {
   className: string;
@@ -106,13 +98,6 @@ const OUTPUT_PATHS: FlowPath[] = [
 ];
 
 /**
- * 将数值限制在视差允许范围内。
- */
-function clamp(value: number, min: number, max: number) {
-  return Math.min(Math.max(value, min), max);
-}
-
-/**
  * 渲染一条汇聚或输出路径。
  */
 function renderPath(path: FlowPath, index: number) {
@@ -151,49 +136,11 @@ function ProductCore() {
  * 渲染 Flow → Forge → Product Core 首页主视觉。
  */
 export function ForgeCore() {
-  const [style, setStyle] = useState<ForgeCoreStyle>({
-    "--forge-x": "0px",
-    "--forge-y": "0px",
-    "--forge-rx": "0deg",
-    "--forge-ry": "0deg",
-  });
-
-  /**
-   * 根据鼠标位置计算克制的视差偏移。
-   */
-  function handlePointerMove(event: PointerEvent<HTMLDivElement>) {
-    const bounds = event.currentTarget.getBoundingClientRect();
-    const x = (event.clientX - bounds.left) / bounds.width - 0.5;
-    const y = (event.clientY - bounds.top) / bounds.height - 0.5;
-
-    setStyle({
-      "--forge-x": `${clamp(x * 16, -8, 8).toFixed(2)}px`,
-      "--forge-y": `${clamp(y * 16, -8, 8).toFixed(2)}px`,
-      "--forge-rx": `${clamp(y * -4, -2, 2).toFixed(2)}deg`,
-      "--forge-ry": `${clamp(x * 4, -2, 2).toFixed(2)}deg`,
-    });
-  }
-
-  /**
-   * 鼠标离开后让主视觉回到安静的中心状态。
-   */
-  function handlePointerLeave() {
-    setStyle({
-      "--forge-x": "0px",
-      "--forge-y": "0px",
-      "--forge-rx": "0deg",
-      "--forge-ry": "0deg",
-    });
-  }
-
   return (
     <div
       aria-label="AI creativity forged into product core visual"
       className={styles.forgeCore}
-      onPointerLeave={handlePointerLeave}
-      onPointerMove={handlePointerMove}
       role="img"
-      style={style}
     >
       <div className={styles.stage}>
         <span className={styles.backgroundGlow} />
