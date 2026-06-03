@@ -28,14 +28,19 @@ export function SiteShell({ children }: SiteShellProps) {
             alt=""
             aria-hidden="true"
             className="brand-mark"
-            height={44}
+            height={470}
             priority
-            src="/brand/yiforge-sail-mark.svg"
-            width={44}
+            src="/brand/logo-icon.svg"
+            width={590}
           />
-          <span className="brand-wordmark" aria-hidden="true">
-            Y<span className="brand-i">i</span>ForgeStudio
-          </span>
+          <Image
+            alt="YiForge Studio"
+            className="brand-wordmark"
+            height={84}
+            priority
+            src="/brand/yi-forge-studio-outline-transparent.png"
+            width={485}
+          />
         </Link>
         <nav className="site-nav" aria-label="主导航">
           {siteContent.navigation.map((item) => (

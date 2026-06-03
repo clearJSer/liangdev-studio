@@ -49,16 +49,29 @@ select {
 }
 
 .site-header {
-  position: sticky;
-  top: 0;
-  z-index: 10;
+  position: fixed;
+  top: 14px;
+  left: 50%;
+  z-index: 50;
   display: grid;
-  grid-template-columns: 320px minmax(0, 1fr) 320px;
+  grid-template-columns: 318px minmax(0, 1fr) 180px;
   align-items: center;
-  gap: 24px;
-  width: var(--container);
-  margin: 0 auto;
-  padding: 26px 0 16px;
+  gap: 20px;
+  width: min(1180px, calc(100% - 40px));
+  margin: 0;
+  padding: 10px 16px;
+  border: 1px solid rgba(91, 109, 186, 0.18);
+  border-radius: 999px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(247, 250, 255, 0.54)),
+    radial-gradient(circle at 18% 0%, rgba(255, 255, 255, 0.92), transparent 42%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -1px 0 rgba(91, 109, 186, 0.08),
+    0 18px 48px rgba(46, 62, 120, 0.14);
+  transform: translateX(-50%);
+  backdrop-filter: blur(22px) saturate(1.25);
+  -webkit-backdrop-filter: blur(22px) saturate(1.25);
 }
 
 .header-spacer {
@@ -76,42 +89,22 @@ select {
   position: relative;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  height: 44px;
+  gap: 4px;
+  height: 50px;
+  min-width: 0;
 }
 
 .brand-mark {
-  width: 44px;
-  height: 44px;
+  width: auto;
+  height: 46px;
   flex: 0 0 auto;
   object-fit: contain;
 }
 
 .brand-wordmark {
-  position: relative;
-  color: #06101f;
-  font-family: var(--font-geist-sans), "Avenir Next", "SF Pro Display", Arial, sans-serif;
-  font-size: 36px;
-  font-weight: 620;
-  letter-spacing: -1.95px;
-  line-height: 1;
-  text-rendering: geometricPrecision;
-}
-
-.brand-wordmark::after {
-  position: absolute;
-  top: 0.1em;
-  left: 0.84em;
-  width: 0.22em;
-  height: 0.22em;
-  border-radius: 50%;
-  background: radial-gradient(circle at 35% 28%, #7c83ff 0, #4f46e5 60%, #3730a3 100%);
-  box-shadow: 0 0 10px rgba(79, 70, 229, 0.22);
-  content: "";
-}
-
-.brand-i {
-  color: #06101f;
+  width: auto;
+  height: 42px;
+  object-fit: contain;
 }
 
 .brand-logo {
@@ -122,18 +115,28 @@ select {
 .site-nav {
   display: flex;
   justify-content: center;
-  gap: 34px;
+  gap: 10px;
+  justify-self: center;
+  padding: 4px;
+  border: 1px solid rgba(91, 109, 186, 0.1);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.45);
 }
 
 .site-nav a {
   position: relative;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   min-height: 34px;
+  padding: 0 13px;
+  border-radius: 999px;
   color: var(--foreground);
   font-size: 14px;
   font-weight: 560;
-  transition: color 160ms ease;
+  transition:
+    color 160ms ease,
+    background 160ms ease;
 }
 
 .site-nav a::after {
@@ -152,6 +155,7 @@ select {
 .site-nav a:hover,
 .site-nav a:focus-visible {
   color: var(--accent-strong);
+  background: rgba(109, 92, 255, 0.08);
   outline: none;
 }
 
@@ -186,7 +190,7 @@ select {
 }
 
 .site-main > .hero:first-child {
-  margin-top: -89px;
+  margin-top: 0;
   min-height: clamp(690px, calc(68svh + 89px), 849px);
   padding-top: 131px;
 }
@@ -1089,7 +1093,10 @@ select {
   .site-header {
     grid-template-columns: 1fr;
     gap: 14px;
-    padding-top: 18px;
+    top: 10px;
+    width: calc(100% - 28px);
+    padding: 12px;
+    border-radius: 24px;
   }
 
   .header-spacer {

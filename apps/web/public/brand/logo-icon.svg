@@ -1,0 +1,20 @@
+<svg width="320" height="313" viewBox="96 96 320 313" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Yi Forge Studio sail logo concept</title>
+  <desc id="desc">A simplified vector sailboat logo concept for Yi Forge Studio, representing a small boat navigating the AI ocean.</desc>
+  <defs>
+    <linearGradient id="sailGradient" x1="182" y1="116" x2="343" y2="355" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4FB6FF"/>
+      <stop offset="0.58" stop-color="#1673D6"/>
+      <stop offset="1" stop-color="#063D8D"/>
+    </linearGradient>
+    <linearGradient id="waveGradient" x1="104" y1="328" x2="410" y2="384" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B5FC4"/>
+      <stop offset="0.5" stop-color="#39A7F5"/>
+      <stop offset="1" stop-color="#A9DBFF"/>
+    </linearGradient>
+  </defs>
+  <path d="M248 96C304 139 343 201 356 269L257 296C273 236 271 169 248 96Z" fill="url(#sailGradient)"/>
+  <path d="M229 161C231 222 211 270 168 306L235 292C250 240 249 200 229 161Z" fill="#0B5FC4"/>
+  <path d="M163 326C230 314 283 321 347 296C334 329 300 350 256 350C222 350 191 340 163 326Z" fill="#074491"/>
+  <path d="M96 359C142 326 196 329 250 357C303 384 354 383 416 351C363 396 294 409 233 376C181 348 139 345 96 359Z" fill="url(#waveGradient)"/>
+</svg>
