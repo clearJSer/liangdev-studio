@@ -9,6 +9,15 @@ export type NavigationItem = {
   label: string;
 };
 
+export type ContactLink = NavigationItem & {
+  description: string;
+};
+
+export type SeoContent = {
+  title: string;
+  description: string;
+};
+
 export type HomeAction = NavigationItem & {
   variant: "primary" | "secondary" | "ghost";
 };
@@ -50,7 +59,16 @@ export type SiteContent = {
   name: string;
   domain: string;
   description: string;
+  email: string;
   navigation: NavigationItem[];
+  contactLinks: ContactLink[];
+  seo: {
+    home: SeoContent;
+    projects: SeoContent;
+    blog: SeoContent;
+    about: SeoContent;
+    contact: SeoContent;
+  };
   home: PageContent & {
     actions: HomeAction[];
     intro: PageContent;

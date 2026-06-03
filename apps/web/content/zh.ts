@@ -8,23 +8,63 @@ export const zhContent: SiteContent = {
   locale: "zh",
   name: "YiForge Studio",
   domain: "liucodex.com",
+  email: "hello@liucodex.com",
   description:
-    "YiForge Studio 是一个独立 AI Native Builder Studio，专注探索 AI 工作流、自动化工具和数字产品。",
+    "YiForge Studio 是一个独立 AI Native Builder Studio，专注构建 AI 工作流、自动化工具和可上线的数字产品。",
   navigation: [
-    { href: "/", label: "Home" },
-    { href: "/projects", label: "Projects" },
-    { href: "/blog", label: "Thoughts" },
-    { href: "/about", label: "About" },
-    { href: "/contact", label: "Contact" },
+    { href: "/", label: "首页" },
+    { href: "/projects", label: "项目" },
+    { href: "/blog", label: "构建记录" },
+    { href: "/about", label: "关于" },
+    { href: "/contact", label: "联系" },
   ],
+  contactLinks: [
+    {
+      href: "mailto:hello@liucodex.com",
+      label: "hello@liucodex.com",
+      description: "适合项目合作、产品原型、AI 工作流和技术咨询。",
+    },
+    {
+      href: "/projects",
+      label: "查看项目",
+      description: "先了解 YiForge Studio 正在构建和探索的方向。",
+    },
+  ],
+  seo: {
+    home: {
+      title: "YiForge Studio | AI Native Builder Studio",
+      description:
+        "YiForge Studio 是一个独立 AI Native Builder Studio，专注构建 AI 工作流、自动化工具和可上线的数字产品。",
+    },
+    projects: {
+      title: "项目",
+      description:
+        "查看 YiForge Studio 正在构建的 AI 产品、自动化工作流和开发者工具实验。",
+    },
+    blog: {
+      title: "构建记录",
+      description:
+        "记录 YiForge Studio 关于 AI Workflow、Agent 系统、独立开发和工程实践的思考。",
+    },
+    about: {
+      title: "关于",
+      description:
+        "了解 YiForge Studio 的定位、工作方式和 AI-native 产品构建理念。",
+    },
+    contact: {
+      title: "联系",
+      description:
+        "联系 YiForge Studio，讨论 AI 工具、自动化工作流、产品原型和技术咨询合作。",
+    },
+  },
   home: {
     eyebrow: "AI Native Builder Studio",
     title: "在 AI 时代，锻造有价值的产品与工具",
     description:
-      "YiForge Studio 是一个独立的 AI 工作室，专注于 AI-native 产品、工作流和开发者工具的探索与创造。",
+      "YiForge Studio 是一个独立 AI 工作室，专注把 AI 能力落到真实工作流、自动化工具和可上线的软件产品里。",
     actions: [
-      { href: "/projects", label: "探索项目", variant: "primary" },
-      { href: "/about", label: "了解工作室", variant: "secondary" },
+      { href: "/contact", label: "联系合作", variant: "primary" },
+      { href: "/projects", label: "查看项目", variant: "secondary" },
     ],
     intro: {
       eyebrow: "关于 YiForge Studio",
@@ -165,9 +205,9 @@ export const zhContent: SiteContent = {
       eyebrow: "Stay Connected",
       title: "保持联系",
       description:
-        "如果你对 AI 工具、自动化工作流、软件产品或我的项目感兴趣，可以通过下面的入口继续了解 YiForge Studio。",
+        "如果你正在评估 AI 工具、自动化工作流、产品原型或技术咨询，可以先发一封简短邮件，我们从具体问题聊起。",
       actions: [
-        { href: "/contact", label: "联系页面" },
+        { href: "mailto:hello@liucodex.com", label: "发送邮件" },
         { href: "/projects", label: "查看项目" },
       ],
     },
@@ -176,22 +216,26 @@ export const zhContent: SiteContent = {
     projects: {
       eyebrow: "Selected Projects",
       title: "项目",
-      description: "这里会逐步沉淀真实项目、技术实验和小型 Case Study。",
+      description:
+        "这里沉淀 YiForge Studio 正在构建的 AI 产品、自动化工作流和开发者工具实验。",
     },
     blog: {
       eyebrow: "Latest Writing",
-      title: "博客",
-      description: "这里会记录 AI Workflow、Agent 系统、独立开发和工程实践。",
+      title: "构建记录",
+      description:
+        "这里记录 AI Workflow、Agent 系统、独立开发和工程实践中的真实思考。",
     },
     about: {
       eyebrow: "About YiForge",
       title: "关于",
-      description: "这里会介绍 YiForge Studio 的背景、理念和正在探索的方向。",
+      description:
+        "YiForge Studio 是一个专注 AI-native 产品与工作流的独立构建工作室。",
     },
     contact: {
       eyebrow: "Contact",
       title: "联系",
-      description: "这里会放置邮箱、GitHub、X / Twitter 和后续合作入口。",
+      description:
+        "如果你想讨论 AI 工具、自动化工作流、产品原型或技术咨询，可以从一封邮件开始。",
     },
   },
 };

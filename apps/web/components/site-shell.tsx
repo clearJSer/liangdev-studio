@@ -58,7 +58,7 @@ export function SiteShell({ children }: SiteShellProps) {
             alt="YiForge Studio"
             className="brand-logo"
             height={150}
-            src="/brand/YiForgeStudio-wordmark-vector.svg"
+            src="/brand/yi-forge-studio-outline-transparent.png"
             width={760}
           />
           <p>一个持续创造 AI-native 产品、工作流和开发者工具的独立工作室。</p>
@@ -67,19 +67,19 @@ export function SiteShell({ children }: SiteShellProps) {
         <div className="footer-links" aria-label="页脚导航">
           <div>
             <strong>Navigation</strong>
-            <Link href="/projects">Projects</Link>
-            <Link href="/blog">Thoughts</Link>
-            <Link href="/about">About</Link>
+            <Link href="/projects">项目</Link>
+            <Link href="/blog">构建记录</Link>
+            <Link href="/about">关于</Link>
           </div>
           <div>
             <strong>Connect</strong>
-            <Link href="/contact">GitHub</Link>
-            <Link href="/contact">X / Twitter</Link>
-            <Link href="/contact">Email</Link>
+            <Link href={`mailto:${siteContent.email}`}>Email</Link>
+            <Link href="/contact">联系页面</Link>
+            <Link href="/projects">项目方向</Link>
           </div>
           <div>
             <strong>Contact</strong>
-            <span>hello@yiforgestudio.com</span>
+            <span>{siteContent.email}</span>
             <span>Remote / Worldwide</span>
           </div>
         </div>

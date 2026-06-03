@@ -159,10 +159,6 @@ select {
   outline: none;
 }
 
-.site-nav a:first-child::after {
-  opacity: 1;
-}
-
 .site-main {
   flex: 1;
   width: 100%;
@@ -548,7 +544,8 @@ select {
 .section-row,
 .philosophy-section,
 .experiments-section,
-.thoughts-section {
+.thoughts-section,
+.contact-section {
   display: grid;
   grid-template-columns: 210px minmax(0, 1fr);
   gap: 44px;
@@ -655,7 +652,10 @@ select {
 .build-card h3,
 .principle-item h3,
 .experiment-card h3,
-.writing-card h3 {
+.writing-card h3,
+.writing-card h2,
+.simple-card h2,
+.project-row h2 {
   color: #17203b;
   font-size: 17px;
   line-height: 1.45;
@@ -829,6 +829,11 @@ select {
   margin-top: 22px;
 }
 
+.writing-card h2 {
+  margin-top: 22px;
+  font-size: 20px;
+}
+
 .writing-card p {
   margin-top: 14px;
 }
@@ -853,6 +858,142 @@ select {
   max-width: 640px;
   margin-top: 24px;
   font-size: 18px;
+}
+
+.page-section {
+  width: var(--container);
+  margin: 0 auto;
+  padding: 0 0 96px;
+}
+
+.simple-grid,
+.writing-list,
+.project-list {
+  display: grid;
+  gap: 18px;
+}
+
+.simple-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.simple-card,
+.project-row,
+.contact-note,
+.contact-link-card {
+  border: 1px solid rgba(109, 92, 255, 0.08);
+  border-radius: 8px;
+  background: var(--panel);
+  box-shadow: 0 20px 60px rgba(64, 72, 130, 0.07);
+  backdrop-filter: blur(18px);
+}
+
+.simple-card {
+  min-height: 210px;
+  padding: 26px;
+}
+
+.simple-card p,
+.project-row p,
+.contact-note p,
+.contact-link-card p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+.simple-card p {
+  margin-top: 16px;
+}
+
+.project-row {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr) 220px;
+  gap: 28px;
+  align-items: start;
+  padding: 26px;
+}
+
+.project-row span {
+  color: var(--accent-strong);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 12px;
+}
+
+.project-row h2 {
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+.project-row ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+  list-style: none;
+}
+
+.project-row li {
+  padding: 6px 10px;
+  border-radius: 999px;
+  color: var(--accent-strong);
+  background: rgba(109, 92, 255, 0.1);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.contact-panel {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.contact-panel-wide {
+  width: 100%;
+}
+
+.contact-link-card {
+  display: grid;
+  gap: 12px;
+  min-height: 150px;
+  padding: 26px;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+.contact-link-card:hover,
+.contact-link-card:focus-visible {
+  border-color: rgba(109, 92, 255, 0.28);
+  box-shadow: 0 24px 60px rgba(64, 72, 130, 0.12);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+.contact-link-card span {
+  color: var(--accent-strong);
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.contact-detail {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 18px;
+}
+
+.contact-note {
+  padding: 26px;
+}
+
+.contact-note strong {
+  color: #17203b;
+  font-size: 18px;
+}
+
+.contact-note p {
+  margin-top: 14px;
 }
 
 .projects-globe-section {
@@ -1052,7 +1193,9 @@ select {
   .section-row-split,
   .philosophy-section,
   .experiments-section,
-  .thoughts-section {
+  .thoughts-section,
+  .contact-section,
+  .contact-detail {
     grid-template-columns: 1fr;
   }
 
@@ -1063,8 +1206,17 @@ select {
   .build-grid,
   .principle-grid,
   .experiment-grid,
-  .writing-grid {
+  .writing-grid,
+  .simple-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .project-row {
+    grid-template-columns: 1fr;
+  }
+
+  .project-row ul {
+    justify-content: flex-start;
   }
 
   .site-footer {
@@ -1174,6 +1326,8 @@ select {
   .principle-grid,
   .experiment-grid,
   .writing-grid,
+  .simple-grid,
+  .contact-panel,
   .footer-links {
     grid-template-columns: 1fr;
   }
@@ -1199,6 +1353,17 @@ select {
 
   .projects-globe-panel {
     min-height: 420px;
+  }
+
+  .page-section {
+    padding-bottom: 64px;
+  }
+
+  .project-row,
+  .simple-card,
+  .contact-note,
+  .contact-link-card {
+    padding: 22px;
   }
 }
 

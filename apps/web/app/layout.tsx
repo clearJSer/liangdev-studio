@@ -16,10 +16,10 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   metadataBase: new URL(`https://${siteContent.domain}`),
   title: {
-    default: `${siteContent.name} | AI Native Builder Studio`,
+    default: siteContent.seo.home.title,
     template: `%s | ${siteContent.name}`,
   },
-  description: siteContent.description,
+  description: siteContent.seo.home.description,
   alternates: {
     canonical: "/",
     languages: {
@@ -27,12 +27,24 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: `${siteContent.name} | AI Native Builder Studio`,
-    description: siteContent.description,
+    title: siteContent.seo.home.title,
+    description: siteContent.seo.home.description,
     url: "/",
     siteName: siteContent.name,
+    images: [
+      {
+        url: "/brand/yi-forge-studio-clean-transparent.png",
+        alt: siteContent.name,
+      },
+    ],
     locale: "zh_CN",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteContent.seo.home.title,
+    description: siteContent.seo.home.description,
+    images: ["/brand/yi-forge-studio-clean-transparent.png"],
   },
   robots: {
     index: true,

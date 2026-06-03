@@ -163,6 +163,25 @@ export default function Home() {
           ))}
         </div>
       </section>
+
+      <section
+        className="home-section contact-section"
+        aria-labelledby="home-contact-title"
+      >
+        <div className="section-intro">
+          <p className="eyebrow">{home.contact.eyebrow}</p>
+          <h2 id="home-contact-title">{home.contact.title}</h2>
+          <p>{home.contact.description}</p>
+        </div>
+        <div className="contact-panel">
+          {siteContent.contactLinks.map((item) => (
+            <Link className="contact-link-card" href={item.href} key={item.href}>
+              <span>{item.label}</span>
+              <p>{item.description}</p>
+            </Link>
+          ))}
+        </div>
+      </section>
     </SiteShell>
   );
 }
