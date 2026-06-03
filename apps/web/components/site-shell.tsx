@@ -25,13 +25,17 @@ export function SiteShell({ children }: SiteShellProps) {
       <header className="site-header">
         <Link className="brand" href="/" aria-label="YiForge Studio 首页">
           <Image
-            alt="YiForge Studio"
-            className="brand-logo"
-            height={150}
+            alt=""
+            aria-hidden="true"
+            className="brand-mark"
+            height={44}
             priority
-            src="/brand/YiForgeStudio-wordmark-vector.svg"
-            width={760}
+            src="/brand/yiforge-sail-mark.svg"
+            width={44}
           />
+          <span className="brand-wordmark" aria-hidden="true">
+            Y<span className="brand-i">i</span>ForgeStudio
+          </span>
         </Link>
         <nav className="site-nav" aria-label="主导航">
           {siteContent.navigation.map((item) => (

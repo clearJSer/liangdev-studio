@@ -174,13 +174,13 @@ export function ForgeCore() {
         >
           <defs>
             <linearGradient id="forge-flow-gradient" x1="0" x2="1" y1="0" y2="1">
-              <stop offset="0" stopColor="#60A5FA" stopOpacity="0.1" />
-              <stop offset="0.48" stopColor="#8B5CF6" stopOpacity="0.34" />
-              <stop offset="1" stopColor="#22D3EE" stopOpacity="0.14" />
+              <stop offset="0" stopColor="#2563EB" stopOpacity="0.18" />
+              <stop offset="0.48" stopColor="#4F46E5" stopOpacity="0.5" />
+              <stop offset="1" stopColor="#1D4ED8" stopOpacity="0.24" />
             </linearGradient>
             <linearGradient id="forge-output-gradient" x1="0" x2="1" y1="0" y2="0">
-              <stop offset="0" stopColor="#8B5CF6" stopOpacity="0.26" />
-              <stop offset="1" stopColor="#60A5FA" stopOpacity="0.05" />
+              <stop offset="0" stopColor="#4F46E5" stopOpacity="0.4" />
+              <stop offset="1" stopColor="#2563EB" stopOpacity="0.12" />
             </linearGradient>
           </defs>
 
