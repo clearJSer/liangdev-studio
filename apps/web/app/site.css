@@ -180,14 +180,14 @@ select {
   isolation: isolate;
   box-sizing: border-box;
   width: 100%;
-  min-height: clamp(600px, 68svh, 760px);
+  min-height: clamp(560px, 62svh, 700px);
   overflow: hidden;
-  padding: 42px max(40px, calc((100vw - 1440px) / 2)) 58px;
+  padding: 42px max(40px, calc((100vw - 1440px) / 2)) 36px;
 }
 
 .site-main > .hero:first-child {
   margin-top: 0;
-  min-height: clamp(690px, calc(68svh + 89px), 849px);
+  min-height: clamp(620px, calc(62svh + 80px), 760px);
   padding-top: 131px;
 }
 
@@ -210,8 +210,8 @@ select {
   bottom: 0;
   left: 0;
   z-index: 1;
-  height: 180px;
-  background: linear-gradient(180deg, transparent, var(--background) 78%);
+  height: 72px;
+  background: linear-gradient(180deg, transparent 0%, rgba(248, 250, 255, 0.2) 74%, rgba(248, 250, 255, 0.42) 100%);
   content: "";
   pointer-events: none;
 }
@@ -233,7 +233,7 @@ select {
 
 .hero-flow-background {
   position: absolute;
-  inset: -88px 0 -72px;
+  inset: 4px 0 -72px;
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
@@ -252,7 +252,7 @@ select {
       rgba(248, 250, 255, 0) 68%,
       rgba(248, 250, 255, 0.02) 100%
     ),
-    linear-gradient(180deg, rgba(248, 250, 255, 0.28), transparent 24%, rgba(248, 250, 255, 0.36));
+    linear-gradient(180deg, rgba(248, 250, 255, 0.84) 0%, rgba(248, 250, 255, 0.48) 12%, transparent 34%, rgba(248, 250, 255, 0.36) 100%);
   content: "";
   pointer-events: none;
 }
