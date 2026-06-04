@@ -49,6 +49,20 @@ export function SiteShell({ children }: SiteShellProps) {
             </Link>
           ))}
         </nav>
+        <details className="mobile-menu">
+          <summary aria-label="打开导航菜单">
+            <span aria-hidden="true" />
+            <span aria-hidden="true" />
+            <span aria-hidden="true" />
+          </summary>
+          <nav className="mobile-nav" aria-label="移动端导航">
+            {siteContent.navigation.map((item) => (
+              <Link key={item.href} href={item.href}>
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+        </details>
         <div className="header-spacer" aria-hidden="true" />
       </header>
       <main className="site-main">{children}</main>

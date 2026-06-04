@@ -26,6 +26,10 @@ export const metadata: Metadata = {
       "zh-CN": "/",
     },
   },
+  icons: {
+    icon: "/brand/logo-icon.svg",
+    shortcut: "/brand/logo-icon.svg",
+  },
   openGraph: {
     title: siteContent.seo.home.title,
     description: siteContent.seo.home.description,
@@ -33,7 +37,9 @@ export const metadata: Metadata = {
     siteName: siteContent.name,
     images: [
       {
-        url: "/brand/yi-forge-studio-clean-transparent.png",
+        url: "/brand/og-yiforge-studio.png",
+        width: 1200,
+        height: 630,
         alt: siteContent.name,
       },
     ],
@@ -44,7 +50,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteContent.seo.home.title,
     description: siteContent.seo.home.description,
-    images: ["/brand/yi-forge-studio-clean-transparent.png"],
+    images: ["/brand/og-yiforge-studio.png"],
   },
   robots: {
     index: true,

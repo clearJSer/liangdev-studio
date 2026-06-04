@@ -8,7 +8,7 @@ export const enContent: SiteContent = {
   locale: "en",
   name: "YiForge Studio",
   domain: "liucodex.com",
-  email: "hello@liucodex.com",
+  email: "clearjs@163.com",
   description:
     "YiForge Studio is an independent AI Native Builder Studio focused on AI workflows, automation tools, and shippable digital products.",
   navigation: [
@@ -20,8 +20,8 @@ export const enContent: SiteContent = {
   ],
   contactLinks: [
     {
-      href: "mailto:hello@liucodex.com",
-      label: "hello@liucodex.com",
+      href: "mailto:clearjs@163.com",
+      label: "clearjs@163.com",
       description: "Best for collaborations, AI workflows, prototypes, and technical consulting.",
     },
     {

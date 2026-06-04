@@ -8,9 +8,9 @@ export const zhContent: SiteContent = {
   locale: "zh",
   name: "YiForge Studio",
   domain: "liucodex.com",
-  email: "hello@liucodex.com",
+  email: "clearjs@163.com",
   description:
-    "YiForge Studio 是一个独立 AI Native Builder Studio，专注构建 AI 工作流、自动化工具和可上线的数字产品。",
+    "YiForge Studio 是深耕 AI-Native 体系的独立研发工作室，交付可商业化上线的软件与定制化工具。",
   navigation: [
     { href: "/", label: "首页" },
     { href: "/projects", label: "项目" },
@@ -20,8 +20,8 @@ export const zhContent: SiteContent = {
   ],
   contactLinks: [
     {
-      href: "mailto:hello@liucodex.com",
-      label: "hello@liucodex.com",
+      href: "mailto:clearjs@163.com",
+      label: "clearjs@163.com",
       description: "适合项目合作、产品原型、AI 工作流和技术咨询。",
     },
     {
@@ -34,7 +34,7 @@ export const zhContent: SiteContent = {
     home: {
       title: "YiForge Studio | AI Native Builder Studio",
       description:
-        "YiForge Studio 是一个独立 AI Native Builder Studio，专注构建 AI 工作流、自动化工具和可上线的数字产品。",
+        "YiForge Studio 是深耕 AI-Native 体系的独立研发工作室，交付可商业化上线的软件与定制化工具。",
     },
     projects: {
       title: "项目",
@@ -58,13 +58,13 @@ export const zhContent: SiteContent = {
     },
   },
   home: {
-    eyebrow: "AI Native Builder Studio",
-    title: "在 AI 时代，锻造有价值的产品与工具",
+    eyebrow: "AI NATIVE BUILDER STUDIO",
+    title: "立足 AI 新世代，以 AI-Native 范式锻造产品与工具",
     description:
-      "YiForge Studio 是一个独立 AI 工作室，专注把 AI 能力落到真实工作流、自动化工具和可上线的软件产品里。",
+      "YiForge Studio 是深耕 AI-Native 体系的独立研发工作室。我们跳出传统软件工程的固有范式，依托全链路 AI 工作流，将智能能力锚定真实业务链路，交付可商业化上线的软件与定制化工具。",
     actions: [
       { href: "/contact", label: "联系合作", variant: "primary" },
-      { href: "/projects", label: "查看项目", variant: "secondary" },
+      { href: "/projects", label: "范式案例", variant: "secondary" },
     ],
     intro: {
       eyebrow: "关于 YiForge Studio",
@@ -207,7 +207,7 @@ export const zhContent: SiteContent = {
       description:
         "如果你正在评估 AI 工具、自动化工作流、产品原型或技术咨询，可以先发一封简短邮件，我们从具体问题聊起。",
       actions: [
-        { href: "mailto:hello@liucodex.com", label: "发送邮件" },
+        { href: "mailto:clearjs@163.com", label: "发送邮件" },
         { href: "/projects", label: "查看项目" },
       ],
     },
