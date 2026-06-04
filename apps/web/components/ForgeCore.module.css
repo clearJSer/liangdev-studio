@@ -257,8 +257,8 @@
   --orbit-height: 76%;
   --orbit-color: rgba(139, 92, 246, 0.1);
   --orbit-duration: 68s;
-  --orbit-start: 82deg;
-  --label-start: -82deg;
+  --orbit-start: 54deg;
+  --label-start: -54deg;
 }
 
 .orbitCopyLaunch {
@@ -271,12 +271,12 @@
 }
 
 .orbitCopyChatGPT {
-  --orbit-width: 98%;
-  --orbit-height: 82%;
+  --orbit-width: 96%;
+  --orbit-height: 78%;
   --orbit-color: rgba(34, 211, 238, 0.09);
   --orbit-duration: 88s;
-  --orbit-start: 18deg;
-  --label-start: -18deg;
+  --orbit-start: 148deg;
+  --label-start: -148deg;
 }
 
 .orbitCopyClaude {
@@ -289,21 +289,21 @@
 }
 
 .orbitCopyCodex {
-  --orbit-width: 104%;
-  --orbit-height: 66%;
+  --orbit-width: 102%;
+  --orbit-height: 68%;
   --orbit-color: rgba(96, 165, 250, 0.08);
   --orbit-duration: 92s;
-  --orbit-start: 196deg;
-  --label-start: -196deg;
+  --orbit-start: 238deg;
+  --label-start: -238deg;
 }
 
 .orbitCopyNative {
-  --orbit-width: 74%;
-  --orbit-height: 112%;
+  --orbit-width: 72%;
+  --orbit-height: 108%;
   --orbit-color: rgba(139, 92, 246, 0.09);
   --orbit-duration: 104s;
-  --orbit-start: 318deg;
-  --label-start: -318deg;
+  --orbit-start: 326deg;
+  --label-start: -326deg;
 }
 
 .logoCore {

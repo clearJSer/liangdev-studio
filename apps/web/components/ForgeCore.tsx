@@ -212,22 +212,10 @@ export function ForgeCore() {
               <small>产品锻造</small>
             </span>
           </span>
-          <span className={`${styles.orbitTrack} ${styles.orbitCopyLaunch}`}>
-            <span className={styles.orbitCopyItem}>
-              LAUNCH
-              <small>持续迭代</small>
-            </span>
-          </span>
           <span className={`${styles.orbitTrack} ${styles.orbitCopyChatGPT}`}>
             <span className={`${styles.orbitCopyItem} ${styles.orbitCopyTool}`}>
               ChatGPT
               <small>智能协作</small>
-            </span>
-          </span>
-          <span className={`${styles.orbitTrack} ${styles.orbitCopyClaude}`}>
-            <span className={`${styles.orbitCopyItem} ${styles.orbitCopyTool}`}>
-              Claude Code
-              <small>代码共创</small>
             </span>
           </span>
           <span className={`${styles.orbitTrack} ${styles.orbitCopyCodex}`}>

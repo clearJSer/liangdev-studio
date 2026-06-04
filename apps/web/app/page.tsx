@@ -37,79 +37,93 @@ export default function Home() {
       <section className="hero" aria-labelledby="home-title">
         <HomeFlightsGlobeBackground />
 
-        <div className="hero-content">
-          <p className="eyebrow eyebrow-pill">{home.eyebrow}</p>
-          <h1 id="home-title">
-            <span className="hero-title-desktop">
-              立足 <span className="accent">AI</span> 新世代，
-              <br />
-              以 AI-Native 范式锻造产品与工具
-            </span>
-            <span className="hero-title-mobile">
-              立足 <span className="accent">AI</span> 新世代，
-              <br />
-              锻造可上线的
-              <br />
-              产品与工具
-            </span>
-          </h1>
-          <p className="hero-description hero-description-desktop">
-            {home.description}
-          </p>
-          <p className="hero-description hero-description-mobile">
-            YiForge Studio 将 AI 工作流、智能能力和工程实践，转化为可上线的软件产品与定制工具。
-          </p>
-          <div className="hero-actions" aria-label="首页操作">
-            {home.actions.map((action) => (
-              <Link
-                className={getActionClassName(action)}
-                href={action.href}
-                key={action.href}
-              >
-                {action.label}
-              </Link>
-            ))}
+        <div className="hero-inner">
+          <div className="hero-content">
+            <p className="eyebrow eyebrow-pill">{home.eyebrow}</p>
+            <h1 id="home-title">
+              <span className="hero-title-desktop">
+                立足 <span className="accent">AI</span> 新世代，
+                <br />
+                以 AI-Native 范式
+                <br />
+                锻造产品与工具
+              </span>
+              <span className="hero-title-mobile">
+                立足 <span className="accent">AI</span> 新世代，
+                <br />
+                锻造可上线的
+                <br />
+                产品与工具
+              </span>
+            </h1>
+            <p className="hero-description hero-description-desktop">
+              {home.description}
+            </p>
+            <p className="hero-description hero-description-mobile">
+              YiForge Studio 将 AI 工作流、智能能力和工程实践，转化为可上线的软件产品与定制工具。
+            </p>
+            <div className="hero-actions" aria-label="首页操作">
+              {home.actions.map((action) => (
+                <Link
+                  className={getActionClassName(action)}
+                  href={action.href}
+                  key={action.href}
+                >
+                  {action.label}
+                </Link>
+              ))}
+            </div>
+            <p className="hero-caption">
+              Built with AI-Native · Shaping Next Development
+            </p>
           </div>
-          <div className="mobile-hero-proof" aria-label="首页能力摘要">
-            <span>
-              <strong>Workflow</strong>
-              <small>重塑流程</small>
-            </span>
-            <span>
-              <strong>Product</strong>
-              <small>交付产品</small>
-            </span>
-            <span>
-              <strong>Launch</strong>
-              <small>上线迭代</small>
-            </span>
-          </div>
-          <p className="hero-caption">
-            Built with AI-Native · Shaping Next Development
-          </p>
-        </div>
 
-        <div className="hero-visual">
-          <div className="mobile-hero-panel">
-            <div className="mobile-panel-head" aria-hidden="true">
-              <span>AI Core</span>
-              <strong>Live system</strong>
-            </div>
-            <div className="mobile-panel-grid" aria-hidden="true">
-              <span>Prompt</span>
-              <span>Agent</span>
-              <span>Code</span>
-            </div>
-            <ForgeCore />
-            <div className="mobile-panel-tags" aria-hidden="true">
-              <span>Workflow</span>
-              <span>Agent</span>
-              <span>Product</span>
-            </div>
-            <div className="mobile-panel-flow" aria-hidden="true">
-              <span>Idea</span>
-              <span>Build</span>
-              <span>Ship</span>
+          <div className="hero-visual">
+            <div className="studio-os-panel" aria-label="AI Studio OS 产品管线">
+              <div className="studio-panel-head">
+                <div>
+                  <span>YiForge Studio OS</span>
+                  <strong>Live product pipeline</strong>
+                </div>
+                <em>Alpha</em>
+              </div>
+              <div className="studio-panel-grid" aria-hidden="true">
+                <span>Prompt</span>
+                <span>Agent</span>
+                <span>Code</span>
+              </div>
+              <div className="studio-panel-body">
+                <div className="studio-core-wrap" aria-hidden="true">
+                  <ForgeCore />
+                  <span className="stage-node stage-node-idea">Idea</span>
+                  <span className="stage-node stage-node-workflow">Workflow</span>
+                  <span className="stage-node stage-node-agent">Agent</span>
+                  <span className="stage-node stage-node-launch">Launch</span>
+                </div>
+                <div className="studio-pipeline" aria-hidden="true">
+                  <span>
+                    <strong>01</strong>
+                    Idea
+                  </span>
+                  <span>
+                    <strong>02</strong>
+                    Workflow
+                  </span>
+                  <span>
+                    <strong>03</strong>
+                    Prototype
+                  </span>
+                  <span>
+                    <strong>04</strong>
+                    Launch
+                  </span>
+                </div>
+              </div>
+              <div className="studio-panel-tags" aria-hidden="true">
+                <span>Workflow</span>
+                <span>Agent</span>
+                <span>Product</span>
+              </div>
             </div>
           </div>
         </div>
