@@ -283,16 +283,6 @@ select {
   pointer-events: none;
 }
 
-.hero-visual {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  min-width: 0;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
-}
-
 .eyebrow {
   color: var(--accent-strong);
   font-family: var(--font-geist-mono), monospace;
@@ -424,10 +414,13 @@ select {
 
 .studio-os-panel {
   position: relative;
+  z-index: 2;
   display: grid;
   grid-template-rows: auto auto minmax(0, 1fr) auto;
   gap: 12px;
+  justify-self: center;
   width: min(100%, 690px);
+  min-width: 0;
   min-height: 468px;
   padding: 20px 24px 22px;
   border: 1px solid rgba(86, 70, 232, 0.14);
@@ -440,6 +433,7 @@ select {
     inset 0 1px 0 rgba(255, 255, 255, 0.92),
     0 28px 80px rgba(48, 65, 120, 0.14);
   backdrop-filter: blur(12px);
+  pointer-events: none;
   -webkit-backdrop-filter: blur(12px);
 }
 
@@ -1497,12 +1491,6 @@ select {
     opacity: 0.54;
   }
 
-  .hero-visual {
-    width: 100%;
-    max-width: 760px;
-    pointer-events: none;
-  }
-
   .studio-os-panel {
     width: min(100%, 760px);
     min-height: auto;
@@ -1797,11 +1785,6 @@ select {
     min-height: 138px;
   }
 
-  .hero-visual {
-    width: 100%;
-    pointer-events: none;
-  }
-
   .studio-os-panel {
     display: grid;
     gap: 8px;
@@ -1830,18 +1813,6 @@ select {
     transform: none;
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
-  }
-
-  .studio-os-panel::before {
-    inset: 58px 13px 66px;
-    border-radius: 20px;
-    background-size: 36px 36px;
-  }
-
-  .studio-os-panel::after {
-    right: 32px;
-    bottom: 44px;
-    left: 32px;
   }
 
   .studio-os-panel::before,

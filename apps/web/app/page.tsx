@@ -78,52 +78,50 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="hero-visual">
-            <div className="studio-os-panel" aria-label="AI Studio OS 产品管线">
-              <div className="studio-panel-head">
-                <div>
-                  <span>YiForge Studio OS</span>
-                  <strong>Live product pipeline</strong>
-                </div>
-                <em>Alpha</em>
+          <div className="studio-os-panel" aria-label="AI Studio OS 产品管线">
+            <div className="studio-panel-head">
+              <div>
+                <span>YiForge Studio OS</span>
+                <strong>Live product pipeline</strong>
               </div>
-              <div className="studio-panel-grid" aria-hidden="true">
-                <span>Prompt</span>
-                <span>Agent</span>
-                <span>Code</span>
+              <em>Alpha</em>
+            </div>
+            <div className="studio-panel-grid" aria-hidden="true">
+              <span>Prompt</span>
+              <span>Agent</span>
+              <span>Code</span>
+            </div>
+            <div className="studio-panel-body">
+              <div className="studio-core-wrap" aria-hidden="true">
+                <ForgeCore />
+                <span className="stage-node stage-node-idea">Idea</span>
+                <span className="stage-node stage-node-workflow">Workflow</span>
+                <span className="stage-node stage-node-agent">Agent</span>
+                <span className="stage-node stage-node-launch">Launch</span>
               </div>
-              <div className="studio-panel-body">
-                <div className="studio-core-wrap" aria-hidden="true">
-                  <ForgeCore />
-                  <span className="stage-node stage-node-idea">Idea</span>
-                  <span className="stage-node stage-node-workflow">Workflow</span>
-                  <span className="stage-node stage-node-agent">Agent</span>
-                  <span className="stage-node stage-node-launch">Launch</span>
-                </div>
-                <div className="studio-pipeline" aria-hidden="true">
-                  <span>
-                    <strong>01</strong>
-                    Idea
-                  </span>
-                  <span>
-                    <strong>02</strong>
-                    Workflow
-                  </span>
-                  <span>
-                    <strong>03</strong>
-                    Prototype
-                  </span>
-                  <span>
-                    <strong>04</strong>
-                    Launch
-                  </span>
-                </div>
+              <div className="studio-pipeline" aria-hidden="true">
+                <span>
+                  <strong>01</strong>
+                  Idea
+                </span>
+                <span>
+                  <strong>02</strong>
+                  Workflow
+                </span>
+                <span>
+                  <strong>03</strong>
+                  Prototype
+                </span>
+                <span>
+                  <strong>04</strong>
+                  Launch
+                </span>
               </div>
-              <div className="studio-panel-tags" aria-hidden="true">
-                <span>Workflow</span>
-                <span>Agent</span>
-                <span>Product</span>
-              </div>
+            </div>
+            <div className="studio-panel-tags" aria-hidden="true">
+              <span>Workflow</span>
+              <span>Agent</span>
+              <span>Product</span>
             </div>
           </div>
         </div>
