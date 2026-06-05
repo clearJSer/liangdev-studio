@@ -264,15 +264,36 @@ select {
   pointer-events: none;
 }
 
+.hero-flow-background::after {
+  position: absolute;
+  inset: 7% 8% 10% 26%;
+  z-index: 0;
+  border-radius: 50%;
+  background:
+    linear-gradient(12deg, transparent 0 45%, rgba(37, 99, 235, 0.18) 46% 47%, transparent 48% 100%),
+    linear-gradient(168deg, transparent 0 42%, rgba(59, 140, 255, 0.14) 43% 44%, transparent 45% 100%),
+    radial-gradient(ellipse at 50% 52%, rgba(59, 140, 255, 0.08), transparent 58%);
+  content: "";
+  opacity: 0.72;
+  pointer-events: none;
+  transform: rotate(-8deg);
+}
+
 .hero-flow-background-canvas {
   position: absolute;
   inset: 0;
-  opacity: 1;
+  z-index: 1;
+  opacity: 0;
   filter:
-    saturate(1.86)
-    contrast(1.42)
-    drop-shadow(0 0 18px rgba(30, 64, 175, 0.5))
-    drop-shadow(0 0 42px rgba(23, 37, 84, 0.36));
+    saturate(1.62)
+    contrast(1.24)
+    drop-shadow(0 0 16px rgba(30, 64, 175, 0.42))
+    drop-shadow(0 0 36px rgba(23, 37, 84, 0.28));
+  transition: opacity 900ms ease;
+}
+
+.hero-flow-background-canvas.is-ready {
+  opacity: 0.92;
 }
 
 .hero-content {

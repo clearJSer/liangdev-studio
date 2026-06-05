@@ -32,6 +32,7 @@ type FlightsGlobeCanvasProps = {
 const FLIGHTS_DATA_URL = "/data/echarts/flights.json";
 const WORLD_MAP_URL = "/data/echarts/world.json";
 const HOME_ROUTE_LIMIT = 900;
+const HOME_GLOBE_DELAY_MS = 1600;
 
 /**
  * 判断未知值是否为航班机场坐标。
@@ -136,16 +137,34 @@ function selectRouteLines(routes: RouteLine[], variant: GlobeVariant) {
 }
 
 /**
+ * 延迟首页背景图表初始化，把首屏 LCP 资源优先留给标题、字体和关键图片。
+ */
+function scheduleChartMount(variant: GlobeVariant, callback: () => void) {
+  if (variant === "project") {
+    callback();
+
+    return () => {};
+  }
+
+  const timer = window.setTimeout(callback, HOME_GLOBE_DELAY_MS);
+
+  return () => {
+    window.clearTimeout(timer);
+  };
+}
+
+/**
  * 根据页面场景返回不同的 ECharts GL 配置片段。
  */
 function getGlobeOption(variant: GlobeVariant, routes: RouteLine[]) {
   if (variant === "home") {
     return {
+      backgroundColor: "transparent",
       geo3D: {
         map: "world",
         shading: "lambert",
         silent: true,
-        environment: "#eef6ff",
+        environment: "#f7fbff",
         postEffect: {
           enable: true,
           bloom: {
@@ -175,7 +194,7 @@ function getGlobeOption(variant: GlobeVariant, routes: RouteLine[]) {
           color: "#9fb6e8",
           borderColor: "rgba(58, 77, 145, 0.68)",
           borderWidth: 0.64,
-          opacity: 1,
+          opacity: 0.86,
         },
         emphasis: {
           itemStyle: {
@@ -302,11 +321,16 @@ function FlightsGlobeCanvas({
   variant,
 }: FlightsGlobeCanvasProps) {
   const chartRef = useRef<HTMLDivElement>(null);
+  const [isChartReady, setIsChartReady] = useState(false);
   const [status, setStatus] = useState("Loading global routes");
 
   useEffect(() => {
     let disposed = false;
     let cleanup = () => {};
+    let cancelScheduledMount = () => {};
+    let readyFrame = 0;
+
+    setIsChartReady(false);
 
     /**
      * 初始化 ECharts GL 图表，并绑定窗口事件。
@@ -345,6 +369,11 @@ function FlightsGlobeCanvas({
       const option = getGlobeOption(variant, routes);
 
       chart.setOption(option as Parameters<typeof chart.setOption>[0]);
+      readyFrame = window.requestAnimationFrame(() => {
+        if (!disposed) {
+          setIsChartReady(true);
+        }
+      });
       setStatus(
         variant === "home"
           ? "Global AI Flow"
@@ -378,19 +407,23 @@ function FlightsGlobeCanvas({
       };
     }
 
-    mountChart().catch((error: unknown) => {
-      const message = error instanceof Error ? error.message : "Failed to load chart";
-      setStatus(message);
+    cancelScheduledMount = scheduleChartMount(variant, () => {
+      mountChart().catch((error: unknown) => {
+        const message = error instanceof Error ? error.message : "Failed to load chart";
+        setStatus(message);
+      });
     });
 
     return () => {
       disposed = true;
+      window.cancelAnimationFrame(readyFrame);
+      cancelScheduledMount();
       cleanup();
     };
   }, [variant]);
 
   return (
-    <div className={className}>
+    <div className={`${className}${isChartReady ? " is-ready" : ""}`}>
       <div className="projects-globe-chart" ref={chartRef} />
       {showStatus ? <div className="projects-globe-status">{status}</div> : null}
     </div>
