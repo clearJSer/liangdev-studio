@@ -25,13 +25,15 @@ html {
 }
 
 body {
+  --font-site-sans: var(--font-geist-sans);
+  --font-site-mono: var(--font-geist-mono);
   min-height: 100svh;
   color: var(--foreground);
   background:
     radial-gradient(circle at 70% 4%, rgba(109, 92, 255, 0.16), transparent 30rem),
     radial-gradient(circle at 8% 28%, rgba(59, 140, 255, 0.12), transparent 28rem),
     linear-gradient(180deg, #fbfcff 0%, var(--background) 48%, #fbfcff 100%);
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-site-sans);
   text-rendering: optimizeLegibility;
 }
 
@@ -290,7 +292,7 @@ select {
 
 .eyebrow {
   color: var(--accent-strong);
-  font-family: var(--font-geist-mono), monospace;
+  font-family: var(--font-site-mono);
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0;
@@ -314,6 +316,7 @@ select {
   max-width: 780px;
   color: #101831;
   font-size: clamp(46px, 4.35vw, 58px);
+  font-weight: 620;
   line-height: 1.18;
   letter-spacing: 0;
 }
@@ -344,10 +347,13 @@ select {
   line-height: 1.8;
 }
 
-.hero-content > .hero-description {
+.hero .hero-content > .hero-description {
   max-width: 520px;
   margin-top: 24px;
-  font-size: 16px;
+  color: #34405d;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.82;
 }
 
 .hero-actions {
@@ -428,18 +434,18 @@ select {
   min-width: 0;
   min-height: 468px;
   padding: 20px 24px 22px;
-  border: 1px solid rgba(86, 70, 232, 0.14);
+  border: 1px solid rgba(86, 70, 232, 0.16);
   border-radius: 26px;
   background:
-    radial-gradient(circle at 50% 48%, rgba(109, 92, 255, 0.16), transparent 36%),
-    radial-gradient(circle at 76% 24%, rgba(59, 140, 255, 0.11), transparent 28%),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.6), rgba(239, 245, 255, 0.38));
+    radial-gradient(circle at 50% 48%, rgba(109, 92, 255, 0.04), transparent 36%),
+    radial-gradient(circle at 76% 24%, rgba(59, 140, 255, 0.025), transparent 28%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.035), rgba(239, 245, 255, 0.012));
   box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.92),
-    0 28px 80px rgba(48, 65, 120, 0.14);
-  backdrop-filter: blur(12px);
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    0 22px 64px rgba(48, 65, 120, 0.1);
+  backdrop-filter: none;
   pointer-events: none;
-  -webkit-backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: none;
 }
 
 .studio-os-panel::before,
@@ -455,9 +461,10 @@ select {
   border: 1px solid rgba(109, 92, 255, 0.12);
   border-radius: 22px;
   background:
-    linear-gradient(90deg, rgba(109, 92, 255, 0.08) 1px, transparent 1px),
-    linear-gradient(180deg, rgba(59, 140, 255, 0.08) 1px, transparent 1px);
+    linear-gradient(90deg, rgba(109, 92, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(59, 140, 255, 0.04) 1px, transparent 1px);
   background-size: 42px 42px;
+  -webkit-mask-image: linear-gradient(180deg, transparent, black 16%, black 84%, transparent);
   mask-image: linear-gradient(180deg, transparent, black 16%, black 84%, transparent);
 }
 
@@ -489,6 +496,7 @@ select {
   background: rgba(255, 255, 255, 0.9);
   box-shadow: 0 16px 38px rgba(64, 72, 130, 0.1);
   backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 
 .studio-panel-head div {
@@ -502,7 +510,7 @@ select {
 .studio-panel-grid span,
 .studio-panel-tags span,
 .studio-pipeline span {
-  font-family: var(--font-geist-mono), monospace;
+  font-family: var(--font-site-mono);
   letter-spacing: 0;
 }
 
@@ -591,10 +599,11 @@ select {
   box-shadow:
     0 14px 32px rgba(64, 72, 130, 0.12),
     0 0 0 6px rgba(109, 92, 255, 0.05);
-  font-family: var(--font-geist-mono), monospace;
+  font-family: var(--font-site-mono);
   font-size: 11px;
   font-weight: 850;
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .stage-node::after {
@@ -668,6 +677,7 @@ select {
   font-weight: 800;
   box-shadow: 0 14px 32px rgba(64, 72, 130, 0.1);
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .studio-pipeline strong {
@@ -800,10 +810,11 @@ select {
   color: var(--accent-strong);
   background: rgba(255, 255, 255, 0.76);
   box-shadow: 0 20px 50px rgba(74, 83, 140, 0.1);
-  font-family: var(--font-geist-mono), monospace;
+  font-family: var(--font-site-mono);
   font-size: 12px;
   line-height: 1.55;
   backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 
 .orbit-card-idea {
@@ -917,6 +928,7 @@ select {
   background: var(--panel);
   box-shadow: 0 20px 60px rgba(64, 72, 130, 0.07);
   backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
 }
 
 .build-card {
@@ -949,7 +961,7 @@ select {
   border-radius: 50%;
   color: var(--accent-strong);
   background: rgba(109, 92, 255, 0.14);
-  font-family: var(--font-geist-mono), monospace;
+  font-family: var(--font-site-mono);
   font-weight: 800;
 }
 
@@ -1005,7 +1017,7 @@ select {
   align-self: end;
   margin-top: 22px;
   color: var(--accent-strong);
-  font-family: var(--font-geist-mono), monospace;
+  font-family: var(--font-site-mono);
   font-size: 12px;
   font-weight: 800;
   text-transform: uppercase;
@@ -1038,7 +1050,7 @@ select {
   display: block;
   margin-bottom: 28px;
   color: var(--accent-strong);
-  font-family: var(--font-geist-mono), monospace;
+  font-family: var(--font-site-mono);
   font-weight: 800;
 }
 
@@ -1147,7 +1159,7 @@ select {
 
 .writing-card time {
   color: var(--muted-soft);
-  font-family: var(--font-geist-mono), monospace;
+  font-family: var(--font-site-mono);
   font-size: 12px;
 }
 
@@ -1223,7 +1235,7 @@ select {
 
 .page-stat-grid strong {
   color: #17203b;
-  font-family: var(--font-geist-mono), monospace;
+  font-family: var(--font-site-mono);
   font-size: 18px;
   line-height: 1.1;
 }
@@ -1290,6 +1302,7 @@ select {
   background: var(--panel);
   box-shadow: 0 20px 60px rgba(64, 72, 130, 0.07);
   backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
 }
 
 .simple-card {
@@ -1320,7 +1333,7 @@ select {
 
 .project-row span {
   color: var(--accent-strong);
-  font-family: var(--font-geist-mono), monospace;
+  font-family: var(--font-site-mono);
   font-size: 12px;
 }
 
@@ -1448,9 +1461,10 @@ select {
   border-radius: 999px;
   color: rgba(255, 255, 255, 0.66);
   background: rgba(5, 8, 22, 0.56);
-  font-family: var(--font-geist-mono), monospace;
+  font-family: var(--font-site-mono);
   font-size: 11px;
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .projects-globe-section-home {
@@ -1578,19 +1592,19 @@ select {
     width: min(100%, 760px);
     min-height: auto;
     padding: 18px;
-    border: 1px solid rgba(86, 70, 232, 0.14);
+    border: 1px solid rgba(86, 70, 232, 0.16);
     border-radius: 18px;
     background:
-      radial-gradient(circle at 48% 38%, rgba(109, 92, 255, 0.2), transparent 34%),
-      radial-gradient(circle at 84% 18%, rgba(59, 140, 255, 0.16), transparent 28%),
-      linear-gradient(135deg, rgba(255, 255, 255, 0.68), rgba(241, 246, 255, 0.46));
+      radial-gradient(circle at 48% 38%, rgba(109, 92, 255, 0.05), transparent 34%),
+      radial-gradient(circle at 84% 18%, rgba(59, 140, 255, 0.032), transparent 28%),
+      linear-gradient(135deg, rgba(255, 255, 255, 0.045), rgba(241, 246, 255, 0.018));
     box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.86),
-      0 32px 90px rgba(55, 70, 130, 0.13);
+      inset 0 1px 0 rgba(255, 255, 255, 0.28),
+      0 24px 70px rgba(55, 70, 130, 0.1);
     margin: 0 auto;
     transform: none;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
   }
 
   .studio-panel-body {
@@ -1854,13 +1868,14 @@ select {
     display: none;
   }
 
-  .hero-description-mobile {
+  .hero .hero-content > .hero-description-mobile {
     display: block;
     max-width: 382px;
     margin-top: 16px;
-    color: #536079;
-    font-size: 15px;
-    line-height: 1.7;
+    color: #34405d;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.72;
   }
 
   .hero-actions {

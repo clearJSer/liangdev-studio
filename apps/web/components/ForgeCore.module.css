@@ -226,7 +226,7 @@
   box-shadow:
     0 12px 30px rgba(30, 64, 175, 0.1),
     0 0 18px rgba(37, 99, 235, 0.08);
-  font-family: var(--font-geist-mono), monospace;
+  font-family: var(--font-site-mono);
   font-size: 12px;
   font-weight: 820;
   line-height: 1;
@@ -235,12 +235,13 @@
   transform: translate(-50%, -50%) rotate(var(--label-start));
   animation: orbitLabelFace var(--orbit-duration) linear infinite;
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   will-change: transform;
 }
 
 .orbitCopyItem small {
   color: #1f2a44;
-  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-site-sans);
   font-size: 10.5px;
   font-weight: 760;
 }

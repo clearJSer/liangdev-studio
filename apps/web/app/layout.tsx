@@ -3,13 +3,34 @@ import localFont from "next/font/local";
 import { siteContent } from "../content";
 import "./globals.css";
 import "./site.css";
+import "./browser-compat.css";
 
 const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
+  src: "./fonts/GeistVF.woff2",
+  display: "swap",
+  fallback: [
+    "PingFang SC",
+    "Microsoft YaHei",
+    "Noto Sans SC",
+    "system-ui",
+    "-apple-system",
+    "BlinkMacSystemFont",
+    "Segoe UI",
+    "sans-serif",
+  ],
   variable: "--font-geist-sans",
 });
 const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
+  src: "./fonts/GeistMonoVF.woff2",
+  display: "swap",
+  fallback: [
+    "SFMono-Regular",
+    "Consolas",
+    "Liberation Mono",
+    "Menlo",
+    "Monaco",
+    "monospace",
+  ],
   variable: "--font-geist-mono",
 });
 

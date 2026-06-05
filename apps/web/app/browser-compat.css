@@ -1,0 +1,130 @@
+/**
+ * 职责：集中维护主流浏览器的基础渲染差异修正，保证官网视觉以 Chrome 效果为基准。
+ */
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button,
+input,
+textarea,
+select {
+  -webkit-appearance: none;
+  appearance: none;
+  border-radius: 0;
+}
+
+button,
+summary,
+a {
+  -webkit-tap-highlight-color: rgba(109, 92, 255, 0.14);
+}
+
+img,
+svg,
+canvas,
+video {
+  max-width: 100%;
+}
+
+canvas {
+  display: block;
+}
+
+summary {
+  list-style: none;
+}
+
+summary::marker {
+  display: none;
+  content: "";
+}
+
+@supports (min-height: 100svh) {
+  body,
+  .site-shell {
+    min-height: 100svh;
+  }
+}
+
+@supports not (min-height: 100svh) {
+  body,
+  .site-shell {
+    min-height: 100vh;
+  }
+
+  .hero {
+    min-height: clamp(560px, 62vh, 700px);
+  }
+
+  .site-main > .hero:first-child {
+    min-height: clamp(620px, calc(62vh + 80px), 760px);
+  }
+
+  .page-intro {
+    min-height: clamp(360px, 42vh, 480px);
+  }
+}
+
+@supports not (aspect-ratio: 1 / 1) {
+  .studio-core-wrap [role="img"],
+  .experiment-media,
+  .projects-globe-panel {
+    min-height: 320px;
+  }
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .site-header,
+  .studio-panel-head,
+  .stage-node,
+  .studio-pipeline span,
+  .orbit-card,
+  .build-card,
+  .writing-card,
+  .page-intro-panel,
+  .simple-card,
+  .project-row,
+  .contact-note,
+  .contact-link-card,
+  .mobile-nav {
+    background-color: rgba(255, 255, 255, 0.94);
+  }
+
+  .projects-globe-status {
+    background-color: rgba(5, 8, 22, 0.72);
+  }
+}
+
+@supports not selector(:focus-visible) {
+  a:focus,
+  button:focus,
+  summary:focus,
+  [tabindex]:focus {
+    outline: 2px solid rgba(109, 92, 255, 0.48);
+    outline-offset: 3px;
+  }
+}
+
+@supports (-webkit-touch-callout: none) {
+  .site-header,
+  .studio-os-panel,
+  .page-intro-panel,
+  .build-card,
+  .writing-card,
+  .simple-card,
+  .project-row,
+  .contact-note,
+  .contact-link-card {
+    backface-visibility: hidden;
+    will-change: transform;
+  }
+}

@@ -61,7 +61,7 @@ export const zhContent: SiteContent = {
     eyebrow: "AI NATIVE BUILDER STUDIO",
     title: "立足 AI 新世代，以 AI-Native 范式锻造产品与工具",
     description:
-      "YiForge Studio 是深耕 AI-Native 体系的独立研发工作室。我们跳出传统软件工程的固有范式，依托全链路 AI 工作流，将智能能力锚定真实业务链路，交付可商业化上线的软件与定制化工具。",
+      "YiForge Studio 是深耕 AI-Native 的独立研发工作室。我们用全链路 AI 工作流，把真实业务需求转化为可上线的软件产品与定制工具。",
     actions: [
       { href: "/contact", label: "联系合作", variant: "primary" },
       { href: "/projects", label: "范式案例", variant: "secondary" },

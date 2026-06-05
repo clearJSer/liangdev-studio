@@ -61,6 +61,15 @@ specs/
 - 每个函数必须有 JSDoc 注释
 - 新增文件必须说明它的职责
 
+## 浏览器样式兼容约定
+
+- 官网视觉以 Chrome 渲染效果为基准，主流浏览器必须主动对齐 Chrome。
+- 当前兼容目标写在根目录 `package.json` 的 `browserslist`：Chrome、Edge、Firefox、Safari、iOS Safari、Android Chrome 最近两个主版本。
+- 新增或修改 `backdrop-filter`、`mask-image`、`appearance`、`text-size-adjust`、3D transform、视口单位（`svh` / `dvh` / `vh`）、表单控件默认样式、`aspect-ratio`、`:focus-visible` 时，必须同步考虑主流浏览器差异。
+- 需要全站生效的浏览器修正统一放在 `apps/web/app/browser-compat.css`；页面或组件里的局部样式必须同时写标准属性、必要的 `-webkit-` 前缀，以及 Firefox 等不支持特性的 `@supports not (...)` fallback。
+- 不要只依赖提示词记忆浏览器差异；能沉淀为 CSS fallback、前缀或兼容层规则的，优先落到代码里。
+- Codex、Claude Code、CC 等 AI 协作工具处理样式任务时，提交前必须检查主流浏览器敏感属性，并说明是否已补齐 Chrome / Edge / Firefox / Safari 一致性处理。
+
 ## 协作规范
 
 - 修改现有文件前，先告诉我你打算改什么，为什么
