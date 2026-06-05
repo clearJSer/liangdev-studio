@@ -23,11 +23,28 @@ export const metadata: Metadata = {
  * 渲染构建记录页面的首版可用结构。
  */
 export default function BlogPage() {
+  const writingItems = siteContent.home.writing.items;
+  const latestWriting = writingItems[0];
+
   return (
     <SiteShell>
-      <PageIntro content={siteContent.pages.blog} />
+      <PageIntro content={siteContent.pages.blog}>
+        <div className="page-stat-grid" aria-label="构建记录摘要">
+          <span>
+            <strong>{writingItems.length}</strong>
+            篇记录
+          </span>
+          <span>
+            <strong>{latestWriting?.date}</strong>
+            最近更新
+          </span>
+        </div>
+        <p className="page-intro-note">
+          {latestWriting?.title}
+        </p>
+      </PageIntro>
       <section className="page-section writing-list" aria-label="构建记录列表">
-        {siteContent.home.writing.items.map((item) => (
+        {writingItems.map((item) => (
           <article className="writing-card" key={item.title}>
             <time>{item.date}</time>
             <h2>{item.title}</h2>

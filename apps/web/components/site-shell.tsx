@@ -7,12 +7,14 @@ import Image from "next/image";
 import type { ReactNode } from "react";
 import { siteContent } from "../content";
 import type { PageContent } from "../content/site";
+import { SiteNavLinks } from "./site-nav-links";
 
 type SiteShellProps = {
   children: ReactNode;
 };
 
 type PageIntroProps = {
+  children?: ReactNode;
   content: PageContent;
 };
 
@@ -43,11 +45,7 @@ export function SiteShell({ children }: SiteShellProps) {
           />
         </Link>
         <nav className="site-nav" aria-label="主导航">
-          {siteContent.navigation.map((item) => (
-            <Link key={item.href} href={item.href}>
-              {item.label}
-            </Link>
-          ))}
+          <SiteNavLinks items={siteContent.navigation} />
         </nav>
         <details className="mobile-menu">
           <summary aria-label="打开导航菜单">
@@ -56,11 +54,7 @@ export function SiteShell({ children }: SiteShellProps) {
             <span aria-hidden="true" />
           </summary>
           <nav className="mobile-nav" aria-label="移动端导航">
-            {siteContent.navigation.map((item) => (
-              <Link key={item.href} href={item.href}>
-                {item.label}
-              </Link>
-            ))}
+            <SiteNavLinks items={siteContent.navigation} />
           </nav>
         </details>
         <div className="header-spacer" aria-hidden="true" />
@@ -111,12 +105,15 @@ export function SiteShell({ children }: SiteShellProps) {
 /**
  * 渲染二级页面的统一标题区，页面正文后续逐步补齐。
  */
-export function PageIntro({ content }: PageIntroProps) {
+export function PageIntro({ children, content }: PageIntroProps) {
   return (
     <section className="page-intro" aria-labelledby="page-title">
-      <p className="eyebrow">{content.eyebrow}</p>
-      <h1 id="page-title">{content.title}</h1>
-      <p>{content.description}</p>
+      <div className="page-intro-copy">
+        <p className="eyebrow">{content.eyebrow}</p>
+        <h1 id="page-title">{content.title}</h1>
+        <p>{content.description}</p>
+      </div>
+      {children ? <div className="page-intro-panel">{children}</div> : null}
     </section>
   );
 }

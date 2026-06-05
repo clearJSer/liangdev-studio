@@ -26,7 +26,21 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <SiteShell>
-      <PageIntro content={siteContent.pages.contact} />
+      <PageIntro content={siteContent.pages.contact}>
+        <div className="page-stat-grid" aria-label="联系摘要">
+          <span>
+            <strong>{siteContent.contactLinks.length}</strong>
+            联系入口
+          </span>
+          <span>
+            <strong>Remote</strong>
+            协作方式
+          </span>
+        </div>
+        <Link className="page-intro-link" href={`mailto:${siteContent.email}`}>
+          {siteContent.email}
+        </Link>
+      </PageIntro>
       <section className="page-section contact-detail" aria-label="联系方式">
         <div className="contact-panel contact-panel-wide">
           {siteContent.contactLinks.map((item) => (

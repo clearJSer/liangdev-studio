@@ -43,7 +43,23 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <SiteShell>
-      <PageIntro content={siteContent.pages.about} />
+      <PageIntro content={siteContent.pages.about}>
+        <div className="page-stat-grid" aria-label="工作方式摘要">
+          <span>
+            <strong>{principles.length}</strong>
+            构建原则
+          </span>
+          <span>
+            <strong>{siteContent.home.philosophy.items.length}</strong>
+            长期理念
+          </span>
+        </div>
+        <div className="page-chip-list" aria-label="工作室关键词">
+          {siteContent.home.philosophy.items.map((item) => (
+            <span key={item.title}>{item.title}</span>
+          ))}
+        </div>
+      </PageIntro>
       <section className="page-section simple-grid" aria-label="工作室理念">
         {principles.map((item) => (
           <article className="simple-card" key={item.title}>
