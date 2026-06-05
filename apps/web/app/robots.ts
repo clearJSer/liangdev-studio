@@ -5,6 +5,8 @@
 import type { MetadataRoute } from "next";
 import { siteContent } from "../content";
 
+export const dynamic = "force-static";
+
 /**
  * 生成 YiForge Studio 官网 robots.txt。
  */
