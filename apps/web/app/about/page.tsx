@@ -73,6 +73,16 @@ export default function AboutPage() {
             <li key={item}>{item}</li>
           ))}
         </ul>
+        <div className="about-direction-inline">
+          <p className="eyebrow">{aboutContent.directions.eyebrow}</p>
+          <h3>{aboutContent.directions.title}</h3>
+          <p>{aboutContent.directions.description}</p>
+          <ul aria-label="长期构建方向">
+            {aboutContent.directions.items.map((item) => (
+              <li key={item.title}>{item.title}</li>
+            ))}
+          </ul>
+        </div>
       </section>
 
       <section className="page-section about-workflow" aria-labelledby="about-workflow-title">
@@ -94,20 +104,23 @@ export default function AboutPage() {
         </ol>
       </section>
 
-      <section
-        className="page-section about-directions"
-        aria-labelledby="about-directions-title"
-      >
-        <div className="about-section-heading">
-          <p className="eyebrow">{aboutContent.directions.eyebrow}</p>
-          <h2 id="about-directions-title">{aboutContent.directions.title}</h2>
-          <p>{aboutContent.directions.description}</p>
+      <section className="page-section about-ledger" aria-labelledby="about-ledger-title">
+        <div className="about-section-copy">
+          <p className="eyebrow">{aboutContent.ledger.eyebrow}</p>
+          <h2 id="about-ledger-title">{aboutContent.ledger.title}</h2>
+          <p>{aboutContent.ledger.description}</p>
         </div>
-        <ul className="about-direction-list" aria-label="长期构建方向">
-          {aboutContent.directions.items.map((item) => (
-            <li key={item.title}>{item.title}</li>
+        <dl className="about-ledger-list" aria-label="工作室成本账单">
+          {aboutContent.ledger.items.map((item) => (
+            <div key={item.label}>
+              <dt>{item.label}</dt>
+              <dd>
+                <strong>{item.value}</strong>
+                <span>{item.year}</span>
+              </dd>
+            </div>
           ))}
-        </ul>
+        </dl>
       </section>
 
       <section className="page-section about-contact-note" aria-label="联系入口">

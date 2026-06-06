@@ -135,6 +135,23 @@ export const aboutContent = {
       },
     ] satisfies AboutDirection[],
   },
+  ledger: {
+    eyebrow: "Studio Ledger",
+    title: "工作室账本",
+    description: "YiForge Studio 目前保持轻量运营，第一阶段主要投入来自域名和开发设备。",
+    items: [
+      {
+        label: "liucodex.com 域名",
+        value: "$10 / 年",
+        year: "2026",
+      },
+      {
+        label: "本地开发设备 Mac mini M4",
+        value: "¥3800",
+        year: "2026",
+      },
+    ],
+  },
   contact: {
     text: "如果你想进一步了解 YiForge Studio，可以从联系页面找到我。",
     href: "/contact",
