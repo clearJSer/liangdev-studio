@@ -4,6 +4,8 @@
 
 import type { MetadataRoute } from "next";
 import { siteContent } from "../content";
+import { getAllProjects } from "../content/projects";
+import { getAllWritingSummaries } from "../content/writings";
 
 export const dynamic = "force-static";
 
@@ -14,11 +16,24 @@ const routes = ["", "/projects", "/blog", "/about", "/contact"] as const;
  */
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = `https://${siteContent.domain}`;
-
-  return routes.map((route) => ({
+  const staticRoutes = routes.map((route) => ({
     url: `${baseUrl}${route}`,
     lastModified: new Date(),
-    changeFrequency: route === "" ? "weekly" : "monthly",
+    changeFrequency: route === "" ? ("weekly" as const) : ("monthly" as const),
     priority: route === "" ? 1 : 0.7,
   }));
+  const projectRoutes = getAllProjects().map((project) => ({
+    url: `${baseUrl}/projects/${project.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
+  const writingRoutes = getAllWritingSummaries().map((writing) => ({
+    url: `${baseUrl}/blog/${writing.slug}`,
+    lastModified: new Date(writing.date),
+    changeFrequency: "monthly" as const,
+    priority: 0.75,
+  }));
+
+  return [...staticRoutes, ...projectRoutes, ...writingRoutes];
 }

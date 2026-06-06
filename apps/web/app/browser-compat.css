@@ -93,6 +93,9 @@ summary::marker {
   .page-intro-panel,
   .simple-card,
   .project-row,
+  .detail-panel,
+  .about-feature,
+  .article-meta,
   .contact-note,
   .contact-link-card,
   .mobile-nav {
@@ -122,6 +125,9 @@ summary::marker {
   .writing-card,
   .simple-card,
   .project-row,
+  .detail-panel,
+  .about-feature,
+  .article-meta,
   .contact-note,
   .contact-link-card {
     backface-visibility: hidden;

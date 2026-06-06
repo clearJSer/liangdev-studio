@@ -3,9 +3,11 @@
  */
 
 import type { Metadata } from "next";
+import Link from "next/link";
 import { PageIntro, SiteShell } from "../../components/site-shell";
 import { ProjectsFlightsGlobe } from "../../components/ProjectsFlightsGlobe";
 import { siteContent } from "../../content";
+import { getAllProjects } from "../../content/projects";
 
 export const metadata: Metadata = {
   title: siteContent.seo.projects.title,
@@ -24,7 +26,7 @@ export const metadata: Metadata = {
  * 渲染项目页面的首版可用结构。
  */
 export default function ProjectsPage() {
-  const projects = siteContent.home.projects.items;
+  const projects = getAllProjects();
   const projectTags = [...new Set(projects.flatMap((project) => project.tags))];
 
   return (
@@ -48,17 +50,24 @@ export default function ProjectsPage() {
       </PageIntro>
       <section className="page-section project-list" aria-label="项目列表">
         {projects.map((project) => (
-          <article className="project-row" key={project.name}>
+          <article className="project-row" key={project.slug}>
             <div>
               <span>{project.status}</span>
-              <h2>{project.name}</h2>
+              <h2>{project.title}</h2>
             </div>
-            <p>{project.description}</p>
-            <ul aria-label={`${project.name} 标签`}>
-              {project.tags.map((tag) => (
-                <li key={tag}>{tag}</li>
-              ))}
-            </ul>
+            <div>
+              <p>{project.summary}</p>
+              <Link className="text-link" href={`/projects/${project.slug}`}>
+                查看项目详情
+              </Link>
+            </div>
+            <div className="project-row-meta">
+              <ul aria-label={`${project.title} 标签`}>
+                {project.tags.map((tag) => (
+                  <li key={tag}>{tag}</li>
+                ))}
+              </ul>
+            </div>
           </article>
         ))}
       </section>

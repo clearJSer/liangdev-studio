@@ -4,6 +4,7 @@ import { HomeFlightsGlobeBackground } from "../components/ProjectsFlightsGlobe";
 import { SiteShell } from "../components/site-shell";
 import { siteContent } from "../content";
 import type { HomeAction, HomeFeature, HomeProject } from "../content/site";
+import { getAllWritingSummaries } from "../content/writings";
 
 /**
  * 将首页行动入口映射为对应的按钮样式。
@@ -31,6 +32,7 @@ function getProjectMediaClassName(project: HomeProject) {
  */
 export default function Home() {
   const home = siteContent.home;
+  const writingItems = getAllWritingSummaries();
 
   return (
     <SiteShell>
@@ -214,12 +216,12 @@ export default function Home() {
           </Link>
         </div>
         <div className="writing-grid">
-          {home.writing.items.map((item) => (
-            <article className="writing-card" key={item.title}>
-              <time>{item.date}</time>
+          {writingItems.map((item) => (
+            <article className="writing-card" key={item.slug}>
+              <time dateTime={item.date}>{item.date}</time>
               <h3>{item.title}</h3>
-              <p>{item.description}</p>
-              <Link className="text-link" href="/blog">
+              <p>{item.summary}</p>
+              <Link className="text-link" href={`/blog/${item.slug}`}>
                 阅读文章
               </Link>
             </article>

@@ -3,8 +3,11 @@
  */
 
 import type { Metadata } from "next";
+import Link from "next/link";
 import { PageIntro, SiteShell } from "../../components/site-shell";
 import { siteContent } from "../../content";
+import { getProjectBySlug } from "../../content/projects";
+import { getAllWritingSummaries } from "../../content/writings";
 
 export const metadata: Metadata = {
   title: siteContent.seo.blog.title,
@@ -23,7 +26,7 @@ export const metadata: Metadata = {
  * 渲染构建记录页面的首版可用结构。
  */
 export default function BlogPage() {
-  const writingItems = siteContent.home.writing.items;
+  const writingItems = getAllWritingSummaries();
   const latestWriting = writingItems[0];
 
   return (
@@ -45,10 +48,21 @@ export default function BlogPage() {
       </PageIntro>
       <section className="page-section writing-list" aria-label="构建记录列表">
         {writingItems.map((item) => (
-          <article className="writing-card" key={item.title}>
-            <time>{item.date}</time>
+          <article className="writing-card" key={item.slug}>
+            <time dateTime={item.date}>{item.date}</time>
             <h2>{item.title}</h2>
-            <p>{item.description}</p>
+            <p>{item.summary}</p>
+            <div className="writing-card-meta" aria-label={`${item.title} 标签`}>
+              {item.tags.map((tag) => (
+                <span key={tag}>{tag}</span>
+              ))}
+            </div>
+            <p className="writing-card-project">
+              所属项目：{getProjectBySlug(item.projectSlug)?.title ?? "未关联项目"}
+            </p>
+            <Link className="text-link" href={`/blog/${item.slug}`}>
+              阅读全文
+            </Link>
           </article>
         ))}
       </section>

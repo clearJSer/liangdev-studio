@@ -3,8 +3,10 @@
  */
 
 import type { Metadata } from "next";
+import Link from "next/link";
 import { PageIntro, SiteShell } from "../../components/site-shell";
 import { siteContent } from "../../content";
+import { getProjectBySlug } from "../../content/projects";
 
 const principles = [
   {
@@ -41,6 +43,8 @@ export const metadata: Metadata = {
  * 渲染关于页面的首版可用结构。
  */
 export default function AboutPage() {
+  const websiteProject = getProjectBySlug("yiforge-studio-website");
+
   return (
     <SiteShell>
       <PageIntro content={siteContent.pages.about}>
@@ -68,6 +72,18 @@ export default function AboutPage() {
           </article>
         ))}
       </section>
+      {websiteProject ? (
+        <section className="page-section about-feature" aria-label="工作室官网项目">
+          <div>
+            <p className="eyebrow">First Project</p>
+            <h2>{websiteProject.title}</h2>
+            <p>{websiteProject.summary}</p>
+          </div>
+          <Link className="text-link" href={`/projects/${websiteProject.slug}`}>
+            查看第一个项目
+          </Link>
+        </section>
+      ) : null}
     </SiteShell>
   );
 }
