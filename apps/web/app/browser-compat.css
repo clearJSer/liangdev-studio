@@ -76,8 +76,7 @@ summary::marker {
 
 @supports not (aspect-ratio: 1 / 1) {
   .studio-core-wrap [role="img"],
-  .experiment-media,
-  .projects-globe-panel {
+  .experiment-media {
     min-height: 320px;
   }
 }
@@ -94,7 +93,6 @@ summary::marker {
   .simple-card,
   .project-row,
   .detail-panel,
-  .about-feature,
   .about-keyword-card,
   .about-definition,
   .about-workflow,
@@ -105,10 +103,6 @@ summary::marker {
   .contact-link-card,
   .mobile-nav {
     background-color: rgba(255, 255, 255, 0.94);
-  }
-
-  .projects-globe-status {
-    background-color: rgba(5, 8, 22, 0.72);
   }
 }
 
@@ -131,7 +125,6 @@ summary::marker {
   .simple-card,
   .project-row,
   .detail-panel,
-  .about-feature,
   .about-keyword-card,
   .about-definition,
   .about-workflow,

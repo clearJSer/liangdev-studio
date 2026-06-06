@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * 职责：在项目页渲染基于 ECharts GL 的全球航线 3D 可视化实验。
+ * 职责：在首页 Hero 背景中渲染基于 ECharts GL 的全球 AI Flow 动效。
  */
 
 import { useEffect, useRef, useState } from "react";
@@ -16,14 +16,6 @@ type FlightsData = {
 };
 
 type RouteLine = [[number, number], [number, number]];
-
-type GlobeVariant = "project" | "home";
-
-type FlightsGlobeCanvasProps = {
-  className: string;
-  showStatus?: boolean;
-  variant: GlobeVariant;
-};
 
 const FLIGHTS_DATA_URL = "/data/echarts/flights.json";
 const WORLD_MAP_URL = "/data/echarts/world.json";
@@ -120,8 +112,8 @@ function createRouteLines(data: FlightsData) {
 /**
  * 为首页抽样航线，降低视觉密度并避免品牌模块变成数据大屏。
  */
-function selectRouteLines(routes: RouteLine[], variant: GlobeVariant) {
-  if (variant === "project" || routes.length <= HOME_ROUTE_LIMIT) {
+function selectRouteLines(routes: RouteLine[]) {
+  if (routes.length <= HOME_ROUTE_LIMIT) {
     return routes;
   }
 
@@ -135,13 +127,7 @@ function selectRouteLines(routes: RouteLine[], variant: GlobeVariant) {
 /**
  * 延迟首页背景图表初始化，把首屏 LCP 资源优先留给标题、字体和关键图片。
  */
-function scheduleChartMount(variant: GlobeVariant, callback: () => void) {
-  if (variant === "project") {
-    callback();
-
-    return () => {};
-  }
-
+function scheduleChartMount(callback: () => void) {
   const timer = window.setTimeout(callback, HOME_GLOBE_DELAY_MS);
 
   return () => {
@@ -150,107 +136,29 @@ function scheduleChartMount(variant: GlobeVariant, callback: () => void) {
 }
 
 /**
- * 根据页面场景返回不同的 ECharts GL 配置片段。
+ * 判断当前环境是否需要加载首页 globe 动效资源。
  */
-function getGlobeOption(variant: GlobeVariant, routes: RouteLine[]) {
-  if (variant === "home") {
-    return {
-      backgroundColor: "transparent",
-      geo3D: {
-        map: "world",
-        shading: "lambert",
-        silent: true,
-        environment: "#f7fbff",
-        postEffect: {
-          enable: true,
-          bloom: {
-            enable: false,
-          },
-        },
-        groundPlane: {
-          show: false,
-        },
-        light: {
-          main: {
-            intensity: 1.22,
-            alpha: 46,
-            beta: 18,
-          },
-          ambient: {
-            intensity: 0.78,
-          },
-        },
-        viewControl: {
-          distance: 82,
-          alpha: 82,
-          panMouseButton: "left",
-          rotateMouseButton: "right",
-        },
-        itemStyle: {
-          color: "#9fb6e8",
-          borderColor: "rgba(58, 77, 145, 0.68)",
-          borderWidth: 0.64,
-          opacity: 0.86,
-        },
-        emphasis: {
-          itemStyle: {
-            color: "#93aae0",
-          },
-        },
-        regionHeight: 0.45,
-      },
-      series: [
-        {
-          type: "lines3D",
-          coordinateSystem: "geo3D",
-          effect: {
-            show: true,
-            trailWidth: 2,
-            trailOpacity: 0.58,
-            trailLength: 0.24,
-            constantSpeed: 3.8,
-          },
-          blendMode: "source-over",
-          lineStyle: {
-            color: "#1e40af",
-            width: 0.18,
-            opacity: 0.16,
-          },
-          data: routes,
-        },
-        {
-          type: "lines3D",
-          coordinateSystem: "geo3D",
-          effect: {
-            show: true,
-            trailWidth: 5.2,
-            trailOpacity: 0.96,
-            trailLength: 0.06,
-            constantSpeed: 5.8,
-          },
-          blendMode: "source-over",
-          lineStyle: {
-            color: "#172554",
-            width: 0.34,
-            opacity: 0.42,
-          },
-          data: routes.filter((_, index) => index % 9 === 0),
-        },
-      ],
-    };
-  }
+function shouldMountHomeGlobe() {
+  return !window.matchMedia(
+    "(max-width: 720px), (prefers-reduced-motion: reduce)",
+  ).matches;
+}
 
+/**
+ * 返回首页 AI Flow 的 ECharts GL 配置。
+ */
+function getGlobeOption(routes: RouteLine[]) {
   return {
+    backgroundColor: "transparent",
     geo3D: {
       map: "world",
       shading: "lambert",
       silent: true,
-      environment: "#07101f",
+      environment: "#f7fbff",
       postEffect: {
         enable: true,
         bloom: {
-          enable: true,
-          intensity: 0.12,
+          enable: false,
         },
       },
       groundPlane: {
@@ -258,32 +166,32 @@ function getGlobeOption(variant: GlobeVariant, routes: RouteLine[]) {
       },
       light: {
         main: {
-          intensity: 1.35,
-          alpha: 44,
-          beta: 24,
+          intensity: 1.22,
+          alpha: 46,
+          beta: 18,
         },
         ambient: {
-          intensity: 0.62,
+          intensity: 0.78,
         },
       },
       viewControl: {
-        distance: 76,
+        distance: 82,
         alpha: 82,
         panMouseButton: "left",
         rotateMouseButton: "right",
       },
       itemStyle: {
-        color: "#15213a",
-        borderColor: "rgba(126, 166, 255, 0.46)",
-        borderWidth: 0.55,
-        opacity: 0.96,
+        color: "#9fb6e8",
+        borderColor: "rgba(58, 77, 145, 0.68)",
+        borderWidth: 0.64,
+        opacity: 0.86,
       },
       emphasis: {
         itemStyle: {
-          color: "#1e2b4a",
+          color: "#93aae0",
         },
       },
-      regionHeight: 0.9,
+      regionHeight: 0.45,
     },
     series: [
       {
@@ -291,18 +199,36 @@ function getGlobeOption(variant: GlobeVariant, routes: RouteLine[]) {
         coordinateSystem: "geo3D",
         effect: {
           show: true,
-          trailWidth: 1,
-          trailOpacity: 0.32,
-          trailLength: 0.16,
-          constantSpeed: 5,
+          trailWidth: 2,
+          trailOpacity: 0.58,
+          trailLength: 0.24,
+          constantSpeed: 3.8,
         },
-        blendMode: "lighter",
+        blendMode: "source-over",
         lineStyle: {
-          color: "#8db7ff",
+          color: "#1e40af",
           width: 0.18,
-          opacity: 0.035,
+          opacity: 0.16,
         },
         data: routes,
+      },
+      {
+        type: "lines3D",
+        coordinateSystem: "geo3D",
+        effect: {
+          show: true,
+          trailWidth: 5.2,
+          trailOpacity: 0.96,
+          trailLength: 0.06,
+          constantSpeed: 5.8,
+        },
+        blendMode: "source-over",
+        lineStyle: {
+          color: "#172554",
+          width: 0.34,
+          opacity: 0.42,
+        },
+        data: routes.filter((_, index) => index % 9 === 0),
       },
     ],
   };
@@ -311,22 +237,19 @@ function getGlobeOption(variant: GlobeVariant, routes: RouteLine[]) {
 /**
  * 渲染可复用的 ECharts GL 全球航线画布。
  */
-function FlightsGlobeCanvas({
-  className,
-  showStatus = true,
-  variant,
-}: FlightsGlobeCanvasProps) {
+function FlightsGlobeCanvas() {
   const chartRef = useRef<HTMLDivElement>(null);
   const [isChartReady, setIsChartReady] = useState(false);
-  const [status, setStatus] = useState("Loading global routes");
 
   useEffect(() => {
+    if (!shouldMountHomeGlobe()) {
+      return () => {};
+    }
+
     let disposed = false;
     let cleanup = () => {};
     let cancelScheduledMount = () => {};
     let readyFrame = 0;
-
-    setIsChartReady(false);
 
     /**
      * 初始化 ECharts GL 图表，并绑定窗口事件。
@@ -361,8 +284,8 @@ function FlightsGlobeCanvas({
 
       const chart = echarts.init(container);
       const allRoutes = createRouteLines(flightsData);
-      const routes = selectRouteLines(allRoutes, variant);
-      const option = getGlobeOption(variant, routes);
+      const routes = selectRouteLines(allRoutes);
+      const option = getGlobeOption(routes);
 
       chart.setOption(option as Parameters<typeof chart.setOption>[0]);
       readyFrame = window.requestAnimationFrame(() => {
@@ -370,11 +293,6 @@ function FlightsGlobeCanvas({
           setIsChartReady(true);
         }
       });
-      setStatus(
-        variant === "home"
-          ? "Global AI Flow"
-          : `${routes.length.toLocaleString("en-US")} routes rendered`,
-      );
 
       /**
        * 响应容器尺寸变化，保持图表铺满画布。
@@ -383,31 +301,16 @@ function FlightsGlobeCanvas({
         chart.resize();
       }
 
-      /**
-       * 按键时切换 lines3D 的流动效果，复刻官方示例交互。
-       */
-      function handleKeyDown() {
-        chart.dispatchAction({
-          type: "lines3DToggleEffect",
-          seriesIndex: 0,
-        });
-      }
-
       window.addEventListener("resize", handleResize);
-      window.addEventListener("keydown", handleKeyDown);
 
       cleanup = () => {
         window.removeEventListener("resize", handleResize);
-        window.removeEventListener("keydown", handleKeyDown);
         chart.dispose();
       };
     }
 
-    cancelScheduledMount = scheduleChartMount(variant, () => {
-      mountChart().catch((error: unknown) => {
-        const message = error instanceof Error ? error.message : "Failed to load chart";
-        setStatus(message);
-      });
+    cancelScheduledMount = scheduleChartMount(() => {
+      mountChart().catch(() => {});
     });
 
     return () => {
@@ -416,12 +319,11 @@ function FlightsGlobeCanvas({
       cancelScheduledMount();
       cleanup();
     };
-  }, [variant]);
+  }, []);
 
   return (
-    <div className={`${className}${isChartReady ? " is-ready" : ""}`}>
+    <div className={`hero-flow-background-canvas${isChartReady ? " is-ready" : ""}`}>
       <div className="projects-globe-chart" ref={chartRef} />
-      {showStatus ? <div className="projects-globe-status">{status}</div> : null}
     </div>
   );
 }
@@ -432,11 +334,7 @@ function FlightsGlobeCanvas({
 export function HomeFlightsGlobeBackground() {
   return (
     <div className="hero-flow-background" aria-hidden="true">
-      <FlightsGlobeCanvas
-        className="hero-flow-background-canvas"
-        showStatus={false}
-        variant="home"
-      />
+      <FlightsGlobeCanvas />
     </div>
   );
 }

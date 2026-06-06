@@ -17,11 +17,6 @@ export type AboutWorkflowStep = {
   title: string;
 };
 
-export type AboutDirection = {
-  description: string;
-  title: string;
-};
-
 export const aboutContent = {
   hero: {
     eyebrow: "About YiForge",
@@ -119,21 +114,17 @@ export const aboutContent = {
     items: [
       {
         title: "真实产品",
-        description: "",
       },
       {
         title: "构建记录",
-        description: "",
       },
       {
         title: "工具与工作流",
-        description: "",
       },
       {
         title: "可上线结果",
-        description: "",
       },
-    ] satisfies AboutDirection[],
+    ],
   },
   ledger: {
     eyebrow: "Studio Ledger",
