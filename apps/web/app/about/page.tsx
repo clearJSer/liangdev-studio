@@ -1,89 +1,121 @@
 /**
- * 职责：提供关于页面路由，承载工作室背景和 Builder 叙事。
+ * 职责：提供关于页面路由，表达工作室初心、主理人定位和 AI Native 构建方式。
  */
 
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageIntro, SiteShell } from "../../components/site-shell";
-import { siteContent } from "../../content";
-import { getProjectBySlug } from "../../content/projects";
-
-const principles = [
-  {
-    title: "从真实问题开始",
-    description:
-      "先确认工作流、用户场景和交付目标，再决定要不要使用 AI、自动化或更复杂的系统。",
-  },
-  {
-    title: "快速做出可用版本",
-    description:
-      "优先把产品推到真实环境中验证，随后根据反馈继续打磨信息架构、体验和工程质量。",
-  },
-  {
-    title: "把 AI 当成构建方式",
-    description:
-      "不仅把 AI 放进功能里，也用 AI 改善需求梳理、开发、测试、内容生产和运营流程。",
-  },
-] as const;
+import { aboutContent } from "../../content/about";
 
 export const metadata: Metadata = {
-  title: siteContent.seo.about.title,
-  description: siteContent.seo.about.description,
+  title: "关于",
+  description:
+    "了解 YiForge Studio 的初心、主理人定位、AI Native 协作方式，以及这个个人 AI 工作室如何持续构建真实项目。",
   alternates: {
     canonical: "/about",
   },
   openGraph: {
-    title: siteContent.seo.about.title,
-    description: siteContent.seo.about.description,
+    title: "关于",
+    description:
+      "了解 YiForge Studio 的初心、主理人定位、AI Native 协作方式，以及这个个人 AI 工作室如何持续构建真实项目。",
     url: "/about",
   },
 };
 
 /**
- * 渲染关于页面的首版可用结构。
+ * 渲染关于页，连接工作室初心、主理人定位和 AI 协作方式。
  */
 export default function AboutPage() {
-  const websiteProject = getProjectBySlug("yiforge-studio-website");
-
   return (
     <SiteShell>
-      <PageIntro content={siteContent.pages.about}>
-        <div className="page-stat-grid" aria-label="工作方式摘要">
-          <span>
-            <strong>{principles.length}</strong>
-            构建原则
-          </span>
-          <span>
-            <strong>{siteContent.home.philosophy.items.length}</strong>
-            长期理念
-          </span>
-        </div>
-        <div className="page-chip-list" aria-label="工作室关键词">
-          {siteContent.home.philosophy.items.map((item) => (
-            <span key={item.title}>{item.title}</span>
+      <PageIntro content={aboutContent.hero}>
+        <dl className="about-fact-grid" aria-label="工作室摘要">
+          {aboutContent.facts.map((fact) => (
+            <div key={fact.label}>
+              <dt>{fact.label}</dt>
+              <dd>{fact.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </PageIntro>
+
+      <section className="page-section about-origin" aria-labelledby="about-origin-title">
+        <div className="about-section-copy">
+          <p className="eyebrow">{aboutContent.origin.eyebrow}</p>
+          <h2 id="about-origin-title">{aboutContent.origin.title}</h2>
+          {aboutContent.origin.body.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
           ))}
         </div>
-      </PageIntro>
-      <section className="page-section simple-grid" aria-label="工作室理念">
-        {principles.map((item) => (
-          <article className="simple-card" key={item.title}>
-            <h2>{item.title}</h2>
-            <p>{item.description}</p>
-          </article>
-        ))}
+        <div className="about-keyword-list" aria-label="初心关键词">
+          {aboutContent.keywords.map((keyword) => (
+            <article className="about-keyword-card" key={keyword.title}>
+              <h3>{keyword.title}</h3>
+              <p>{keyword.description}</p>
+            </article>
+          ))}
+        </div>
       </section>
-      {websiteProject ? (
-        <section className="page-section about-feature" aria-label="工作室官网项目">
-          <div>
-            <p className="eyebrow">First Project</p>
-            <h2>{websiteProject.title}</h2>
-            <p>{websiteProject.summary}</p>
-          </div>
-          <Link className="text-link" href={`/projects/${websiteProject.slug}`}>
-            查看第一个项目
-          </Link>
-        </section>
-      ) : null}
+
+      <section
+        className="page-section about-definition"
+        aria-labelledby="about-definition-title"
+      >
+        <div className="about-section-copy">
+          <p className="eyebrow">{aboutContent.definition.eyebrow}</p>
+          <h2 id="about-definition-title">{aboutContent.definition.title}</h2>
+          {aboutContent.definition.body.map((paragraph) => (
+            <p key={paragraph}>{paragraph}</p>
+          ))}
+        </div>
+        <ul className="about-contrast-list" aria-label="工作室边界">
+          {aboutContent.definition.contrasts.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="page-section about-workflow" aria-labelledby="about-workflow-title">
+        <div className="about-section-heading">
+          <p className="eyebrow">{aboutContent.workflow.eyebrow}</p>
+          <h2 id="about-workflow-title">{aboutContent.workflow.title}</h2>
+          <p>{aboutContent.workflow.description}</p>
+        </div>
+        <ol className="about-workflow-list" aria-label="AI 协作流程">
+          {aboutContent.workflow.steps.map((step, index) => (
+            <li key={step.title}>
+              <span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+              <div>
+                <h3>{step.title}</h3>
+                <p>{step.description}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section
+        className="page-section about-directions"
+        aria-labelledby="about-directions-title"
+      >
+        <div className="about-section-heading">
+          <p className="eyebrow">{aboutContent.directions.eyebrow}</p>
+          <h2 id="about-directions-title">{aboutContent.directions.title}</h2>
+          <p>{aboutContent.directions.description}</p>
+        </div>
+        <ul className="about-direction-list" aria-label="长期构建方向">
+          {aboutContent.directions.items.map((item) => (
+            <li key={item.title}>{item.title}</li>
+          ))}
+        </ul>
+      </section>
+
+      <section className="page-section about-contact-note" aria-label="联系入口">
+        <p>{aboutContent.contact.text}</p>
+        <Link className="text-link" href={aboutContent.contact.href}>
+          {aboutContent.contact.label}
+        </Link>
+      </section>
     </SiteShell>
   );
 }

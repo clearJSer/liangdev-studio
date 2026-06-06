@@ -19,10 +19,6 @@ type RouteLine = [[number, number], [number, number]];
 
 type GlobeVariant = "project" | "home";
 
-type ProjectsFlightsGlobeProps = {
-  variant?: GlobeVariant;
-};
-
 type FlightsGlobeCanvasProps = {
   className: string;
   showStatus?: boolean;
@@ -442,34 +438,5 @@ export function HomeFlightsGlobeBackground() {
         variant="home"
       />
     </div>
-  );
-}
-
-/**
- * 渲染项目页的 3D 全球航线图。
- */
-export function ProjectsFlightsGlobe({
-  variant = "project",
-}: ProjectsFlightsGlobeProps) {
-  return (
-    <section
-      className={`projects-globe-section projects-globe-section-${variant}`}
-      aria-labelledby={`${variant}-globe-title`}
-    >
-      <div className="projects-globe-copy">
-        <p className="eyebrow">
-          {variant === "home" ? "Global AI Flow" : "Global Workflow Map"}
-        </p>
-        <h2 id={`${variant}-globe-title`}>
-          {variant === "home" ? "世界范围的 AI 工作流" : "AI-native 项目网络"}
-        </h2>
-        <p>
-          {variant === "home"
-            ? "让想法、上下文与工具调用在全球协作中流动，最终被锻造成真实产品。"
-            : "用 3D 航线图表达 YiForge Studio 正在连接工具、工作流与全球化协作方式。"}
-        </p>
-      </div>
-      <FlightsGlobeCanvas className="projects-globe-panel" variant={variant} />
-    </section>
   );
 }

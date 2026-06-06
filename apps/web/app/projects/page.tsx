@@ -5,7 +5,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageIntro, SiteShell } from "../../components/site-shell";
-import { ProjectsFlightsGlobe } from "../../components/ProjectsFlightsGlobe";
 import { siteContent } from "../../content";
 import { getAllProjects } from "../../content/projects";
 
@@ -35,7 +34,7 @@ export default function ProjectsPage() {
         <div className="page-stat-grid" aria-label="项目摘要">
           <span>
             <strong>{projects.length}</strong>
-            实验方向
+            项目
           </span>
           <span>
             <strong>{projectTags.length}</strong>
@@ -49,11 +48,15 @@ export default function ProjectsPage() {
         </div>
       </PageIntro>
       <section className="page-section project-list" aria-label="项目列表">
-        {projects.map((project) => (
+        {projects.map((project, index) => (
           <article className="project-row" key={project.slug}>
-            <div>
-              <span>{project.status}</span>
+            <div className="project-row-number" aria-label={`项目 ${index + 1}`}>
+              <span>项目</span>
+              <strong>{String(index + 1).padStart(2, "0")}</strong>
+            </div>
+            <div className="project-row-heading">
               <h2>{project.title}</h2>
+              <span>{project.status}</span>
             </div>
             <div>
               <p>{project.summary}</p>
@@ -70,8 +73,19 @@ export default function ProjectsPage() {
             </div>
           </article>
         ))}
+        <aside className="project-coming-soon" aria-label="后续项目提示">
+          <div className="project-coming-soon-mark" aria-hidden="true">
+            Next
+          </div>
+          <div>
+            <h2>更多项目正在构建中</h2>
+            <p>
+              YiForge Studio 会持续把新的 AI 工具、产品实验和构建记录沉淀到这里。
+            </p>
+          </div>
+          <span>敬请期待</span>
+        </aside>
       </section>
-      <ProjectsFlightsGlobe />
     </SiteShell>
   );
 }
