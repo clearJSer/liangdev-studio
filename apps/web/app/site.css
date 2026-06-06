@@ -1201,6 +1201,27 @@ select {
   margin-top: 24px;
 }
 
+.writing-card-link {
+  display: block;
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+.writing-card-link:hover,
+.writing-card-link:focus-visible {
+  border-color: rgba(109, 92, 255, 0.24);
+  box-shadow: 0 24px 64px rgba(64, 72, 130, 0.12);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+.writing-card-link:hover .text-link,
+.writing-card-link:focus-visible .text-link {
+  color: var(--accent);
+}
+
 .page-intro {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(300px, 360px);
@@ -1350,6 +1371,26 @@ select {
   gap: 24px;
   align-items: center;
   padding: 26px;
+}
+
+.project-row-link {
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
+}
+
+.project-row-link:hover,
+.project-row-link:focus-visible {
+  border-color: rgba(109, 92, 255, 0.24);
+  box-shadow: 0 24px 64px rgba(64, 72, 130, 0.12);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+.project-row-link:hover .text-link,
+.project-row-link:focus-visible .text-link {
+  color: var(--accent);
 }
 
 .project-row-number {

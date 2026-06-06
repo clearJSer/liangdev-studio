@@ -48,7 +48,11 @@ export default function BlogPage() {
       </PageIntro>
       <section className="page-section writing-list" aria-label="构建记录列表">
         {writingItems.map((item) => (
-          <article className="writing-card" key={item.slug}>
+          <Link
+            className="writing-card writing-card-link"
+            href={`/blog/${item.slug}`}
+            key={item.slug}
+          >
             <time dateTime={item.date}>{item.date}</time>
             <h2>{item.title}</h2>
             <p>{item.summary}</p>
@@ -60,10 +64,8 @@ export default function BlogPage() {
             <p className="writing-card-project">
               所属项目：{getProjectBySlug(item.projectSlug)?.title ?? "未关联项目"}
             </p>
-            <Link className="text-link" href={`/blog/${item.slug}`}>
-              阅读全文
-            </Link>
-          </article>
+            <span className="text-link">阅读全文</span>
+          </Link>
         ))}
       </section>
     </SiteShell>

@@ -49,7 +49,11 @@ export default function ProjectsPage() {
       </PageIntro>
       <section className="page-section project-list" aria-label="项目列表">
         {projects.map((project, index) => (
-          <article className="project-row" key={project.slug}>
+          <Link
+            className="project-row project-row-link"
+            href={`/projects/${project.slug}`}
+            key={project.slug}
+          >
             <div className="project-row-number" aria-label={`项目 ${index + 1}`}>
               <span>项目</span>
               <strong>{String(index + 1).padStart(2, "0")}</strong>
@@ -60,9 +64,7 @@ export default function ProjectsPage() {
             </div>
             <div>
               <p>{project.summary}</p>
-              <Link className="text-link" href={`/projects/${project.slug}`}>
-                查看项目详情
-              </Link>
+              <span className="text-link">查看项目详情</span>
             </div>
             <div className="project-row-meta">
               <ul aria-label={`${project.title} 标签`}>
@@ -71,7 +73,7 @@ export default function ProjectsPage() {
                 ))}
               </ul>
             </div>
-          </article>
+          </Link>
         ))}
         <aside className="project-coming-soon" aria-label="后续项目提示">
           <div className="project-coming-soon-mark" aria-hidden="true">
