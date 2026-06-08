@@ -32,6 +32,7 @@ export type HomeFeature = {
   title: string;
   description: string;
   status: string;
+  links?: NavigationItem[];
   tone: "violet" | "blue" | "mint" | "orange" | "neutral";
 };
 

@@ -143,6 +143,16 @@ export default async function WritingDetailPage({
         </div>
         <div className="article-content">
           {writing.blocks.map((block) => renderMarkdownBlock(block))}
+          {project ? (
+            <aside className="article-project-cta" aria-label="关联项目">
+              <span>Linked Project</span>
+              <h2>{project.title}</h2>
+              <p>{project.summary}</p>
+              <Link className="page-intro-link" href={`/projects/${project.slug}`}>
+                查看项目详情
+              </Link>
+            </aside>
+          ) : null}
         </div>
       </article>
     </SiteShell>

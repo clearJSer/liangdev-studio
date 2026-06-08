@@ -76,36 +76,47 @@ export const zhContent: SiteContent = {
       eyebrow: "Product Pipeline",
       title: "当前研发管线",
       description:
-        "围绕图像自动化、工作流引擎和可上线工具，把 AI 能力推进到真实业务场景。",
+        "一个已上线的工作室官网项目正在持续迭代，多个 AI 生成工具也在开发中，等待完成后逐步对外呈现。",
       items: [
         {
-          title: "图片自动延展",
-          description: "面向平台尺寸、素材投放和内容生产场景，自动补全图片边界。",
-          status: "Building",
+          title: "YiForge Studio 官网 PC 项目",
+          description:
+            "工作室第一个真实上线项目，正在完善作品集、构建记录和内容闭环。",
+          status: "已上线 / 持续迭代",
+          links: [
+            {
+              href: "/projects/yiforge-studio-website",
+              label: "查看项目",
+            },
+            {
+              href: "/blog/building-studio-website-with-ai",
+              label: "阅读构建记录",
+            },
+          ],
           tone: "violet",
+        },
+        {
+          title: "图片自动延展工具",
+          description: "面向平台尺寸、素材投放和内容生产场景，自动补全图片边界。",
+          status: "开发中 / 未上线",
+          tone: "blue",
         },
         {
           title: "AI 风格转换",
           description: "把图像修复、风格化和创意处理沉淀成可复用的视觉工作流。",
-          status: "Exploring",
-          tone: "blue",
+          status: "开发中 / 未上线",
+          tone: "mint",
         },
         {
           title: "全家福生成",
           description: "探索更自然的人像合成与家庭影像质感生成，面向真实交付体验。",
-          status: "Concepting",
-          tone: "mint",
+          status: "开发中 / 未上线",
+          tone: "orange",
         },
         {
           title: "AI 工作流引擎",
           description: "将 Prompt、Agent、代码执行和人工审核组织为可观察的任务管线。",
-          status: "Core",
-          tone: "orange",
-        },
-        {
-          title: "更多实验",
-          description: "持续孵化面向独立开发、业务自动化和内容生产的小型产品工具。",
-          status: "Lab",
+          status: "开发中 / 未上线",
           tone: "neutral",
         },
       ],

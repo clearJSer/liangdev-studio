@@ -148,6 +148,15 @@ export default function Home() {
               </span>
               <h3>{item.title}</h3>
               <p>{item.description}</p>
+              {item.links ? (
+                <div className="build-card-links">
+                  {item.links.map((link) => (
+                    <Link className="text-link" href={link.href} key={link.href}>
+                      {link.label}
+                    </Link>
+                  ))}
+                </div>
+              ) : null}
               <span className="build-status">{item.status}</span>
               <span className="progress-line" aria-hidden="true" />
             </article>

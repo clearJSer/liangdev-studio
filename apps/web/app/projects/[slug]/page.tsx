@@ -67,6 +67,7 @@ export default async function ProjectDetailPage({
   }
 
   const relatedWritings = getWritingSummariesByProject(project.slug);
+  const latestRelatedWriting = relatedWritings[0];
 
   return (
     <SiteShell>
@@ -120,6 +121,14 @@ export default async function ProjectDetailPage({
                   {link.label}
                 </Link>
               ))}
+              {latestRelatedWriting ? (
+                <Link
+                  className="page-intro-link"
+                  href={`/blog/${latestRelatedWriting.slug}`}
+                >
+                  阅读构建记录
+                </Link>
+              ) : null}
             </div>
           </div>
 
@@ -154,19 +163,23 @@ export default async function ProjectDetailPage({
 
           <section className="detail-panel" aria-labelledby="related-writing-title">
             <h2 id="related-writing-title">关联构建记录</h2>
-            <div className="related-list">
-              {relatedWritings.map((writing) => (
-                <Link
-                  className="related-card"
-                  href={`/blog/${writing.slug}`}
-                  key={writing.slug}
-                >
-                  <time dateTime={writing.date}>{writing.date}</time>
-                  <strong>{writing.title}</strong>
-                  <span>{writing.summary}</span>
-                </Link>
-              ))}
-            </div>
+            {relatedWritings.length > 0 ? (
+              <div className="related-list">
+                {relatedWritings.map((writing) => (
+                  <Link
+                    className="related-card"
+                    href={`/blog/${writing.slug}`}
+                    key={writing.slug}
+                  >
+                    <time dateTime={writing.date}>{writing.date}</time>
+                    <strong>{writing.title}</strong>
+                    <span>{writing.summary}</span>
+                  </Link>
+                ))}
+              </div>
+            ) : (
+              <p>这个项目的构建记录会在后续迭代中补齐。</p>
+            )}
           </section>
         </div>
       </section>

@@ -1034,6 +1034,17 @@ select {
   margin-top: 10px;
 }
 
+.build-card-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.build-card-links .text-link {
+  font-size: 13px;
+}
+
 .build-status {
   align-self: end;
   margin-top: 22px;
@@ -1738,6 +1749,40 @@ select {
   border-left: 3px solid var(--accent);
   border-radius: 0 8px 8px 0;
   background: rgba(109, 92, 255, 0.08);
+}
+
+.article-project-cta {
+  display: grid;
+  gap: 12px;
+  margin-top: 44px;
+  padding: 24px;
+  border: 1px solid rgba(109, 92, 255, 0.08);
+  border-radius: 8px;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.74), rgba(239, 244, 255, 0.54)),
+    radial-gradient(circle at 96% 0%, rgba(109, 92, 255, 0.12), transparent 32%);
+  box-shadow: 0 20px 60px rgba(64, 72, 130, 0.07);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.article-project-cta span {
+  color: var(--accent-strong);
+  font-family: var(--font-site-mono);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.article-project-cta h2 {
+  margin-top: 0;
+  color: #17203b;
+  font-size: 22px;
+  line-height: 1.45;
+}
+
+.article-project-cta p {
+  margin-top: 0;
 }
 
 .about-fact-grid {
