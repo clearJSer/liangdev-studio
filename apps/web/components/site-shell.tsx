@@ -6,11 +6,13 @@ import Link from "next/link";
 import Image from "next/image";
 import type { ReactNode } from "react";
 import { siteContent } from "../content";
-import type { PageContent } from "../content/site";
+import type { PageContent, SiteContent } from "../content/site";
+import { LanguageSwitch } from "./language-switch";
 import { SiteNavLinks } from "./site-nav-links";
 
 type SiteShellProps = {
   children: ReactNode;
+  content?: SiteContent;
 };
 
 type PageIntroProps = {
@@ -19,13 +21,60 @@ type PageIntroProps = {
 };
 
 /**
+ * 根据语言内容生成页面外壳里不可复用到内容文件的标签。
+ */
+function getShellLabels(content: SiteContent) {
+  if (content.locale === "en") {
+    return {
+      brandLabel: "YiForge Studio home",
+      contactCta: "Have an idea or collaboration in mind?",
+      contactPage: "Contact page",
+      footerDescription:
+        "An independent studio building AI-native products, workflows, and developer tools.",
+      footerProjectLink: "Project direction",
+      footerProjects: "Projects",
+      footerWriting: "Build Notes",
+      footerAbout: "About",
+      footerNavLabel: "Footer navigation",
+      navLabel: "Primary navigation",
+      mobileMenuLabel: "Open navigation menu",
+      mobileNavLabel: "Mobile navigation",
+      primaryAction: "Contact",
+    };
+  }
+
+  return {
+    brandLabel: "YiForge Studio 首页",
+    contactCta: "有兴趣的想法或合作机会？",
+    contactPage: "联系页面",
+    footerDescription: "一个持续创造 AI-native 产品、工作流和开发者工具的独立工作室。",
+    footerProjectLink: "项目方向",
+    footerProjects: "项目",
+    footerWriting: "构建记录",
+    footerAbout: "关于",
+    footerNavLabel: "页脚导航",
+    navLabel: "主导航",
+    mobileMenuLabel: "打开导航菜单",
+    mobileNavLabel: "移动端导航",
+    primaryAction: "联系我",
+  };
+}
+
+/**
  * 渲染官网所有页面共享的导航、主体和页脚结构。
  */
-export function SiteShell({ children }: SiteShellProps) {
+export function SiteShell({ children, content = siteContent }: SiteShellProps) {
+  const shellLabels = getShellLabels(content);
+  const homeHref = content.locale === "en" ? "/en" : "/";
+  const projectsHref = content.locale === "en" ? "/en/projects" : "/projects";
+  const blogHref = content.locale === "en" ? "/en/blog" : "/blog";
+  const aboutHref = content.locale === "en" ? "/en/about" : "/about";
+  const contactHref = content.locale === "en" ? "/en/contact" : "/contact";
+
   return (
-    <div className="site-shell">
+    <div className="site-shell" lang={content.locale === "en" ? "en" : "zh-CN"}>
       <header className="site-header">
-        <Link className="brand" href="/" aria-label="YiForge Studio 首页">
+        <Link className="brand" href={homeHref} aria-label={shellLabels.brandLabel}>
           <Image
             alt=""
             aria-hidden="true"
@@ -44,20 +93,23 @@ export function SiteShell({ children }: SiteShellProps) {
             width={485}
           />
         </Link>
-        <nav className="site-nav" aria-label="主导航">
-          <SiteNavLinks items={siteContent.navigation} />
+        <nav className="site-nav" aria-label={shellLabels.navLabel}>
+          <SiteNavLinks items={content.navigation} />
         </nav>
+        <div className="header-actions">
+          <LanguageSwitch locale={content.locale} />
+        </div>
         <details className="mobile-menu">
-          <summary aria-label="打开导航菜单">
+          <summary aria-label={shellLabels.mobileMenuLabel}>
             <span aria-hidden="true" />
             <span aria-hidden="true" />
             <span aria-hidden="true" />
           </summary>
-          <nav className="mobile-nav" aria-label="移动端导航">
-            <SiteNavLinks items={siteContent.navigation} />
+          <nav className="mobile-nav" aria-label={shellLabels.mobileNavLabel}>
+            <SiteNavLinks items={content.navigation} />
+            <LanguageSwitch locale={content.locale} />
           </nav>
         </details>
-        <div className="header-spacer" aria-hidden="true" />
       </header>
       <main className="site-main">{children}</main>
       <footer className="site-footer">
@@ -69,32 +121,32 @@ export function SiteShell({ children }: SiteShellProps) {
             src="/brand/yi-forge-studio-outline-transparent.png"
             width={760}
           />
-          <p>一个持续创造 AI-native 产品、工作流和开发者工具的独立工作室。</p>
+          <p>{shellLabels.footerDescription}</p>
           <span>Always building.</span>
         </div>
-        <div className="footer-links" aria-label="页脚导航">
+        <div className="footer-links" aria-label={shellLabels.footerNavLabel}>
           <div>
             <strong>Navigation</strong>
-            <Link href="/projects">项目</Link>
-            <Link href="/blog">构建记录</Link>
-            <Link href="/about">关于</Link>
+            <Link href={projectsHref}>{shellLabels.footerProjects}</Link>
+            <Link href={blogHref}>{shellLabels.footerWriting}</Link>
+            <Link href={aboutHref}>{shellLabels.footerAbout}</Link>
           </div>
           <div>
             <strong>Connect</strong>
-            <Link href={`mailto:${siteContent.email}`}>Email</Link>
-            <Link href="/contact">联系页面</Link>
-            <Link href="/projects">项目方向</Link>
+            <Link href={`mailto:${content.email}`}>Email</Link>
+            <Link href={contactHref}>{shellLabels.contactPage}</Link>
+            <Link href={projectsHref}>{shellLabels.footerProjectLink}</Link>
           </div>
           <div>
             <strong>Contact</strong>
-            <span>{siteContent.email}</span>
+            <span>{content.email}</span>
             <span>Remote / Worldwide</span>
           </div>
         </div>
         <div className="footer-cta">
-          <strong>有兴趣的想法或合作机会？</strong>
-          <Link className="button button-secondary" href="/contact">
-            联系我
+          <strong>{shellLabels.contactCta}</strong>
+          <Link className="button button-secondary" href={contactHref}>
+            {shellLabels.primaryAction}
           </Link>
         </div>
       </footer>

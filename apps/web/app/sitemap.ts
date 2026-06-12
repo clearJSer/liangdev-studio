@@ -10,6 +10,7 @@ import { getAllWritingSummaries } from "../content/writings";
 export const dynamic = "force-static";
 
 const routes = ["", "/projects", "/blog", "/about", "/contact"] as const;
+const englishRoutes = ["/en", "/en/projects", "/en/blog", "/en/about", "/en/contact"] as const;
 
 /**
  * 生成 YiForge Studio 官网静态页面的 sitemap。
@@ -21,6 +22,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(),
     changeFrequency: route === "" ? ("weekly" as const) : ("monthly" as const),
     priority: route === "" ? 1 : 0.7,
+  }));
+  const englishStaticRoutes = englishRoutes.map((route) => ({
+    url: `${baseUrl}${route}`,
+    lastModified: new Date(),
+    changeFrequency: route === "/en" ? ("weekly" as const) : ("monthly" as const),
+    priority: route === "/en" ? 0.9 : 0.65,
   }));
   const projectRoutes = getAllProjects().map((project) => ({
     url: `${baseUrl}/projects/${project.slug}`,
@@ -35,5 +42,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.75,
   }));
 
-  return [...staticRoutes, ...projectRoutes, ...writingRoutes];
+  return [...staticRoutes, ...englishStaticRoutes, ...projectRoutes, ...writingRoutes];
 }

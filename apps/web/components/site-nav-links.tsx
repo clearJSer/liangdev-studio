@@ -20,6 +20,10 @@ function isActiveNavigationItem(pathname: string, href: string) {
     return pathname === "/";
   }
 
+  if (href === "/en") {
+    return pathname === "/en";
+  }
+
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
