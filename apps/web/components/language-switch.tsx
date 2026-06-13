@@ -7,6 +7,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { Locale } from "../content/site";
+import { saveLocalePreference } from "./locale-preference";
 
 type LanguageSwitchProps = {
   locale: Locale;
@@ -72,6 +73,7 @@ function getChinesePath(pathname: string) {
 export function LanguageSwitch({ locale }: LanguageSwitchProps) {
   const pathname = usePathname();
   const isEnglish = locale === "en";
+  const targetLocale: Locale = isEnglish ? "zh" : "en";
   const targetHref = isEnglish ? getChinesePath(pathname) : getEnglishPath(pathname);
 
   return (
@@ -79,6 +81,9 @@ export function LanguageSwitch({ locale }: LanguageSwitchProps) {
       aria-label={isEnglish ? "切换到中文版" : "Switch to English version"}
       className="language-switch"
       href={targetHref}
+      onClick={() => {
+        saveLocalePreference(targetLocale);
+      }}
     >
       {isEnglish ? "中文" : "EN"}
     </Link>

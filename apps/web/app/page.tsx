@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ForgeCore } from "../components/ForgeCore";
+import { LocaleAutoRedirect } from "../components/locale-auto-redirect";
 import { HomeFlightsGlobeBackground } from "../components/ProjectsFlightsGlobe";
 import { SiteShell } from "../components/site-shell";
 import { siteContent } from "../content";
@@ -36,6 +37,7 @@ export default function Home() {
 
   return (
     <SiteShell>
+      <LocaleAutoRedirect />
       <section className="hero" aria-labelledby="home-title">
         <HomeFlightsGlobeBackground />
 
