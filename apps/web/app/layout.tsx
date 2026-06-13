@@ -41,11 +41,13 @@ export const metadata: Metadata = {
     template: `%s | ${siteContent.name}`,
   },
   description: siteContent.seo.home.description,
+  keywords: siteContent.seo.home.keywords,
   alternates: {
     canonical: "/",
     languages: {
       "zh-CN": "/",
       en: "/en",
+      "x-default": "/",
     },
   },
   icons: {

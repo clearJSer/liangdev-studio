@@ -2,29 +2,17 @@
  * 职责：提供英文项目列表页面，展示工作室项目入口和当前案例状态。
  */
 
-import type { Metadata } from "next";
 import Link from "next/link";
 import { PageIntro, SiteShell } from "../../../components/site-shell";
 import { enContent } from "../../../content/en";
 import { getAllProjects } from "../../../content/projects";
+import { createEnglishMetadata } from "../metadata";
 
-export const metadata: Metadata = {
-  title: enContent.seo.projects.title,
-  description: enContent.seo.projects.description,
-  alternates: {
-    canonical: "/en/projects",
-    languages: {
-      "zh-CN": "/projects",
-      en: "/en/projects",
-    },
-  },
-  openGraph: {
-    title: enContent.seo.projects.title,
-    description: enContent.seo.projects.description,
-    url: "/en/projects",
-    locale: "en_US",
-  },
-};
+export const metadata = createEnglishMetadata({
+  path: "/en/projects",
+  seo: enContent.seo.projects,
+  zhPath: "/projects",
+});
 
 /**
  * 渲染英文项目页，先桥接现有中文项目详情。

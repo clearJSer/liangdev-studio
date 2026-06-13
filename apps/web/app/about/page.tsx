@@ -5,14 +5,21 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageIntro, SiteShell } from "../../components/site-shell";
+import { siteContent } from "../../content";
 import { aboutContent } from "../../content/about";
 
 export const metadata: Metadata = {
   title: "关于",
   description:
     "了解 YiForge Studio 的初心、主理人定位、AI Native 协作方式，以及这个个人 AI 工作室如何持续构建真实项目。",
+  keywords: siteContent.seo.about.keywords,
   alternates: {
     canonical: "/about",
+    languages: {
+      "zh-CN": "/about",
+      en: "/en/about",
+      "x-default": "/about",
+    },
   },
   openGraph: {
     title: "关于",

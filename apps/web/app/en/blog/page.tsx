@@ -2,30 +2,18 @@
  * 职责：提供英文构建记录列表页面，展示当前文章入口和后续英文内容说明。
  */
 
-import type { Metadata } from "next";
 import Link from "next/link";
 import { PageIntro, SiteShell } from "../../../components/site-shell";
 import { enContent } from "../../../content/en";
 import { getProjectBySlug } from "../../../content/projects";
 import { getAllWritingSummaries } from "../../../content/writings";
+import { createEnglishMetadata } from "../metadata";
 
-export const metadata: Metadata = {
-  title: enContent.seo.blog.title,
-  description: enContent.seo.blog.description,
-  alternates: {
-    canonical: "/en/blog",
-    languages: {
-      "zh-CN": "/blog",
-      en: "/en/blog",
-    },
-  },
-  openGraph: {
-    title: enContent.seo.blog.title,
-    description: enContent.seo.blog.description,
-    url: "/en/blog",
-    locale: "en_US",
-  },
-};
+export const metadata = createEnglishMetadata({
+  path: "/en/blog",
+  seo: enContent.seo.blog,
+  zhPath: "/blog",
+});
 
 /**
  * 渲染英文构建记录页，先桥接现有中文文章。

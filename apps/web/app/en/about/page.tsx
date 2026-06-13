@@ -2,28 +2,16 @@
  * 职责：提供英文关于页面，说明工作室定位、工作方式和长期方向。
  */
 
-import type { Metadata } from "next";
 import Link from "next/link";
 import { PageIntro, SiteShell } from "../../../components/site-shell";
 import { enContent } from "../../../content/en";
+import { createEnglishMetadata } from "../metadata";
 
-export const metadata: Metadata = {
-  title: enContent.seo.about.title,
-  description: enContent.seo.about.description,
-  alternates: {
-    canonical: "/en/about",
-    languages: {
-      "zh-CN": "/about",
-      en: "/en/about",
-    },
-  },
-  openGraph: {
-    title: enContent.seo.about.title,
-    description: enContent.seo.about.description,
-    url: "/en/about",
-    locale: "en_US",
-  },
-};
+export const metadata = createEnglishMetadata({
+  path: "/en/about",
+  seo: enContent.seo.about,
+  zhPath: "/about",
+});
 
 const facts = [
   { label: "Studio", value: "YiForge Studio" },

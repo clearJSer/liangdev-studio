@@ -16,6 +16,7 @@ export type ContactLink = NavigationItem & {
 export type SeoContent = {
   title: string;
   description: string;
+  keywords: string[];
 };
 
 export type HomeAction = NavigationItem & {

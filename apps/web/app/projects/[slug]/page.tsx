@@ -42,6 +42,13 @@ export async function generateMetadata({
   return {
     title: project.title,
     description: project.summary,
+    keywords: [
+      project.title,
+      ...project.tags,
+      ...project.stack,
+      "YiForge Studio",
+      "AI Native",
+    ],
     alternates: {
       canonical: `/projects/${project.slug}`,
     },

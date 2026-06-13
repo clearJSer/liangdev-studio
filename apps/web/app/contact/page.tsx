@@ -10,8 +10,14 @@ import { siteContent } from "../../content";
 export const metadata: Metadata = {
   title: siteContent.seo.contact.title,
   description: siteContent.seo.contact.description,
+  keywords: siteContent.seo.contact.keywords,
   alternates: {
     canonical: "/contact",
+    languages: {
+      "zh-CN": "/contact",
+      en: "/en/contact",
+      "x-default": "/contact",
+    },
   },
   openGraph: {
     title: siteContent.seo.contact.title,

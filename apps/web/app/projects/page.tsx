@@ -11,8 +11,14 @@ import { getAllProjects } from "../../content/projects";
 export const metadata: Metadata = {
   title: siteContent.seo.projects.title,
   description: siteContent.seo.projects.description,
+  keywords: siteContent.seo.projects.keywords,
   alternates: {
     canonical: "/projects",
+    languages: {
+      "zh-CN": "/projects",
+      en: "/en/projects",
+      "x-default": "/projects",
+    },
   },
   openGraph: {
     title: siteContent.seo.projects.title,

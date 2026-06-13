@@ -12,8 +12,14 @@ import { getAllWritingSummaries } from "../../content/writings";
 export const metadata: Metadata = {
   title: siteContent.seo.blog.title,
   description: siteContent.seo.blog.description,
+  keywords: siteContent.seo.blog.keywords,
   alternates: {
     canonical: "/blog",
+    languages: {
+      "zh-CN": "/blog",
+      en: "/en/blog",
+      "x-default": "/blog",
+    },
   },
   openGraph: {
     title: siteContent.seo.blog.title,

@@ -2,7 +2,6 @@
  * 职责：提供 YiForge Studio 英文首页路由，承载英文首屏、项目管线和联系入口。
  */
 
-import type { Metadata } from "next";
 import Link from "next/link";
 import { ForgeCore } from "../../components/ForgeCore";
 import { HomeFlightsGlobeBackground } from "../../components/ProjectsFlightsGlobe";
@@ -10,26 +9,14 @@ import { SiteShell } from "../../components/site-shell";
 import { enContent } from "../../content/en";
 import type { HomeAction, HomeFeature, HomeProject } from "../../content/site";
 import { getAllWritingSummaries } from "../../content/writings";
+import { createEnglishMetadata } from "./metadata";
 
-export const metadata: Metadata = {
-  title: {
-    absolute: enContent.seo.home.title,
-  },
-  description: enContent.seo.home.description,
-  alternates: {
-    canonical: "/en",
-    languages: {
-      "zh-CN": "/",
-      en: "/en",
-    },
-  },
-  openGraph: {
-    title: enContent.seo.home.title,
-    description: enContent.seo.home.description,
-    url: "/en",
-    locale: "en_US",
-  },
-};
+export const metadata = createEnglishMetadata({
+  absoluteTitle: true,
+  path: "/en",
+  seo: enContent.seo.home,
+  zhPath: "/",
+});
 
 /**
  * 将首页行动入口映射为对应的按钮样式。

@@ -2,28 +2,16 @@
  * 职责：提供英文联系页面，承载合作入口和适合讨论的主题。
  */
 
-import type { Metadata } from "next";
 import Link from "next/link";
 import { PageIntro, SiteShell } from "../../../components/site-shell";
 import { enContent } from "../../../content/en";
+import { createEnglishMetadata } from "../metadata";
 
-export const metadata: Metadata = {
-  title: enContent.seo.contact.title,
-  description: enContent.seo.contact.description,
-  alternates: {
-    canonical: "/en/contact",
-    languages: {
-      "zh-CN": "/contact",
-      en: "/en/contact",
-    },
-  },
-  openGraph: {
-    title: enContent.seo.contact.title,
-    description: enContent.seo.contact.description,
-    url: "/en/contact",
-    locale: "en_US",
-  },
-};
+export const metadata = createEnglishMetadata({
+  path: "/en/contact",
+  seo: enContent.seo.contact,
+  zhPath: "/contact",
+});
 
 /**
  * 渲染英文联系页面。

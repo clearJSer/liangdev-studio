@@ -35,26 +35,67 @@ export const zhContent: SiteContent = {
       title: "YiForge Studio | AI Native Builder Studio",
       description:
         "YiForge Studio 是深耕 AI-Native 体系的独立研发工作室，交付可商业化上线的软件与定制化工具。",
+      keywords: [
+        "YiForge Studio",
+        "AI Native Builder Studio",
+        "AI 工作室",
+        "AI 工作流",
+        "自动化工具",
+        "独立开发",
+        "开发者工具",
+      ],
     },
     projects: {
       title: "项目",
       description:
         "查看 YiForge Studio 正在构建的 AI 产品、自动化工作流和开发者工具实验。",
+      keywords: [
+        "YiForge Studio 项目",
+        "AI 产品",
+        "自动化工作流",
+        "开发者工具",
+        "AI 图像工作流",
+        "AI 工作流引擎",
+      ],
     },
     blog: {
       title: "构建记录",
       description:
         "记录 YiForge Studio 关于 AI Workflow、Agent 系统、独立开发和工程实践的思考。",
+      keywords: [
+        "构建记录",
+        "AI Workflow",
+        "Agent 系统",
+        "独立开发",
+        "AI 协作开发",
+        "工程实践",
+      ],
     },
     about: {
       title: "关于",
       description:
         "了解 YiForge Studio 的定位、工作方式和 AI-native 产品构建理念。",
+      keywords: [
+        "关于 YiForge Studio",
+        "AI Native",
+        "个人 AI 工作室",
+        "独立构建者",
+        "Build in Public",
+        "AI 协作流程",
+      ],
     },
     contact: {
       title: "联系",
       description:
         "联系 YiForge Studio，讨论 AI 工具、自动化工作流、产品原型和技术咨询合作。",
+      keywords: [
+        "联系 YiForge Studio",
+        "AI 工具咨询",
+        "自动化工作流咨询",
+        "产品原型开发",
+        "Next.js 咨询",
+        "技术咨询",
+      ],
     },
   },
   home: {

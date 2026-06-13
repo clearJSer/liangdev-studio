@@ -35,26 +35,67 @@ export const enContent: SiteContent = {
       title: "YiForge Studio | AI Native Builder Studio",
       description:
         "YiForge Studio is an independent AI Native Builder Studio focused on AI workflows, automation tools, and shippable digital products.",
+      keywords: [
+        "YiForge Studio",
+        "AI Native Builder Studio",
+        "AI workflow automation",
+        "AI developer tools",
+        "independent AI studio",
+        "shippable digital products",
+        "creative automation tools",
+      ],
     },
     projects: {
       title: "Projects",
       description:
         "Explore AI products, automation workflows, and developer tool experiments from YiForge Studio.",
+      keywords: [
+        "YiForge Studio projects",
+        "AI product experiments",
+        "automation workflow projects",
+        "developer tool experiments",
+        "AI image workflow",
+        "AI workflow engine",
+      ],
     },
     blog: {
       title: "Build Notes",
       description:
         "Notes from YiForge Studio on AI workflows, agent systems, independent development, and engineering practice.",
+      keywords: [
+        "AI build notes",
+        "AI workflow writing",
+        "agent systems",
+        "independent development",
+        "AI native development",
+        "software engineering notes",
+      ],
     },
     about: {
       title: "About",
       description:
         "Learn about YiForge Studio, its working style, and its AI-native product philosophy.",
+      keywords: [
+        "about YiForge Studio",
+        "AI native product philosophy",
+        "personal AI studio",
+        "independent builder",
+        "build in public",
+        "AI collaboration workflow",
+      ],
     },
     contact: {
       title: "Contact",
       description:
         "Contact YiForge Studio about AI tools, automation workflows, prototypes, and technical consulting.",
+      keywords: [
+        "contact YiForge Studio",
+        "AI workflow consulting",
+        "AI prototype development",
+        "automation tool development",
+        "Next.js consulting",
+        "technical consulting",
+      ],
     },
   },
   home: {
