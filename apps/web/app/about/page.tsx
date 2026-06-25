@@ -46,7 +46,10 @@ export default function AboutPage() {
         </dl>
       </PageIntro>
 
-      <section className="page-section about-origin" aria-labelledby="about-origin-title">
+      <section
+        className="page-section about-origin"
+        aria-labelledby="about-origin-title"
+      >
         <div className="about-section-copy">
           <p className="eyebrow">{aboutContent.origin.eyebrow}</p>
           <h2 id="about-origin-title">{aboutContent.origin.title}</h2>
@@ -92,7 +95,30 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="page-section about-workflow" aria-labelledby="about-workflow-title">
+      <section
+        className="page-section about-agent-goal"
+        aria-labelledby="about-agent-goal-title"
+      >
+        <div className="about-agent-goal-copy">
+          <p className="eyebrow">{aboutContent.agentGoal.eyebrow}</p>
+          <h2 id="about-agent-goal-title">{aboutContent.agentGoal.title}</h2>
+          <p>{aboutContent.agentGoal.description}</p>
+        </div>
+        <div className="about-agent-goal-panel" aria-label="100 个 Agent 目标">
+          <strong>{aboutContent.agentGoal.metric}</strong>
+          <span>{aboutContent.agentGoal.label}</span>
+          <ul>
+            {aboutContent.agentGoal.items.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section
+        className="page-section about-workflow"
+        aria-labelledby="about-workflow-title"
+      >
         <div className="about-section-heading">
           <p className="eyebrow">{aboutContent.workflow.eyebrow}</p>
           <h2 id="about-workflow-title">{aboutContent.workflow.title}</h2>
@@ -101,7 +127,9 @@ export default function AboutPage() {
         <ol className="about-workflow-list" aria-label="AI 协作流程">
           {aboutContent.workflow.steps.map((step, index) => (
             <li key={step.title}>
-              <span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+              <span aria-hidden="true">
+                {String(index + 1).padStart(2, "0")}
+              </span>
               <div>
                 <h3>{step.title}</h3>
                 <p>{step.description}</p>
@@ -111,7 +139,10 @@ export default function AboutPage() {
         </ol>
       </section>
 
-      <section className="page-section about-ledger" aria-labelledby="about-ledger-title">
+      <section
+        className="page-section about-ledger"
+        aria-labelledby="about-ledger-title"
+      >
         <div className="about-section-copy">
           <p className="eyebrow">{aboutContent.ledger.eyebrow}</p>
           <h2 id="about-ledger-title">{aboutContent.ledger.title}</h2>
@@ -130,7 +161,10 @@ export default function AboutPage() {
         </dl>
       </section>
 
-      <section className="page-section about-contact-note" aria-label="联系入口">
+      <section
+        className="page-section about-contact-note"
+        aria-label="联系入口"
+      >
         <p>{aboutContent.contact.text}</p>
         <Link className="text-link" href={aboutContent.contact.href}>
           {aboutContent.contact.label}

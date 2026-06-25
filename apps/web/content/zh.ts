@@ -138,7 +138,8 @@ export const zhContent: SiteContent = {
         },
         {
           title: "图片自动延展工具",
-          description: "面向平台尺寸、素材投放和内容生产场景，自动补全图片边界。",
+          description:
+            "面向平台尺寸、素材投放和内容生产场景，自动补全图片边界。",
           status: "开发中 / 未上线",
           tone: "blue",
         },
@@ -150,13 +151,15 @@ export const zhContent: SiteContent = {
         },
         {
           title: "全家福生成",
-          description: "探索更自然的人像合成与家庭影像质感生成，面向真实交付体验。",
+          description:
+            "探索更自然的人像合成与家庭影像质感生成，面向真实交付体验。",
           status: "开发中 / 未上线",
           tone: "orange",
         },
         {
           title: "AI 工作流引擎",
-          description: "将 Prompt、Agent、代码执行和人工审核组织为可观察的任务管线。",
+          description:
+            "将 Prompt、Agent、代码执行和人工审核组织为可观察的任务管线。",
           status: "开发中 / 未上线",
           tone: "neutral",
         },
@@ -185,11 +188,21 @@ export const zhContent: SiteContent = {
         },
       ],
     },
+    agentGoal: {
+      eyebrow: "Current Goal",
+      title: "短期目标：构建 100 个各具能力的 Agent。",
+      description:
+        "YiForge Studio 正在用真实项目、产品实验和自动化工作流，持续探索 AI Agent 在创作、开发、运营和个人效率中的边界。",
+      metric: "100 Agents",
+      link: {
+        href: "/about",
+        label: "了解这个目标",
+      },
+    },
     projects: {
       eyebrow: "Experiments",
       title: "实验探索",
-      description:
-        "一些正在进行的实验与探索，记录 AI 创造的无限可能。",
+      description: "一些正在进行的实验与探索，记录 AI 创造的无限可能。",
       items: [
         {
           name: "图片自动延展",
@@ -218,8 +231,7 @@ export const zhContent: SiteContent = {
         {
           name: "AI 工作流可视化",
           status: "Workflow",
-          description:
-            "把复杂任务拆解成可观察、可复用、可迭代的 AI 工作流。",
+          description: "把复杂任务拆解成可观察、可复用、可迭代的 AI 工作流。",
           tags: ["Agent", "Workflow"],
           tone: "flow",
         },
@@ -228,8 +240,7 @@ export const zhContent: SiteContent = {
     writing: {
       eyebrow: "Thoughts",
       title: "构建记录",
-      description:
-        "记录思考、实践与复盘，探索 AI 开发的更多可能性。",
+      description: "记录思考、实践与复盘，探索 AI 开发的更多可能性。",
       items: [
         {
           title: "AI 协作开发的一些经验",

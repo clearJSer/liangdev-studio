@@ -64,7 +64,8 @@ export default function Home() {
               {home.description}
             </p>
             <p className="hero-description hero-description-mobile">
-              YiForge Studio 将 AI 工作流、智能能力和工程实践，转化为可上线的软件产品与定制工具。
+              YiForge Studio 将 AI
+              工作流、智能能力和工程实践，转化为可上线的软件产品与定制工具。
             </p>
             <div className="hero-actions" aria-label="首页操作">
               {home.actions.map((action) => (
@@ -131,7 +132,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="home-section build-section" aria-labelledby="build-title">
+      <section
+        className="home-section build-section"
+        aria-labelledby="build-title"
+      >
         <div className="section-row section-row-split">
           <div>
             <p className="eyebrow">{home.build.eyebrow}</p>
@@ -153,7 +157,11 @@ export default function Home() {
               {item.links ? (
                 <div className="build-card-links">
                   {item.links.map((link) => (
-                    <Link className="text-link" href={link.href} key={link.href}>
+                    <Link
+                      className="text-link"
+                      href={link.href}
+                      key={link.href}
+                    >
                       {link.label}
                     </Link>
                   ))}
@@ -187,6 +195,23 @@ export default function Home() {
             </article>
           ))}
         </div>
+      </section>
+
+      <section
+        className="home-section agent-goal-section"
+        aria-labelledby="agent-goal-title"
+      >
+        <div className="agent-goal-kicker">
+          <span>{home.agentGoal.metric}</span>
+          <p className="eyebrow">{home.agentGoal.eyebrow}</p>
+        </div>
+        <div className="agent-goal-copy">
+          <h2 id="agent-goal-title">{home.agentGoal.title}</h2>
+          <p>{home.agentGoal.description}</p>
+        </div>
+        <Link className="text-link" href={home.agentGoal.link.href}>
+          {home.agentGoal.link.label}
+        </Link>
       </section>
 
       <section
@@ -251,7 +276,11 @@ export default function Home() {
         </div>
         <div className="contact-panel">
           {siteContent.contactLinks.map((item) => (
-            <Link className="contact-link-card" href={item.href} key={item.href}>
+            <Link
+              className="contact-link-card"
+              href={item.href}
+              key={item.href}
+            >
               <span>{item.label}</span>
               <p>{item.description}</p>
             </Link>

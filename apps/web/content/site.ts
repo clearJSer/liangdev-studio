@@ -56,6 +56,11 @@ export type HomeWriting = {
   date: string;
 };
 
+export type HomeAgentGoal = PageContent & {
+  metric: string;
+  link: NavigationItem;
+};
+
 export type SiteContent = {
   locale: Locale;
   name: string;
@@ -80,6 +85,7 @@ export type SiteContent = {
     philosophy: PageContent & {
       items: HomePrinciple[];
     };
+    agentGoal: HomeAgentGoal;
     projects: PageContent & {
       items: HomeProject[];
     };

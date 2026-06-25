@@ -22,7 +22,8 @@ export const enContent: SiteContent = {
     {
       href: "mailto:clearjs@163.com",
       label: "clearjs@163.com",
-      description: "Best for collaborations, AI workflows, prototypes, and technical consulting.",
+      description:
+        "Best for collaborations, AI workflows, prototypes, and technical consulting.",
     },
     {
       href: "/en/projects",
@@ -104,7 +105,11 @@ export const enContent: SiteContent = {
     description:
       "YiForge Studio turns AI workflows, software engineering, and product thinking into shippable digital products and custom tools.",
     actions: [
-      { href: "/en/contact", label: "Start a conversation", variant: "primary" },
+      {
+        href: "/en/contact",
+        label: "Start a conversation",
+        variant: "primary",
+      },
       { href: "/en/projects", label: "View projects", variant: "secondary" },
     ],
     intro: {
@@ -193,6 +198,17 @@ export const enContent: SiteContent = {
             "Turn projects, decisions, and lessons into visible artifacts over time.",
         },
       ],
+    },
+    agentGoal: {
+      eyebrow: "Current Goal",
+      title: "A short-term goal: build 100 useful agents.",
+      description:
+        "YiForge Studio is exploring how AI agents can support creation, development, operations, and personal productivity through real projects and workflow experiments.",
+      metric: "100 Agents",
+      link: {
+        href: "/en/about",
+        label: "Read the goal",
+      },
     },
     projects: {
       eyebrow: "Experiments",

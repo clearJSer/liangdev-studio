@@ -30,8 +30,16 @@ body {
   min-height: 100svh;
   color: var(--foreground);
   background:
-    radial-gradient(circle at 70% 4%, rgba(109, 92, 255, 0.16), transparent 30rem),
-    radial-gradient(circle at 8% 28%, rgba(59, 140, 255, 0.12), transparent 28rem),
+    radial-gradient(
+      circle at 70% 4%,
+      rgba(109, 92, 255, 0.16),
+      transparent 30rem
+    ),
+    radial-gradient(
+      circle at 8% 28%,
+      rgba(59, 140, 255, 0.12),
+      transparent 28rem
+    ),
     linear-gradient(180deg, #fbfcff 0%, var(--background) 48%, #fbfcff 100%);
   font-family: var(--font-site-sans);
   text-rendering: optimizeLegibility;
@@ -65,8 +73,16 @@ select {
   border: 1px solid rgba(91, 109, 186, 0.18);
   border-radius: 999px;
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(247, 250, 255, 0.54)),
-    radial-gradient(circle at 18% 0%, rgba(255, 255, 255, 0.92), transparent 42%);
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.78),
+      rgba(247, 250, 255, 0.54)
+    ),
+    radial-gradient(
+      circle at 18% 0%,
+      rgba(255, 255, 255, 0.92),
+      transparent 42%
+    );
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.9),
     inset 0 -1px 0 rgba(91, 109, 186, 0.08),
@@ -233,8 +249,16 @@ select {
   z-index: -1;
   height: 96%;
   background:
-    radial-gradient(circle at 64% 42%, rgba(109, 92, 255, 0.12), transparent 30%),
-    radial-gradient(circle at 78% 34%, rgba(59, 140, 255, 0.09), transparent 26%);
+    radial-gradient(
+      circle at 64% 42%,
+      rgba(109, 92, 255, 0.12),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 78% 34%,
+      rgba(59, 140, 255, 0.09),
+      transparent 26%
+    );
   content: "";
   opacity: 0.9;
   pointer-events: none;
@@ -247,7 +271,12 @@ select {
   left: 0;
   z-index: 1;
   height: 72px;
-  background: linear-gradient(180deg, transparent 0%, rgba(248, 250, 255, 0.2) 74%, rgba(248, 250, 255, 0.42) 100%);
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(248, 250, 255, 0.2) 74%,
+    rgba(248, 250, 255, 0.42) 100%
+  );
   content: "";
   pointer-events: none;
 }
@@ -288,7 +317,13 @@ select {
       rgba(248, 250, 255, 0) 68%,
       rgba(248, 250, 255, 0.02) 100%
     ),
-    linear-gradient(180deg, rgba(248, 250, 255, 0.84) 0%, rgba(248, 250, 255, 0.48) 12%, transparent 34%, rgba(248, 250, 255, 0.36) 100%);
+    linear-gradient(
+      180deg,
+      rgba(248, 250, 255, 0.84) 0%,
+      rgba(248, 250, 255, 0.48) 12%,
+      transparent 34%,
+      rgba(248, 250, 255, 0.36) 100%
+    );
   content: "";
   pointer-events: none;
 }
@@ -299,9 +334,23 @@ select {
   z-index: 0;
   border-radius: 50%;
   background:
-    linear-gradient(12deg, transparent 0 45%, rgba(37, 99, 235, 0.18) 46% 47%, transparent 48% 100%),
-    linear-gradient(168deg, transparent 0 42%, rgba(59, 140, 255, 0.14) 43% 44%, transparent 45% 100%),
-    radial-gradient(ellipse at 50% 52%, rgba(59, 140, 255, 0.08), transparent 58%);
+    linear-gradient(
+      12deg,
+      transparent 0 45%,
+      rgba(37, 99, 235, 0.18) 46% 47%,
+      transparent 48% 100%
+    ),
+    linear-gradient(
+      168deg,
+      transparent 0 42%,
+      rgba(59, 140, 255, 0.14) 43% 44%,
+      transparent 45% 100%
+    ),
+    radial-gradient(
+      ellipse at 50% 52%,
+      rgba(59, 140, 255, 0.08),
+      transparent 58%
+    );
   content: "";
   opacity: 0.72;
   pointer-events: none;
@@ -313,9 +362,7 @@ select {
   inset: 0;
   z-index: 1;
   opacity: 0;
-  filter:
-    saturate(1.62)
-    contrast(1.24)
+  filter: saturate(1.62) contrast(1.24)
     drop-shadow(0 0 16px rgba(30, 64, 175, 0.42))
     drop-shadow(0 0 36px rgba(23, 37, 84, 0.28));
   transition: opacity 900ms ease;
@@ -335,7 +382,12 @@ select {
   position: absolute;
   inset: -46px -34px -44px -40px;
   z-index: -1;
-  background: radial-gradient(ellipse at 18% 46%, rgba(255, 255, 255, 0.86), rgba(255, 255, 255, 0.5) 38%, transparent 62%);
+  background: radial-gradient(
+    ellipse at 18% 46%,
+    rgba(255, 255, 255, 0.86),
+    rgba(255, 255, 255, 0.5) 38%,
+    transparent 62%
+  );
   content: "";
   pointer-events: none;
 }
@@ -487,9 +539,21 @@ select {
   border: 1px solid rgba(86, 70, 232, 0.16);
   border-radius: 26px;
   background:
-    radial-gradient(circle at 50% 48%, rgba(109, 92, 255, 0.04), transparent 36%),
-    radial-gradient(circle at 76% 24%, rgba(59, 140, 255, 0.025), transparent 28%),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.035), rgba(239, 245, 255, 0.012));
+    radial-gradient(
+      circle at 50% 48%,
+      rgba(109, 92, 255, 0.04),
+      transparent 36%
+    ),
+    radial-gradient(
+      circle at 76% 24%,
+      rgba(59, 140, 255, 0.025),
+      transparent 28%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.035),
+      rgba(239, 245, 255, 0.012)
+    );
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.28),
     0 22px 64px rgba(48, 65, 120, 0.1);
@@ -514,8 +578,20 @@ select {
     linear-gradient(90deg, rgba(109, 92, 255, 0.04) 1px, transparent 1px),
     linear-gradient(180deg, rgba(59, 140, 255, 0.04) 1px, transparent 1px);
   background-size: 42px 42px;
-  -webkit-mask-image: linear-gradient(180deg, transparent, black 16%, black 84%, transparent);
-  mask-image: linear-gradient(180deg, transparent, black 16%, black 84%, transparent);
+  -webkit-mask-image: linear-gradient(
+    180deg,
+    transparent,
+    black 16%,
+    black 84%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    180deg,
+    transparent,
+    black 16%,
+    black 84%,
+    transparent
+  );
 }
 
 .studio-os-panel::after {
@@ -523,7 +599,12 @@ select {
   bottom: 92px;
   left: 46px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(109, 92, 255, 0.32), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(109, 92, 255, 0.32),
+    transparent
+  );
 }
 
 .studio-panel-head,
@@ -628,9 +709,7 @@ select {
   left: 50%;
   width: min(560px, 100%);
   opacity: 1;
-  filter:
-    saturate(1.2)
-    contrast(1.08)
+  filter: saturate(1.2) contrast(1.08)
     drop-shadow(0 16px 42px rgba(86, 70, 232, 0.12));
   transform: translate(-50%, -50%);
 }
@@ -769,8 +848,22 @@ select {
   aspect-ratio: 1.62;
   border-radius: 50%;
   background:
-    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.96) 0 15%, rgba(120, 112, 255, 0.24) 16% 22%, transparent 24%),
-    conic-gradient(from 16deg, transparent 0 12%, rgba(109, 92, 255, 0.48) 13% 19%, transparent 20% 38%, rgba(59, 140, 255, 0.3) 39% 46%, transparent 47% 72%, rgba(109, 92, 255, 0.38) 73% 80%, transparent 81% 100%);
+    radial-gradient(
+      circle at 50% 50%,
+      rgba(255, 255, 255, 0.96) 0 15%,
+      rgba(120, 112, 255, 0.24) 16% 22%,
+      transparent 24%
+    ),
+    conic-gradient(
+      from 16deg,
+      transparent 0 12%,
+      rgba(109, 92, 255, 0.48) 13% 19%,
+      transparent 20% 38%,
+      rgba(59, 140, 255, 0.3) 39% 46%,
+      transparent 47% 72%,
+      rgba(109, 92, 255, 0.38) 73% 80%,
+      transparent 81% 100%
+    );
   box-shadow:
     inset 0 0 54px rgba(255, 255, 255, 0.9),
     0 34px 80px rgba(91, 82, 217, 0.18);
@@ -800,7 +893,11 @@ select {
   height: 150px;
   place-items: center;
   border-radius: 50%;
-  background: radial-gradient(circle, #ffffff 0 34%, rgba(255, 255, 255, 0.1) 70%);
+  background: radial-gradient(
+    circle,
+    #ffffff 0 34%,
+    rgba(255, 255, 255, 0.1) 70%
+  );
   filter: drop-shadow(0 24px 26px rgba(86, 70, 232, 0.25));
 }
 
@@ -930,6 +1027,67 @@ select {
   max-width: 230px;
 }
 
+.agent-goal-section {
+  grid-template-columns: minmax(150px, 210px) minmax(0, 1fr) auto;
+  gap: 30px;
+  align-items: center;
+  padding: 32px;
+  border: 1px solid rgba(109, 92, 255, 0.08);
+  border-radius: 8px;
+  background:
+    radial-gradient(
+      circle at 8% 18%,
+      rgba(31, 194, 160, 0.12),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 96% 18%,
+      rgba(255, 137, 66, 0.12),
+      transparent 26%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.74),
+      rgba(239, 244, 255, 0.52)
+    );
+  box-shadow: 0 20px 60px rgba(64, 72, 130, 0.07);
+}
+
+.agent-goal-kicker {
+  display: grid;
+  gap: 8px;
+}
+
+.agent-goal-kicker span {
+  color: var(--accent-strong);
+  font-family: var(--font-site-mono);
+  font-size: clamp(28px, 4vw, 48px);
+  font-weight: 900;
+  line-height: 1;
+}
+
+.agent-goal-kicker .eyebrow {
+  margin-top: 0;
+}
+
+.agent-goal-copy {
+  min-width: 0;
+}
+
+.agent-goal-copy h2 {
+  color: #17203b;
+  font-size: clamp(24px, 2.8vw, 34px);
+  line-height: 1.28;
+}
+
+.agent-goal-copy p {
+  max-width: 720px;
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
 .section-intro h2 {
   font-size: 26px;
 }
@@ -961,7 +1119,11 @@ select {
   border: 1px solid rgba(109, 92, 255, 0.08);
   border-radius: 14px;
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(240, 246, 255, 0.38)),
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.5),
+      rgba(240, 246, 255, 0.38)
+    ),
     linear-gradient(90deg, rgba(109, 92, 255, 0.04) 1px, transparent 1px),
     linear-gradient(180deg, rgba(59, 140, 255, 0.04) 1px, transparent 1px);
   background-size:
@@ -988,7 +1150,11 @@ select {
   min-height: 248px;
   padding: 24px;
   background:
-    radial-gradient(circle at 24px 26px, rgba(109, 92, 255, 0.08), transparent 34px),
+    radial-gradient(
+      circle at 24px 26px,
+      rgba(109, 92, 255, 0.08),
+      transparent 34px
+    ),
     rgba(255, 255, 255, 0.74);
 }
 
@@ -1148,8 +1314,18 @@ select {
 .experiment-media::before {
   inset: 0;
   background:
-    linear-gradient(90deg, transparent 49%, rgba(255, 255, 255, 0.72) 49% 50%, transparent 50%),
-    linear-gradient(180deg, transparent 22%, rgba(255, 255, 255, 0.55) 22% 24%, transparent 24%);
+    linear-gradient(
+      90deg,
+      transparent 49%,
+      rgba(255, 255, 255, 0.72) 49% 50%,
+      transparent 50%
+    ),
+    linear-gradient(
+      180deg,
+      transparent 22%,
+      rgba(255, 255, 255, 0.55) 22% 24%,
+      transparent 24%
+    );
 }
 
 .experiment-media::after {
@@ -1170,7 +1346,13 @@ select {
 .experiment-media-landscape {
   background:
     radial-gradient(circle at 72% 34%, #ffc68d 0 7%, transparent 8%),
-    linear-gradient(145deg, #9bc4ff 0 40%, #3c7ba6 41% 42%, #172b58 43% 46%, #88bde7 47% 100%);
+    linear-gradient(
+      145deg,
+      #9bc4ff 0 40%,
+      #3c7ba6 41% 42%,
+      #172b58 43% 46%,
+      #88bde7 47% 100%
+    );
 }
 
 .experiment-media-portrait {
@@ -1190,8 +1372,16 @@ select {
 
 .experiment-media-flow {
   background:
-    radial-gradient(ellipse at 18% 70%, rgba(109, 92, 255, 0.34), transparent 32%),
-    radial-gradient(ellipse at 72% 44%, rgba(59, 140, 255, 0.32), transparent 30%),
+    radial-gradient(
+      ellipse at 18% 70%,
+      rgba(109, 92, 255, 0.34),
+      transparent 32%
+    ),
+    radial-gradient(
+      ellipse at 72% 44%,
+      rgba(59, 140, 255, 0.32),
+      transparent 30%
+    ),
     linear-gradient(135deg, #eef3ff, #d9e2ff);
 }
 
@@ -1288,7 +1478,11 @@ select {
   border: 1px solid rgba(109, 92, 255, 0.1);
   border-radius: 8px;
   background:
-    radial-gradient(circle at 88% 0%, rgba(109, 92, 255, 0.14), transparent 34%),
+    radial-gradient(
+      circle at 88% 0%,
+      rgba(109, 92, 255, 0.14),
+      transparent 34%
+    ),
     rgba(255, 255, 255, 0.68);
   box-shadow: 0 20px 64px rgba(64, 72, 130, 0.08);
   backdrop-filter: blur(18px);
@@ -1442,8 +1636,16 @@ select {
   border: 1px solid rgba(109, 92, 255, 0.14);
   border-radius: 8px;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.76), rgba(239, 244, 255, 0.64)),
-    radial-gradient(circle at 50% 10%, rgba(109, 92, 255, 0.14), transparent 56%);
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.76),
+      rgba(239, 244, 255, 0.64)
+    ),
+    radial-gradient(
+      circle at 50% 10%,
+      rgba(109, 92, 255, 0.14),
+      transparent 56%
+    );
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.86);
 }
 
@@ -1516,8 +1718,16 @@ select {
   border: 1px dashed rgba(109, 92, 255, 0.2);
   border-radius: 8px;
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(239, 244, 255, 0.42)),
-    radial-gradient(circle at 96% 10%, rgba(109, 92, 255, 0.12), transparent 30%);
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.5),
+      rgba(239, 244, 255, 0.42)
+    ),
+    radial-gradient(
+      circle at 96% 10%,
+      rgba(109, 92, 255, 0.12),
+      transparent 30%
+    );
 }
 
 .project-coming-soon-mark {
@@ -1788,7 +1998,11 @@ select {
   border: 1px solid rgba(109, 92, 255, 0.08);
   border-radius: 8px;
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.74), rgba(239, 244, 255, 0.54)),
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.74),
+      rgba(239, 244, 255, 0.54)
+    ),
     radial-gradient(circle at 96% 0%, rgba(109, 92, 255, 0.12), transparent 32%);
   box-shadow: 0 20px 60px rgba(64, 72, 130, 0.07);
   backdrop-filter: blur(18px);
@@ -1919,6 +2133,105 @@ select {
   padding: clamp(24px, 4vw, 38px);
 }
 
+.about-agent-goal {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 360px);
+  gap: clamp(24px, 5vw, 64px);
+  align-items: stretch;
+  padding: clamp(24px, 4vw, 38px);
+  border: 1px solid rgba(109, 92, 255, 0.08);
+  border-radius: 8px;
+  background:
+    radial-gradient(
+      circle at 12% 12%,
+      rgba(31, 194, 160, 0.12),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 100% 0%,
+      rgba(255, 137, 66, 0.12),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.72),
+      rgba(239, 244, 255, 0.54)
+    );
+  box-shadow: 0 20px 60px rgba(64, 72, 130, 0.07);
+}
+
+.about-agent-goal-copy {
+  min-width: 0;
+}
+
+.about-agent-goal-copy h2 {
+  margin-top: 12px;
+  color: #17203b;
+  font-size: clamp(28px, 3.2vw, 42px);
+  line-height: 1.25;
+}
+
+.about-agent-goal-copy p:not(.eyebrow) {
+  max-width: 760px;
+  margin-top: 18px;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.9;
+}
+
+.about-agent-goal-panel {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  min-height: 100%;
+  padding: 22px;
+  border: 1px solid rgba(109, 92, 255, 0.08);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.66);
+}
+
+.about-agent-goal-panel strong {
+  color: var(--accent-strong);
+  font-family: var(--font-site-mono);
+  font-size: clamp(52px, 8vw, 86px);
+  font-weight: 900;
+  line-height: 0.95;
+}
+
+.about-agent-goal-panel span {
+  color: #17203b;
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.about-agent-goal-panel ul {
+  display: grid;
+  gap: 10px;
+  margin-top: 12px;
+  list-style: none;
+}
+
+.about-agent-goal-panel li {
+  position: relative;
+  padding-left: 16px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.about-agent-goal-panel li::before {
+  position: absolute;
+  top: 0.78em;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-strong);
+  content: "";
+}
+
 .about-definition {
   grid-template-areas:
     "copy contrast"
@@ -2004,7 +2317,11 @@ select {
   border: 1px solid rgba(109, 92, 255, 0.08);
   border-radius: 8px;
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.66), rgba(239, 244, 255, 0.5)),
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.66),
+      rgba(239, 244, 255, 0.5)
+    ),
     radial-gradient(circle at 100% 0%, rgba(109, 92, 255, 0.1), transparent 36%);
   box-shadow: 0 20px 60px rgba(64, 72, 130, 0.07);
   backdrop-filter: blur(18px);
@@ -2259,9 +2576,21 @@ select {
     border: 1px solid rgba(86, 70, 232, 0.16);
     border-radius: 18px;
     background:
-      radial-gradient(circle at 48% 38%, rgba(109, 92, 255, 0.05), transparent 34%),
-      radial-gradient(circle at 84% 18%, rgba(59, 140, 255, 0.032), transparent 28%),
-      linear-gradient(135deg, rgba(255, 255, 255, 0.045), rgba(241, 246, 255, 0.018));
+      radial-gradient(
+        circle at 48% 38%,
+        rgba(109, 92, 255, 0.05),
+        transparent 34%
+      ),
+      radial-gradient(
+        circle at 84% 18%,
+        rgba(59, 140, 255, 0.032),
+        transparent 28%
+      ),
+      linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.045),
+        rgba(241, 246, 255, 0.018)
+      );
     box-shadow:
       inset 0 1px 0 rgba(255, 255, 255, 0.28),
       0 24px 70px rgba(55, 70, 130, 0.1);
@@ -2298,6 +2627,7 @@ select {
   }
 
   .section-row-split,
+  .agent-goal-section,
   .philosophy-section,
   .experiments-section,
   .thoughts-section,
@@ -2357,6 +2687,7 @@ select {
   .article-layout,
   .about-origin,
   .about-definition,
+  .about-agent-goal,
   .about-ledger {
     grid-template-columns: 1fr;
   }
@@ -2612,9 +2943,21 @@ select {
     border: 1px solid rgba(109, 92, 255, 0.12);
     border-radius: 22px;
     background:
-      radial-gradient(circle at 50% 52%, rgba(109, 92, 255, 0.18), transparent 32%),
-      radial-gradient(circle at 88% 18%, rgba(59, 140, 255, 0.16), transparent 26%),
-      linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(239, 244, 255, 0.86)),
+      radial-gradient(
+        circle at 50% 52%,
+        rgba(109, 92, 255, 0.18),
+        transparent 32%
+      ),
+      radial-gradient(
+        circle at 88% 18%,
+        rgba(59, 140, 255, 0.16),
+        transparent 26%
+      ),
+      linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.96),
+        rgba(239, 244, 255, 0.86)
+      ),
       linear-gradient(90deg, rgba(109, 92, 255, 0.08) 1px, transparent 1px),
       linear-gradient(180deg, rgba(109, 92, 255, 0.06) 1px, transparent 1px);
     background-size:
@@ -2656,7 +2999,12 @@ select {
     bottom: 44px;
     left: 32px;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(109, 92, 255, 0.26), transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(109, 92, 255, 0.26),
+      transparent
+    );
   }
 
   .studio-panel-head,
@@ -2809,7 +3157,9 @@ select {
   .simple-card,
   .contact-note,
   .detail-panel,
+  .agent-goal-section,
   .about-definition,
+  .about-agent-goal,
   .about-workflow,
   .about-contact-note,
   .about-ledger,

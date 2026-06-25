@@ -56,6 +56,20 @@ const workflowSteps = [
   },
 ] as const;
 
+const agentGoal = {
+  eyebrow: "Short-term Goal",
+  title: "Build 100 agents as a concrete studio milestone.",
+  description:
+    "The goal is not volume for its own sake. It is a way to test how agents should define tasks, use tools, collaborate with humans, and improve across real scenarios.",
+  metric: "100",
+  label: "agents",
+  items: [
+    "Cover creation, development, operations, knowledge work, and personal productivity.",
+    "Tie each agent to a clear problem instead of a loose demo.",
+    "Turn the process into product lessons, workflows, and public notes.",
+  ],
+} as const;
+
 /**
  * 渲染英文关于页。
  */
@@ -73,7 +87,10 @@ export default function EnglishAboutPage() {
         </dl>
       </PageIntro>
 
-      <section className="page-section about-origin" aria-labelledby="about-origin-title">
+      <section
+        className="page-section about-origin"
+        aria-labelledby="about-origin-title"
+      >
         <div className="about-section-copy">
           <p className="eyebrow">Origin</p>
           <h2 id="about-origin-title">Why this studio exists</h2>
@@ -98,7 +115,30 @@ export default function EnglishAboutPage() {
         </div>
       </section>
 
-      <section className="page-section about-workflow" aria-labelledby="about-workflow-title">
+      <section
+        className="page-section about-agent-goal"
+        aria-labelledby="about-agent-goal-title"
+      >
+        <div className="about-agent-goal-copy">
+          <p className="eyebrow">{agentGoal.eyebrow}</p>
+          <h2 id="about-agent-goal-title">{agentGoal.title}</h2>
+          <p>{agentGoal.description}</p>
+        </div>
+        <div className="about-agent-goal-panel" aria-label="100 agent goal">
+          <strong>{agentGoal.metric}</strong>
+          <span>{agentGoal.label}</span>
+          <ul>
+            {agentGoal.items.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section
+        className="page-section about-workflow"
+        aria-labelledby="about-workflow-title"
+      >
         <div className="about-section-heading">
           <p className="eyebrow">Working Mode</p>
           <h2 id="about-workflow-title">The AI-native workflow</h2>
@@ -111,7 +151,9 @@ export default function EnglishAboutPage() {
         <ol className="about-workflow-list" aria-label="AI-native workflow">
           {workflowSteps.map((step, index) => (
             <li key={step.title}>
-              <span aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+              <span aria-hidden="true">
+                {String(index + 1).padStart(2, "0")}
+              </span>
               <div>
                 <h3>{step.title}</h3>
                 <p>{step.description}</p>
@@ -121,7 +163,10 @@ export default function EnglishAboutPage() {
         </ol>
       </section>
 
-      <section className="page-section about-contact-note" aria-label="Contact link">
+      <section
+        className="page-section about-contact-note"
+        aria-label="Contact link"
+      >
         <p>
           If you want to understand the studio through current work, start with
           the project page or send a short email.

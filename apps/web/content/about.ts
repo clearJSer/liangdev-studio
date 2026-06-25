@@ -72,7 +72,12 @@ export const aboutContent = {
       "YiForge Studio 代表我，但它也比“我个人”更稳定。它是一个个人 AI Native 工作室，用来承载我在 AI 开发、自动化工具、产品构建和内容沉淀上的长期探索。",
       "它不是成熟公司，不是外包团队，也不是普通个人博客。它更像一个正在生长的构建容器：每个项目都是真实实践，每篇构建记录都沉淀一次经验，每一次迭代都让工作室变得更清晰。",
     ],
-    contrasts: ["不是成熟公司", "不是外包团队", "不是普通个人博客", "是个人 AI Native 工作室"],
+    contrasts: [
+      "不是成熟公司",
+      "不是外包团队",
+      "不是普通个人博客",
+      "是个人 AI Native 工作室",
+    ],
   },
   workflow: {
     eyebrow: "AI Native Development",
@@ -82,27 +87,33 @@ export const aboutContent = {
     steps: [
       {
         title: "问题定义",
-        description: "先确认真实场景、目标用户、成功标准和技术约束，再判断 AI 应该参与哪里。",
+        description:
+          "先确认真实场景、目标用户、成功标准和技术约束，再判断 AI 应该参与哪里。",
       },
       {
         title: "上下文工程",
-        description: "用 spec、资料、代码、案例和问题列表组织事实依据，让模型基于上下文工作。",
+        description:
+          "用 spec、资料、代码、案例和问题列表组织事实依据，让模型基于上下文工作。",
       },
       {
         title: "流程编排",
-        description: "把任务拆成模型、工具、代码执行、人工判断和安全边界都清楚的协作流程。",
+        description:
+          "把任务拆成模型、工具、代码执行、人工判断和安全边界都清楚的协作流程。",
       },
       {
         title: "协同实现",
-        description: "AI 参与代码、样式、文档和调试，人持续提供反馈并控制实现方向。",
+        description:
+          "AI 参与代码、样式、文档和调试，人持续提供反馈并控制实现方向。",
       },
       {
         title: "评测验收",
-        description: "用类型检查、构建、页面验证和人工审阅衡量质量，而不是只看模型输出。",
+        description:
+          "用类型检查、构建、页面验证和人工审阅衡量质量，而不是只看模型输出。",
       },
       {
         title: "上线迭代",
-        description: "通过版本管理、静态部署、构建记录和反馈复盘，持续改进产品和工作流。",
+        description:
+          "通过版本管理、静态部署、构建记录和反馈复盘，持续改进产品和工作流。",
       },
     ] satisfies AboutWorkflowStep[],
   },
@@ -126,10 +137,24 @@ export const aboutContent = {
       },
     ],
   },
+  agentGoal: {
+    eyebrow: "Short-term Goal",
+    title: "开发 100 个 Agent，是工作室当前最清晰的阶段目标。",
+    description:
+      "这个目标不是为了堆数量，而是用 100 次足够具体的实践，理解不同场景里的 Agent 应该如何定义任务、调用工具、协作执行、接受反馈并持续改进。",
+    metric: "100",
+    label: "agents",
+    items: [
+      "覆盖创作、开发、运营、知识管理和个人效率等真实场景",
+      "每个 Agent 都尽量对应一个明确问题，而不是停留在概念演示",
+      "把构建过程沉淀为产品经验、工作流方法和公开记录",
+    ],
+  },
   ledger: {
     eyebrow: "Studio Ledger",
     title: "工作室账本",
-    description: "YiForge Studio 目前保持轻量运营，第一阶段主要投入来自域名和开发设备。",
+    description:
+      "YiForge Studio 目前保持轻量运营，第一阶段主要投入来自域名和开发设备。",
     items: [
       {
         label: "liucodex.com 域名",
