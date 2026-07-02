@@ -1,31 +1,31 @@
-# Coding Agent v1 精简技术方案
+# Mini Codex v1 精简技术方案
 
 > 状态：技术方案讨论中。
-> 目标：先跑通一个低成本、本地 CLI、面向 mock 仓库的 Coding Agent 闭环。
+> 目标：先跑通一个低成本、本地 CLI、面向外部目标仓库的 Mini Codex 编程 Agent 闭环。
 
 ---
 
 ## 1. 目标
 
-做 YiForge Studio 第一个 Agent：一个本地命令行 Coding Agent。
+做 YiForge Studio 第一个 Agent：Mini Codex，一个本地命令行编程 Agent。
 
-v1 只要求它能在一个 mock 仓库里完成最小闭环：
+v1 只要求它能在一个外部目标仓库里完成最小闭环。目标仓库不放在本项目源码内，而是在任意目录下打开后启动 CLI，使用方式类似在当前命令行运行 Claude Code。
 
 1. 接收自然语言任务。
-2. 搜索和读取 mock 仓库代码。
+2. 搜索和读取目标仓库代码。
 3. 生成修改计划。
 4. 请求用户确认后编辑文件。
 5. 请求用户确认后运行命令。
 6. 根据测试或类型检查结果继续修复。
 7. 输出总结，并保存 trace。
 
-v1 的学习重点不是模型效果，而是 Coding Agent 的基础架构：模型决策、工具调用、权限确认、上下文组织、trace、失败恢复。
+v1 的学习重点不是模型效果，而是编程 Agent 的基础架构：模型决策、工具调用、权限确认、上下文组织、trace、失败恢复。
 
 ---
 
 ## 2. 不做什么
 
-- 不修改当前真实工作室仓库，先只操作 mock 仓库。
+- 不默认修改当前真实工作室仓库；v1 建议先在任意目录下准备一个可丢弃的练习仓库作为目标仓库。
 - 不接 Claude Code 技术栈和 Claude 专属工具。
 - 不做多 Agent。
 - 不做 RAG、长期 Memory、MCP、网页回放。
@@ -59,7 +59,7 @@ v1 固定使用 LangGraph 作为 Agent 编排框架。
 
 - 使用 LangGraph 表达 Agent 状态、节点、边、循环和停止条件。
 - 使用 LangChain 的 model / tool / schema 抽象，承接 LangGraph 生态。
-- 不直接使用 LangChain `createAgent` 托管整个 Coding Agent。
+- 不直接使用 LangChain `createAgent` 托管整个 Mini Codex。
 - 关键节点仍显式写在代码里，方便学习和调试：计划、工具选择、权限确认、工具执行、结果回填、完成判断。
 - trace 先自己落 JSONL；后续再考虑接 LangSmith。
 
@@ -76,7 +76,7 @@ packages/agent-core/
     model.ts           # 模型适配层，隐藏具体 provider
     permissions.ts     # 写文件、跑命令前的用户确认
     trace.ts           # JSONL trace 写入
-    workspace.ts       # 限定 mock 仓库根目录，防止越界
+    workspace.ts       # 限定目标仓库根目录，防止越界
     tools/
       index.ts         # 工具注册表
       list-files.ts    # 列文件
@@ -85,24 +85,53 @@ packages/agent-core/
       edit-file.ts     # 修改文件
       run-command.ts   # 运行命令
 
-apps/coding-agent/
+apps/mini-codex/
   src/
-    cli.ts             # CLI 入口，负责输入输出和权限交互
-  mock-repos/
-    ts-bugs/           # v1 靶子仓库
-      package.json
-      src/
-      tests/
-  tasks.json           # benchmark 任务清单
+    cli.ts             # CLI 入口，默认以当前工作目录作为目标仓库并进入交互会话
+  fixtures/
+    ts-bugs/           # 开发期可丢弃练习仓库
+  tasks/
+    ts-bugs.json       # benchmark 任务清单，不包含目标仓库源码
 ```
 
 ---
 
-## 5. 核心流程
+## 5. CLI 交互形态
+
+v1 的默认使用方式是交互式会话，而不是每次任务都执行一条完整命令。
+
+```bash
+cd ~/code/some-project
+mini-codex
+```
+
+启动后进入对话模式：
 
 ```txt
-用户任务
-  -> 初始化 mock 仓库上下文
+Mini Codex
+repo: /Users/me/code/some-project
+
+> 修复当前项目里的 TypeScript 类型错误
+```
+
+默认规则：
+
+- 启动目录就是目标仓库。
+- 会话内可以连续输入多个任务。
+- 每个任务共享当前会话的目标仓库上下文。
+- 写文件、运行命令时在会话内询问用户确认。
+- `--repo <path>` 只作为调试和 benchmark 的高级参数，不是日常主入口。
+
+---
+
+## 6. 核心流程
+
+```txt
+启动 CLI
+  -> 解析目标仓库根目录，默认使用当前工作目录
+  -> 初始化目标仓库上下文
+  -> 进入交互式会话
+用户输入任务
   -> 进入 LangGraph 状态图
   -> planner 节点生成下一步计划
   -> model 节点选择工具或输出最终答案
@@ -118,12 +147,12 @@ apps/coding-agent/
 - `maxSteps` 默认 12。
 - `maxToolCalls` 默认 40。
 - `maxCommandMs` 默认 30 秒。
-- 只能访问 mock 仓库目录。
-- 命令只允许在 mock 仓库内运行。
+- 只能访问目标仓库目录。
+- 命令只允许在目标仓库内运行。
 
 ---
 
-## 6. 权限策略
+## 7. 权限策略
 
 默认使用严格交互模式：
 
@@ -141,9 +170,11 @@ apps/coding-agent/
 
 ---
 
-## 7. Mock 仓库与验收
+## 8. 目标仓库与验收
 
-v1 先做一个 `ts-bugs` mock 仓库，放 3 个任务：
+v1 先由用户准备一个可丢弃的 TypeScript 练习仓库，例如本工程内的 `apps/mini-codex/fixtures/ts-bugs`。Mini Codex CLI 可以在该目录下启动；真实使用时也可以在任意外部仓库目录下启动。
+
+benchmark 任务清单只记录任务描述和验证命令，不把练习仓库源码放进本项目。
 
 1. 修复 TypeScript 类型错误。
 2. 修复一个单元测试失败。
@@ -151,15 +182,15 @@ v1 先做一个 `ts-bugs` mock 仓库，放 3 个任务：
 
 验收标准：
 
-- CLI 可以接收任务并驱动完整循环。
-- 至少 1 个 mock 任务能自动修复并通过验证命令。
+- CLI 可以在目标仓库目录下启动交互会话，并接收任务驱动完整循环。
+- 至少 1 个练习仓库任务能自动修复并通过验证命令。
 - 每次写文件和跑命令前都会询问用户。
-- trace 会保存完整事件。
+- trace 会保存完整事件，且不写入目标仓库。
 - `pnpm check-types` 和 `pnpm lint` 通过。
 
 ---
 
-## 8. 后续扩展
+## 9. 后续扩展
 
 v1 跑通后，再逐步加入：
 
@@ -173,7 +204,7 @@ v1 跑通后，再逐步加入：
 
 ---
 
-## 9. 待确认问题
+## 10. 待确认问题
 
 已确认：
 
@@ -181,12 +212,14 @@ v1 跑通后，再逐步加入：
 - 对照模型：DeepSeek `deepseek-v4-flash`。
 - Agent 框架：LangGraph。
 - 模型接入：OpenAI-compatible API。
-- 操作对象：mock 仓库，不直接修改当前真实仓库。
+- 操作对象：外部目标仓库；v1 建议先用可丢弃的练习仓库，不直接修改当前真实工作室仓库。
+- CLI 命令名：`mini-codex`。
+- CLI 形态：默认在目标仓库目录执行 `mini-codex` 并进入交互式会话；`--repo` 仅作为高级参数。
 - 权限模式：写文件和运行命令前都询问用户。
 
 还需要讨论：
 
-1. mock 仓库第一版是否只做 TypeScript 项目？
+1. 练习仓库第一版是否只做 TypeScript 项目？
 2. v1 是否要实现 benchmark 自动模式，还是先只做交互模式？
 3. 工具编辑文件采用整文件覆写、字符串替换，还是 patch/diff 方式？
-4. trace 目录放在 mock 仓库内，还是统一放在 `apps/coding-agent/.agent-runs/`？
+4. trace 目录放在开发期目录 `apps/mini-codex/.agent-runs/`，还是放到用户级目录 `~/.mini-codex/runs/`？
