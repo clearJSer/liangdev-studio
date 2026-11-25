@@ -9,7 +9,7 @@ export type WritingFrontmatter = {
   title: string;
   date: string;
   summary: string;
-  projectSlug: string;
+  projectSlug?: string;
   tags: string[];
 };
 
@@ -107,13 +107,14 @@ function getAllWritings() {
  */
 function parseWritingFile(slug: string, fileContent: string): Writing {
   const { content, frontmatter } = parseFrontmatter(fileContent);
+  const projectSlug = frontmatter.get("projectSlug");
 
   return {
     slug,
     title: readRequiredString(frontmatter, "title"),
     date: readRequiredString(frontmatter, "date"),
     summary: readRequiredString(frontmatter, "summary"),
-    projectSlug: readRequiredString(frontmatter, "projectSlug"),
+    projectSlug: typeof projectSlug === "string" ? projectSlug : undefined,
     tags: readRequiredStringArray(frontmatter, "tags"),
     blocks: parseMarkdownBlocks(content),
   };

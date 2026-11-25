@@ -122,7 +122,7 @@ export const enContent: SiteContent = {
       eyebrow: "Product Pipeline",
       title: "Current Build Pipeline",
       description:
-        "The studio website is live and evolving, while several AI workflow and creative automation tools are moving from experiments toward usable products.",
+        "Explore live projects, ongoing personal work, and AI tools for creative automation and workflows.",
       items: [
         {
           title: "YiForge Studio Website",
@@ -140,6 +140,32 @@ export const enContent: SiteContent = {
             },
           ],
           tone: "violet",
+        },
+        {
+          title: "Gold Cycle Observatory",
+          description:
+            "Compare the estimated value of above-ground gold with U.S. debt over time using two debt measures.",
+          status: "Live / Available to explore",
+          links: [
+            {
+              href: "/projects/gold-treasury-observatory",
+              label: "Project case (Chinese)",
+            },
+          ],
+          tone: "orange",
+        },
+        {
+          title: "Personal Context · AI Decision Framework",
+          description:
+            "Organize health, finances, learning, and work into context you can update, so AI can help compare options and trade-offs.",
+          status: "Personal practice / Iterating",
+          links: [
+            {
+              href: "/projects/my-life-context",
+              label: "View framework (Chinese)",
+            },
+          ],
+          tone: "mint",
         },
         {
           title: "AI Image Outpainting Tool",

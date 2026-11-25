@@ -88,18 +88,25 @@ export default async function ProjectDetailPage({
         <div className="page-stat-grid" aria-label="项目基础信息">
           <span>
             <strong>{project.year}</strong>
-            上线年份
+            {project.yearLabel ?? "上线年份"}
           </span>
-          <span>
-            <strong>{relatedWritings.length}</strong>
-            构建记录
-          </span>
+          {relatedWritings.length > 0 ? (
+            <span>
+              <strong>{relatedWritings.length}</strong>
+              构建记录
+            </span>
+          ) : null}
         </div>
         <div className="page-chip-list" aria-label="项目标签">
           {project.tags.map((tag) => (
             <span key={tag}>{tag}</span>
           ))}
         </div>
+        {project.demo ? (
+          <a className="button button-primary" href={project.demo.href}>
+            {project.demo.label}
+          </a>
+        ) : null}
       </PageIntro>
 
       <section className="page-section detail-layout" aria-label="项目详情">
@@ -122,21 +129,23 @@ export default async function ProjectDetailPage({
                 </div>
               ))}
             </dl>
-            <div className="detail-actions">
-              {project.links.map((link) => (
-                <Link className="page-intro-link" href={link.href} key={link.href}>
-                  {link.label}
-                </Link>
-              ))}
-              {latestRelatedWriting ? (
-                <Link
-                  className="page-intro-link"
-                  href={`/blog/${latestRelatedWriting.slug}`}
-                >
-                  阅读构建记录
-                </Link>
-              ) : null}
-            </div>
+            {project.links.length > 0 || latestRelatedWriting ? (
+              <div className="detail-actions">
+                {project.links.map((link) => (
+                  <Link className="page-intro-link" href={link.href} key={link.href}>
+                    {link.label}
+                  </Link>
+                ))}
+                {latestRelatedWriting ? (
+                  <Link
+                    className="page-intro-link"
+                    href={`/blog/${latestRelatedWriting.slug}`}
+                  >
+                    阅读构建记录
+                  </Link>
+                ) : null}
+              </div>
+            ) : null}
           </div>
 
           <div className="detail-panel">
@@ -165,12 +174,22 @@ export default async function ProjectDetailPage({
               {section.body.map((paragraph) => (
                 <p key={paragraph}>{paragraph}</p>
               ))}
+              {section.items ? (
+                <dl className="detail-facts">
+                  {section.items.map((item) => (
+                    <div key={item.label}>
+                      <dt>{item.label}</dt>
+                      <dd>{item.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              ) : null}
             </section>
           ))}
 
-          <section className="detail-panel" aria-labelledby="related-writing-title">
-            <h2 id="related-writing-title">关联构建记录</h2>
-            {relatedWritings.length > 0 ? (
+          {relatedWritings.length > 0 ? (
+            <section className="detail-panel" aria-labelledby="related-writing-title">
+              <h2 id="related-writing-title">关联构建记录</h2>
               <div className="related-list">
                 {relatedWritings.map((writing) => (
                   <Link
@@ -184,10 +203,8 @@ export default async function ProjectDetailPage({
                   </Link>
                 ))}
               </div>
-            ) : (
-              <p>这个项目的构建记录会在后续迭代中补齐。</p>
-            )}
-          </section>
+            </section>
+          ) : null}
         </div>
       </section>
     </SiteShell>

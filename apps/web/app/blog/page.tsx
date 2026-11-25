@@ -67,9 +67,11 @@ export default function BlogPage() {
                 <span key={tag}>{tag}</span>
               ))}
             </div>
-            <p className="writing-card-project">
-              所属项目：{getProjectBySlug(item.projectSlug)?.title ?? "未关联项目"}
-            </p>
+            {item.projectSlug ? (
+              <p className="writing-card-project">
+                所属项目：{getProjectBySlug(item.projectSlug)?.title ?? "未关联项目"}
+              </p>
+            ) : null}
             <span className="text-link">阅读全文</span>
           </Link>
         ))}

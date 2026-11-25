@@ -117,7 +117,7 @@ export const zhContent: SiteContent = {
       eyebrow: "Product Pipeline",
       title: "当前研发管线",
       description:
-        "一个已上线的工作室官网项目正在持续迭代，多个 AI 生成工具也在开发中，等待完成后逐步对外呈现。",
+        "这里汇集已上线的项目、持续迭代的个人实践，以及开发中的 AI 生成与工作流工具。",
       items: [
         {
           title: "YiForge Studio 官网 PC 项目",
@@ -135,6 +135,32 @@ export const zhContent: SiteContent = {
             },
           ],
           tone: "violet",
+        },
+        {
+          title: "金债比 · 黄金周期观察",
+          description:
+            "用交互图表比较黄金估算市值与美国债务的相对规模，支持切换两种债务口径。",
+          status: "已上线 / 可体验",
+          links: [
+            {
+              href: "/projects/gold-treasury-observatory",
+              label: "查看项目",
+            },
+          ],
+          tone: "orange",
+        },
+        {
+          title: "个人上下文 · AI 决策框架",
+          description:
+            "把健康、财务、学习和工作等信息整理成可更新的上下文，让 AI 帮助比较选项、梳理取舍。",
+          status: "个人实践 / 持续迭代",
+          links: [
+            {
+              href: "/projects/my-life-context",
+              label: "查看框架",
+            },
+          ],
+          tone: "mint",
         },
         {
           title: "图片自动延展工具",

@@ -108,7 +108,7 @@ export default async function WritingDetailPage({
     notFound();
   }
 
-  const project = getProjectBySlug(writing.projectSlug);
+  const project = writing.projectSlug ? getProjectBySlug(writing.projectSlug) : null;
 
   return (
     <SiteShell>

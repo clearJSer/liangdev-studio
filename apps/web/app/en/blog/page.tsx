@@ -55,10 +55,12 @@ export default function EnglishBlogPage() {
                 <span key={tag}>{tag}</span>
               ))}
             </div>
-            <p className="writing-card-project">
-              Linked project:{" "}
-              {getProjectBySlug(item.projectSlug)?.title ?? "Unlinked project"}
-            </p>
+            {item.projectSlug ? (
+              <p className="writing-card-project">
+                Linked project:{" "}
+                {getProjectBySlug(item.projectSlug)?.title ?? "Unlinked project"}
+              </p>
+            ) : null}
             <span className="text-link">Read Chinese note</span>
           </Link>
         ))}

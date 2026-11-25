@@ -1,0 +1,42 @@
+<!doctype html>
+<!-- 金债比作品的本地演示。原站的样式、图表逻辑和公开历史数据随页面提供。 -->
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#122a25">
+  <meta name="description" content="黄金总市值与美国债务规模的比率、历史位置与同期金价。">
+  <title>金债比 · 黄金 / 美国债务</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳至主要内容</a>
+  <header class="masthead"><div class="page-width masthead-inner">
+    <a class="brand" href="#" aria-label="金债比首页"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i></span><span>金债比<small>GOLD / US DEBT</small></span></a>
+    <a class="quiet-button" href="/projects/gold-treasury-observatory">返回作品介绍</a>
+  </div></header>
+
+  <main id="main" class="page-width">
+    <div class="page-heading"><div><h1>黄金 / 美国债务</h1><p>黄金相对美国债务的规模，一眼看清。</p></div><span id="snapshot-date" class="snapshot-date">数据日期 —</span></div>
+    <div id="data-status" class="data-status" role="status">正在载入历史数据…</div>
+
+    <section class="overview" aria-label="当前比率及同期数据">
+      <div class="ratio-summary"><div class="metric-label">当前比率 <span>GOLD / DEBT</span></div><div class="ratio-reading"><strong id="latest-ratio">—</strong><span class="ratio-unit">倍</span><span id="latest-regime" class="regime">—</span></div><p class="ratio-context">黄金总市值 ÷ <span id="active-definition">联邦债务总额（面值）</span></p></div>
+      <div class="supporting-metrics"><div class="secondary-metrics"><div class="secondary-metric"><div class="metric-label">历史百分位</div><strong id="latest-percentile" class="secondary-value">—</strong><p id="percentile-caption" class="metric-note">同口径历史样本</p></div><div class="secondary-metric"><div class="metric-label">同期黄金价格 <span>USD / OZ</span></div><strong id="latest-price" class="secondary-value">—</strong><p id="latest-price-date" class="metric-note">—</p></div></div><div class="formula-metrics"><span>黄金市值 <strong id="latest-gold-cap">—</strong></span><span class="formula-divider" aria-hidden="true">/</span><span>美国债务 <strong id="latest-debt">—</strong></span><span class="formula-unit">万亿美元</span></div></div>
+    </section>
+    <p id="newest-price" class="newest-price"></p>
+
+    <section class="chart-panel" aria-labelledby="chart-title">
+      <div class="chart-toolbar"><h2 id="chart-title">历史比率</h2><div class="chart-controls"><label class="select-control" for="denominator"><span>债务口径</span><select id="denominator" aria-label="债务口径"><option value="gross" selected>联邦债务总额 · 面值</option><option value="market">可交易国债 · 市值</option></select></label><div class="range-buttons" role="group" aria-label="图表时间范围"><button type="button" class="active" data-range="all" aria-pressed="true">全部</button><button type="button" data-range="2000" aria-pressed="false">2000起</button><button type="button" data-range="2015" aria-pressed="false">2015起</button></div></div></div>
+      <div class="threshold-legend" aria-label="比率参考分区"><span><i class="legend-dot low"></i>低比率 <strong>&lt; 0.6</strong></span><span><i class="legend-dot middle"></i>中比率 <strong>0.6—0.8</strong></span><span><i class="legend-dot high"></i>高比率 <strong>&gt; 0.8</strong></span><small>参考分区</small></div>
+      <div id="charts-wrap" class="charts-wrap"><div class="chart-axis-title"><span>黄金市值 / 美国债务</span><span>倍</span></div><svg id="ratio-chart" class="data-chart ratio-chart" viewBox="0 0 1100 330" role="img" aria-label="黄金市值与美国债务规模的历史比率"></svg><div id="price-panel" class="price-panel" hidden><div class="chart-axis-title"><span>同期黄金价格</span><span>美元 / 金衡盎司</span></div><svg id="price-chart" class="data-chart price-chart" viewBox="0 0 1100 170" role="img" aria-label="同期美元黄金价格"></svg></div><div id="chart-tooltip" class="chart-tooltip" hidden></div></div>
+      <div class="chart-bottom"><p id="selection-summary">移动到曲线上查看历史数值。</p><div class="chart-actions"><button type="button" class="quiet-button" id="toggle-price" aria-expanded="false" aria-controls="price-panel">显示同期金价 <span aria-hidden="true">＋</span></button><button type="button" class="quiet-button" id="export-csv">下载数据 <span aria-hidden="true">↓</span></button></div></div>
+    </section>
+
+    <p class="core-boundary"><span aria-hidden="true">↳</span> 衡量相对规模，不直接判断合理金价或买卖时点。</p>
+    <details class="method-details"><summary>指标口径与来源 <span class="details-mark" aria-hidden="true">＋</span></summary><div class="method-content"><div id="methodology" class="methodology"></div><div id="sources" class="sources-list"></div></div></details>
+  </main>
+  <footer class="page-width footer"><span>金债比 <span class="footer-separator">/</span> 黄金相对规模观察</span><span id="footer-date">数据快照 · 非实时行情</span></footer>
+</body>
+</html>
