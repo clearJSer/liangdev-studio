@@ -155,9 +155,9 @@ export const enContent: SiteContent = {
           tone: "orange",
         },
         {
-          title: "BTC Beacon",
+          title: "BTC Beacon · Bitcoin Price Research",
           description:
-            "Explore Bitcoin prices alongside long-term cost benchmarks and compare rule-based accumulation with fixed contributions.",
+            "Use AI to organize public market data and study how Bitcoin prices and volatility have changed alongside long-term benchmarks.",
           status: "Live / Available to explore",
           links: [
             {

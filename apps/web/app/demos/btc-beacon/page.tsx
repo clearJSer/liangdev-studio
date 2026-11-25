@@ -10,10 +10,10 @@ import snapshot from "./market-snapshot.json";
 import styles from "./dashboard.module.css";
 
 const description =
-  "在同一时间轴上查看 BTC 价格、长期均价与链上实现价格的历史走势。";
+  "把 BTC 历史价格、长期均线和链上实现价格放在同一时间轴上，观察不同阶段的涨跌与波动。";
 
 export const metadata: Metadata = {
-  title: "BTC Beacon · 历史数据看板",
+  title: "BTC Beacon · 比特币历史价格看板",
   description,
   alternates: {
     canonical: "/demos/btc-beacon",
@@ -27,7 +27,7 @@ export default function BtcBeaconDemoPage() {
       <PageIntro
         content={{
           eyebrow: "BTC Beacon",
-          title: "比特币历史数据看板",
+          title: "比特币历史价格看板",
           description,
         }}
       >
@@ -57,11 +57,6 @@ export default function BtcBeaconDemoPage() {
           </p>
           <p>链上实现价格由 BTC 价格除以同日 MVRV 得出，200 日参考线使用几何平均。</p>
           <ul>
-            <li>
-              <a href="https://btc-accumulation-beacon.fairygame.chatgpt.site/">
-                BTC Beacon 原站
-              </a>
-            </li>
             <li>
               <a href="https://docs.coinmetrics.io/network-data/network-data-overview/market/market-capitalization">
                 Coin Metrics · 市值口径与 MVRV

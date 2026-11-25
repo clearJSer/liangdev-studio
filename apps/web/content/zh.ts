@@ -150,9 +150,9 @@ export const zhContent: SiteContent = {
           tone: "orange",
         },
         {
-          title: "BTC Beacon · 比特币建仓看板",
+          title: "BTC Beacon · 比特币价格观察",
           description:
-            "对照 BTC 价格与长期成本参考，查看规则建仓和固定定投的历史比较。",
+            "用 AI 整理公开行情，对照 BTC 价格与长期参考线，观察不同阶段的涨跌与波动。",
           status: "已上线 / 可体验",
           links: [
             {
