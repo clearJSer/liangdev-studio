@@ -155,6 +155,19 @@ export const enContent: SiteContent = {
           tone: "orange",
         },
         {
+          title: "BTC Beacon",
+          description:
+            "Explore Bitcoin prices alongside long-term cost benchmarks and compare rule-based accumulation with fixed contributions.",
+          status: "Live / Available to explore",
+          links: [
+            {
+              href: "/projects/btc-beacon",
+              label: "Project case (Chinese)",
+            },
+          ],
+          tone: "blue",
+        },
+        {
           title: "Personal Context · AI Decision Framework",
           description:
             "Organize health, finances, learning, and work into context you can update, so AI can help compare options and trade-offs.",

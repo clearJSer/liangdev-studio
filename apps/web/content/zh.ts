@@ -150,6 +150,19 @@ export const zhContent: SiteContent = {
           tone: "orange",
         },
         {
+          title: "BTC Beacon · 比特币建仓看板",
+          description:
+            "对照 BTC 价格与长期成本参考，查看规则建仓和固定定投的历史比较。",
+          status: "已上线 / 可体验",
+          links: [
+            {
+              href: "/projects/btc-beacon",
+              label: "查看项目",
+            },
+          ],
+          tone: "blue",
+        },
+        {
           title: "个人上下文 · AI 决策框架",
           description:
             "把健康、财务、学习和工作等信息整理成可更新的上下文，让 AI 帮助比较选项、梳理取舍。",
