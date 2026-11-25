@@ -21,7 +21,11 @@ function getEnglishPath(pathname: string) {
     return "/en";
   }
 
-  if (pathname === "/projects" || pathname.startsWith("/projects/")) {
+  if (
+    pathname === "/projects" ||
+    pathname.startsWith("/projects/") ||
+    pathname.startsWith("/demos/")
+  ) {
     return "/en/projects";
   }
 
