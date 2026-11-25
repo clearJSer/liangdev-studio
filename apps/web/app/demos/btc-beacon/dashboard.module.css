@@ -75,6 +75,74 @@
   background: var(--accent-soft);
 }
 
+.signalPanel {
+  display: grid;
+  gap: 12px;
+  margin-top: 22px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #f6f8fe;
+}
+
+.signalHeading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+}
+
+.signalHeading h3 {
+  margin: 0;
+  color: var(--foreground);
+  font-size: 16px;
+}
+
+.signalBadge {
+  padding: 4px 9px;
+  border-radius: 999px;
+  color: #4d5b75;
+  background: #e9edf5;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.signalBadge[data-met="true"] {
+  color: #165f44;
+  background: #dbf4e7;
+}
+
+.signalDate,
+.signalRule {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.signalMetrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 115px), 1fr));
+  gap: 8px 12px;
+  margin: 0;
+}
+
+.signalMetrics dt {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.signalMetrics dd {
+  margin: 3px 0 0;
+  color: var(--foreground);
+  font-size: 15px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.signalRule {
+  margin: 0;
+}
+
 .legend {
   display: flex;
   flex-wrap: wrap;
@@ -96,6 +164,10 @@
   display: block;
   width: 18px;
   border-top-width: 2px;
+}
+
+.signalMarker {
+  text-align: center;
 }
 
 .chart {

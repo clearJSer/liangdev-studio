@@ -55,7 +55,10 @@ export default function BtcBeaconDemoPage() {
           <p>
             此页展示固定历史快照。基础市场数据来自 {snapshot.source.creator} 的社区数据，由 BTC Beacon 计算参考线，再按月抽样。每个 UTC 月保留最后一条含价格的日线，快照所在月份取截至日数据。缺少的指标在图中留空。
           </p>
-          <p>链上实现价格由 BTC 价格除以同日 MVRV 得出，200 日参考线使用几何平均。</p>
+          <p>
+            链上实现价格由 BTC 价格除以同日 MVRV 得出。AHR999
+            对照当日价格、200 日几何均价和长期拟合价格。价格指示按同一观测日的指标计算。
+          </p>
           <ul>
             <li>
               <a href="https://docs.coinmetrics.io/network-data/network-data-overview/market/market-capitalization">
